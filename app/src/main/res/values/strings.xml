@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FA</string>
+
+    <!-- Common -->
+    <string name="common_save">Save</string>
+    <string name="common_back">Back</string>
+    <string name="common_cancel">Cancel</string>
+    <string name="common_confirm">Confirm</string>
+
+    <!-- Targets -->
+    <string name="target_wifi">Wi-Fi</string>
+    <string name="target_mobile_data">Mobile data</string>
+    <string name="target_airplane_mode">Airplane mode</string>
+
+    <!-- Modes -->
+    <string name="mode_cyclical">Cycle</string>
+    <string name="mode_always_on">Always on</string>
+    <string name="mode_always_off">Always off</string>
+    <string name="mode_unmanaged">Don\'t manage</string>
+
+    <!-- Duration units -->
+    <string name="duration_unit_seconds">Seconds</string>
+    <string name="duration_unit_minutes">Minutes</string>
+    <string name="duration_unit_hours">Hours</string>
+    <string name="duration_unit_days">Days</string>
+    <string name="duration_unit_months">Months</string>
+    <string name="duration_unit_years">Years</string>
+    <string name="duration_picker_unit_label">Unit</string>
+    <string name="duration_picker_approx_note">approximated as a fixed 30/365-day duration</string>
+
+    <!-- Backend preference -->
+    <string name="backend_auto">Automatic</string>
+    <string name="backend_root_only">Root only</string>
+    <string name="backend_shizuku_only">Shizuku only</string>
+
+    <!-- Home screen -->
+    <string name="home_title">FA — daemon.status</string>
+    <string name="home_automation_title">Automation</string>
+    <string name="home_automation_running">running</string>
+    <string name="home_automation_stopped">stopped</string>
+    <string name="home_no_backend_title">No privileged access</string>
+    <string name="home_no_backend_body">Neither root nor Shizuku available — rules cannot run.</string>
+    <string name="home_no_backend_button">Set up</string>
+    <string name="home_rules_title">Rules</string>
+    <string name="home_panic_title">Panic feature</string>
+    <string name="home_panic_armed">ARMED</string>
+    <string name="home_panic_disarmed">not armed</string>
+    <string name="home_panic_configure">Configure panic feature</string>
+    <string name="home_status_disabled">disabled</string>
+    <string name="home_status_always_on">always on</string>
+    <string name="home_status_always_off">always off</string>
+    <string name="home_status_next_change">%1$s — next change in %2$s</string>
+    <string name="home_reboot_label">Reboot</string>
+    <string name="home_reboot_disabled">disabled</string>
+    <string name="home_reboot_next">next reboot in %1$s</string>
+    <string name="home_state_on">ON</string>
+    <string name="home_state_off">OFF</string>
+
+    <!-- Foreground service notification -->
+    <string name="notification_initializing">Initializing …</string>
+    <string name="notification_unmanaged">%1$s: unmanaged</string>
+    <string name="notification_disabled">%1$s: -</string>
+    <string name="notification_toggle_line">%1$s: %2$s (next change in %3$s)</string>
+    <string name="notification_reboot_line">Reboot: in %1$s</string>
+    <string name="notification_channel_name">FA automation status</string>
+    <string name="notification_title">FA — automation active</string>
+
+    <!-- Rule editor -->
+    <string name="rule_editor_enabled">Enabled</string>
+    <string name="rule_editor_mode">Mode</string>
+    <string name="rule_editor_cycle">Cycle</string>
+    <string name="rule_editor_active_duration">Active duration</string>
+    <string name="rule_editor_start_on">Cycle starts ON (instead of OFF)</string>
+    <string name="rule_editor_validation_error">Active duration must be shorter than the cycle.</string>
+    <string name="rule_editor_reboot_title">Reboot</string>
+    <string name="rule_editor_reboot_interval">Interval</string>
+    <string name="rule_editor_reboot_note">Interval = time since the last boot (any boot, not just app-triggered ones).</string>
+
+    <!-- Permissions / setup -->
+    <string name="permissions_title">Setup</string>
+    <string name="permissions_root_title">Root</string>
+    <string name="permissions_root_available">available</string>
+    <string name="permissions_root_unavailable">not available</string>
+    <string name="permissions_root_check">Check for root</string>
+    <string name="permissions_shizuku_title">Shizuku</string>
+    <string name="permissions_shizuku_available">available, permission granted</string>
+    <string name="permissions_shizuku_needs_permission">running, permission missing</string>
+    <string name="permissions_shizuku_unreachable">not reachable</string>
+    <string name="permissions_shizuku_instructions">1. Install the Shizuku app  2. Developer options → enable Wireless debugging  3. Pair &amp; start in Shizuku  4. Grant permission here. Without root, the pairing doesn\'t always survive a reboot automatically — enable Shizuku\'s own auto-start option for best reliability.</string>
+    <string name="permissions_shizuku_grant">Grant permission</string>
+    <string name="permissions_battery_title">Battery optimization</string>
+    <string name="permissions_battery_body">For reliable long-term background operation, FA should be exempted from battery optimization.</string>
+    <string name="permissions_battery_button">Request exemption</string>
+    <string name="permissions_oem_title">Manufacturer background restrictions</string>
+    <string name="permissions_oem_body">Some manufacturers (Xiaomi, Huawei, Oppo, …) kill background apps even with the battery optimization exemption. Look for \"Autostart\" or \"Manage app launch\" in system settings and allow FA to run in the background there.</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_backend_preference">Backend preference</string>
+    <string name="settings_about_section">About</string>
+    <string name="settings_version">Version</string>
+    <string name="settings_license">License</string>
+    <string name="settings_source">Source code</string>
+    <string name="settings_help_faq">Help &amp; FAQ</string>
+    <string name="settings_onboarding_replay">Show onboarding again</string>
+    <string name="settings_no_internet_note">FA never requests internet access — everything runs fully offline, on-device.</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_step1_title">What FA does</string>
+    <string name="onboarding_step1_body">FA turns Wi-Fi, mobile data, and airplane mode on and off on a schedule you define — from seconds to years — and can reboot your device on an interval. Everything runs locally; FA never connects to the internet.</string>
+    <string name="onboarding_step2_title">Why privileged access is needed</string>
+    <string name="onboarding_step2_body">Since Android 10, apps can no longer toggle Wi-Fi or mobile data directly, and rebooting needs elevated access too. FA needs either Shizuku (no root, paired once via Wireless Debugging) or root access to run these system commands.</string>
+    <string name="onboarding_step3_title">Setting up Shizuku or Root</string>
+    <string name="onboarding_step3_body">Open Setup from the home screen banner. Shizuku needs no root — just a one-time pairing through Developer Options → Wireless Debugging. If your device is rooted, FA detects and uses it automatically.</string>
+    <string name="onboarding_step4_title">Creating a rule</string>
+    <string name="onboarding_step4_body">Tap any rule on the home screen (Wi-Fi, mobile data, airplane mode, or reboot) to configure it: choose a mode, set how often it should cycle and for how long it stays on, then turn on the master switch to start.</string>
+    <string name="onboarding_step5_title">The panic feature</string>
+    <string name="onboarding_step5_body">An optional, root-only feature: pressing the power button 5 times sets a brand-new random password on your device and locks it immediately. This is risky — read the warnings on its setup screen carefully before arming it.</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_back">Back</string>
+    <string name="onboarding_done">Get started</string>
+    <string name="onboarding_skip">Skip</string>
+
+    <!-- FAQ -->
+    <string name="faq_title">Help &amp; FAQ</string>
+    <string name="faq_q1">What does FA actually do?</string>
+    <string name="faq_a1">It automatically switches Wi-Fi, mobile data, and airplane mode on/off on a schedule you set, and can reboot your device periodically. Fully offline, no account, no tracking.</string>
+    <string name="faq_q2">Why does it need Root or Shizuku?</string>
+    <string name="faq_a2">Android has blocked regular apps from toggling Wi-Fi/mobile data since Android 10, and device reboot always requires elevated access. Root or Shizuku (a no-root, ADB-based permission bridge) are the only ways to run these system commands.</string>
+    <string name="faq_q3">What\'s the difference between Root and Shizuku?</string>
+    <string name="faq_a3">Root gives full system access via a root manager app (e.g. Magisk). Shizuku needs no root — you pair it once via Developer Options → Wireless Debugging — but its pairing may need restarting manually after a reboot on some devices, unless you enable Shizuku\'s own auto-start option.</string>
+    <string name="faq_q4">Will automation survive a reboot?</string>
+    <string name="faq_a4">Yes, if you leave the master switch on. With root, this is fully automatic. With Shizuku only, you may need to reopen the Shizuku app after a reboot unless its auto-start option is enabled.</string>
+    <string name="faq_q5">Does FA use the internet?</string>
+    <string name="faq_a5">No. FA has no internet permission at all — everything runs locally on your device.</string>
+    <string name="faq_q6">What happens with Months/Years as a unit?</string>
+    <string name="faq_a6">They\'re approximated as a fixed 30-day / 365-day duration for simplicity, not exact calendar months/years.</string>
+    <string name="faq_q7">Is the panic feature safe?</string>
+    <string name="faq_a7">It carries a real risk of permanently locking you out of your device if something goes wrong. Read its setup screen warnings carefully, and test it on a spare device before ever arming it on your daily phone.</string>
+    <string name="faq_q8">Why does my manufacturer keep killing the background service?</string>
+    <string name="faq_a8">Some manufacturers (Xiaomi, Huawei, Oppo, etc.) restrict background apps beyond Android\'s own battery optimization. Check for an \"Autostart\" or \"Manage app launch\" setting and allow FA there.</string>
+    <string name="faq_q9">Is FA open source?</string>
+    <string name="faq_a9">Yes, licensed under the GPLv3. The source code link is in Settings.</string>
+    <string name="faq_q10">Does FA collect any data?</string>
+    <string name="faq_a10">No telemetry, no analytics, no accounts — the app has no network permission at all.</string>
+
+    <!-- Panic feature -->
+    <string name="panic_setup_title">Panic feature</string>
+    <string name="panic_warning_title">⚠ Real risk of permanent lockout</string>
+    <string name="panic_warning_body">This feature sets a genuinely random password on your device when triggered. If it fails, or you lose your external backup of the next password, you may be permanently locked out of your device — including possible data loss. Root only. Test on a spare device before ever arming this on your daily phone.</string>
+    <string name="panic_password_length">Password length</string>
+    <string name="panic_press_count">Power button presses</string>
+    <string name="panic_window">Time window (seconds)</string>
+    <string name="panic_next_password_title">Next password (save this outside the app now)</string>
+    <string name="panic_generate_preview">Generate new next-password</string>
+    <string name="panic_backup_confirm_label">I have saved this password securely outside the app</string>
+    <string name="panic_backup_confirm_hint">Type CONFIRM to arm</string>
+    <string name="panic_arm">Arm panic feature</string>
+    <string name="panic_disarm">Disarm</string>
+    <string name="panic_current_credential_label">Current lock screen password</string>
+    <string name="panic_current_credential_hint">Stored encrypted on-device, needed locally to change the password reliably</string>
+    <string name="panic_status_armed">ARMED</string>
+    <string name="panic_status_disarmed">not armed</string>
+    <string name="panic_root_required">The panic feature requires root — Shizuku is not supported for this feature.</string>
+    <string name="panic_no_power_device">Power key input device not found — this device may not be supported.</string>
+</resources>

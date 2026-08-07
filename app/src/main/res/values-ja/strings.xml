@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FA</string>
+
+    <!-- 共通 -->
+    <string name="common_save">保存</string>
+    <string name="common_back">戻る</string>
+    <string name="common_cancel">キャンセル</string>
+    <string name="common_confirm">確認</string>
+
+    <!-- 対象 -->
+    <string name="target_wifi">Wi-Fi</string>
+    <string name="target_mobile_data">モバイルデータ</string>
+    <string name="target_airplane_mode">機内モード</string>
+
+    <!-- モード -->
+    <string name="mode_cyclical">周期</string>
+    <string name="mode_always_on">常にON</string>
+    <string name="mode_always_off">常にOFF</string>
+    <string name="mode_unmanaged">管理しない</string>
+
+    <!-- 時間の単位 -->
+    <string name="duration_unit_seconds">秒</string>
+    <string name="duration_unit_minutes">分</string>
+    <string name="duration_unit_hours">時間</string>
+    <string name="duration_unit_days">日</string>
+    <string name="duration_unit_months">ヶ月</string>
+    <string name="duration_unit_years">年</string>
+    <string name="duration_picker_unit_label">単位</string>
+    <string name="duration_picker_approx_note">30日/365日固定として概算されます</string>
+
+    <!-- バックエンドの優先設定 -->
+    <string name="backend_auto">自動</string>
+    <string name="backend_root_only">Rootのみ</string>
+    <string name="backend_shizuku_only">Shizukuのみ</string>
+
+    <!-- ホーム画面 -->
+    <string name="home_title">FA — daemon.status</string>
+    <string name="home_automation_title">自動化</string>
+    <string name="home_automation_running">実行中</string>
+    <string name="home_automation_stopped">停止中</string>
+    <string name="home_no_backend_title">特権アクセスなし</string>
+    <string name="home_no_backend_body">RootもShizukuも利用できません — ルールを実行できません。</string>
+    <string name="home_no_backend_button">設定へ</string>
+    <string name="home_rules_title">ルール</string>
+    <string name="home_panic_title">パニック機能</string>
+    <string name="home_panic_armed">作動中</string>
+    <string name="home_panic_disarmed">未作動</string>
+    <string name="home_panic_configure">パニック機能を設定</string>
+    <string name="home_status_disabled">無効</string>
+    <string name="home_status_always_on">常にON</string>
+    <string name="home_status_always_off">常にOFF</string>
+    <string name="home_status_next_change">%1$s — 次の変更まで %2$s</string>
+    <string name="home_reboot_label">再起動</string>
+    <string name="home_reboot_disabled">無効</string>
+    <string name="home_reboot_next">次の再起動まで %1$s</string>
+    <string name="home_state_on">ON</string>
+    <string name="home_state_off">OFF</string>
+
+    <!-- フォアグラウンドサービス通知 -->
+    <string name="notification_initializing">初期化中…</string>
+    <string name="notification_unmanaged">%1$s: 管理しない</string>
+    <string name="notification_disabled">%1$s: -</string>
+    <string name="notification_toggle_line">%1$s: %2$s（次の変更まで %3$s）</string>
+    <string name="notification_reboot_line">再起動: %1$s後</string>
+    <string name="notification_channel_name">FA 自動化ステータス</string>
+    <string name="notification_title">FA — 自動化が有効です</string>
+
+    <!-- ルールエディタ -->
+    <string name="rule_editor_enabled">有効</string>
+    <string name="rule_editor_mode">モード</string>
+    <string name="rule_editor_cycle">周期</string>
+    <string name="rule_editor_active_duration">有効時間</string>
+    <string name="rule_editor_start_on">周期をONから開始する（OFFの代わりに）</string>
+    <string name="rule_editor_validation_error">有効時間は周期より短くする必要があります。</string>
+    <string name="rule_editor_reboot_title">再起動</string>
+    <string name="rule_editor_reboot_interval">間隔</string>
+    <string name="rule_editor_reboot_note">間隔 = 最後の起動からの経過時間（アプリが実行したものに限らず、あらゆる起動が対象です）。</string>
+
+    <!-- 権限 / セットアップ -->
+    <string name="permissions_title">セットアップ</string>
+    <string name="permissions_root_title">Root</string>
+    <string name="permissions_root_available">利用可能</string>
+    <string name="permissions_root_unavailable">利用不可</string>
+    <string name="permissions_root_check">Rootを確認</string>
+    <string name="permissions_shizuku_title">Shizuku</string>
+    <string name="permissions_shizuku_available">利用可能、権限付与済み</string>
+    <string name="permissions_shizuku_needs_permission">実行中、権限が不足しています</string>
+    <string name="permissions_shizuku_unreachable">到達できません</string>
+    <string name="permissions_shizuku_instructions">1. Shizukuアプリをインストール  2. 開発者向けオプション → ワイヤレスデバッグを有効化  3. Shizukuでペアリングして起動  4. ここで権限を付与。Rootがない場合、ペアリングは再起動後に自動的に維持されないことがあります — 信頼性を高めるため、Shizuku自体の自動起動オプションを有効にすることをお勧めします。</string>
+    <string name="permissions_shizuku_grant">権限を付与</string>
+    <string name="permissions_battery_title">バッテリー最適化</string>
+    <string name="permissions_battery_body">長期的に安定してバックグラウンド動作させるため、FAをバッテリー最適化の対象から除外することをお勧めします。</string>
+    <string name="permissions_battery_button">除外をリクエスト</string>
+    <string name="permissions_oem_title">メーカー独自のバックグラウンド制限</string>
+    <string name="permissions_oem_body">一部のメーカー（Xiaomi、Huawei、Oppoなど）は、バッテリー最適化の除外設定をしていてもバックグラウンドアプリを終了させることがあります。システム設定内の「自動起動」または「アプリの起動管理」といった項目を探し、FAのバックグラウンド動作を許可してください。</string>
+
+    <!-- 設定 -->
+    <string name="settings_title">設定</string>
+    <string name="settings_language">言語</string>
+    <string name="settings_backend_preference">バックエンドの優先設定</string>
+    <string name="settings_about_section">このアプリについて</string>
+    <string name="settings_version">バージョン</string>
+    <string name="settings_license">ライセンス</string>
+    <string name="settings_source">ソースコード</string>
+    <string name="settings_help_faq">ヘルプ＆FAQ</string>
+    <string name="settings_onboarding_replay">オンボーディングを再表示</string>
+    <string name="settings_no_internet_note">FAはインターネットアクセスを一切要求しません — すべての処理は完全にオフラインで、端末上のみで実行されます。</string>
+
+    <!-- オンボーディング -->
+    <string name="onboarding_step1_title">FAの機能</string>
+    <string name="onboarding_step1_body">FAは、あなたが設定したスケジュールに従ってWi-Fi・モバイルデータ・機内モードをON/OFFします — 数秒から数年まで自由に設定可能です — また、一定間隔で端末を再起動することもできます。すべてローカルで動作し、FAがインターネットに接続することはありません。</string>
+    <string name="onboarding_step2_title">特権アクセスが必要な理由</string>
+    <string name="onboarding_step2_body">Android 10以降、アプリが直接Wi-Fiやモバイルデータを切り替えることはできなくなり、再起動にも昇格した権限が必要です。FAがこれらのシステムコマンドを実行するには、Shizuku（Rootなしで、ワイヤレスデバッグ経由で一度だけペアリング）またはRoot権限のいずれかが必要です。</string>
+    <string name="onboarding_step3_title">ShizukuまたはRootのセットアップ</string>
+    <string name="onboarding_step3_body">ホーム画面のバナーからセットアップを開いてください。Shizukuは Root不要 — 開発者向けオプション → ワイヤレスデバッグから一度だけペアリングするだけです。端末がRoot化されている場合、FAは自動的に検出して使用します。</string>
+    <string name="onboarding_step4_title">ルールの作成</string>
+    <string name="onboarding_step4_body">ホーム画面の任意のルール（Wi-Fi、モバイルデータ、機内モード、再起動）をタップして設定します。モードを選び、どのくらいの周期でON状態をどれだけ維持するかを設定したら、マスタースイッチをONにして開始してください。</string>
+    <string name="onboarding_step5_title">パニック機能</string>
+    <string name="onboarding_step5_body">Root専用のオプション機能です。電源ボタンを5回押すと、端末に全く新しいランダムなパスワードが即座に設定され、ロックされます。これはリスクを伴う機能です — 有効化する前に、セットアップ画面の警告をよく読んでください。</string>
+    <string name="onboarding_next">次へ</string>
+    <string name="onboarding_back">戻る</string>
+    <string name="onboarding_done">始める</string>
+    <string name="onboarding_skip">スキップ</string>
+
+    <!-- FAQ -->
+    <string name="faq_title">ヘルプ＆FAQ</string>
+    <string name="faq_q1">FAは実際に何をするのですか？</string>
+    <string name="faq_a1">設定したスケジュールに従ってWi-Fi・モバイルデータ・機内モードを自動でON/OFFし、端末を定期的に再起動することもできます。完全にオフラインで、アカウントも追跡も不要です。</string>
+    <string name="faq_q2">なぜRootまたはShizukuが必要なのですか？</string>
+    <string name="faq_a2">Android 10以降、一般アプリによるWi-Fi/モバイルデータの切り替えはブロックされており、端末の再起動にも常に昇格した権限が必要です。RootまたはShizuku（Root不要でADBベースの権限ブリッジ）は、これらのシステムコマンドを実行できる唯一の方法です。</string>
+    <string name="faq_q3">RootとShizukuの違いは何ですか？</string>
+    <string name="faq_a3">RootはRoot管理アプリ（例: Magisk）を通じて完全なシステムアクセスを提供します。Shizukuは Root不要で、開発者向けオプション → ワイヤレスデバッグから一度だけペアリングしますが、一部の端末では再起動後にペアリングを手動でやり直す必要がある場合があります。Shizuku自体の自動起動オプションを有効にしていれば、その必要はありません。</string>
+    <string name="faq_q4">自動化は再起動後も継続しますか？</string>
+    <string name="faq_a4">はい、マスタースイッチをONのままにしておけば継続します。Rootを使用している場合は完全に自動です。Shizukuのみの場合、自動起動オプションを有効にしていない限り、再起動後にShizukuアプリを再度開く必要があるかもしれません。</string>
+    <string name="faq_q5">FAはインターネットを使用しますか？</string>
+    <string name="faq_a5">いいえ。FAにはインターネット権限が一切ありません — すべては端末のローカルで動作します。</string>
+    <string name="faq_q6">単位に「ヶ月」/「年」を使うとどうなりますか？</string>
+    <string name="faq_a6">簡略化のため、それぞれ固定の30日 / 365日として概算されます。実際の暦上の月/年とは一致しません。</string>
+    <string name="faq_q7">パニック機能は安全ですか？</string>
+    <string name="faq_a7">何か問題が起きた場合、端末に永久にアクセスできなくなる現実的なリスクがあります。有効化する前にセットアップ画面の警告をよく読み、日常使用の端末で作動させる前に、必ず予備の端末でテストしてください。</string>
+    <string name="faq_q8">なぜメーカーがバックグラウンドサービスを強制終了するのですか？</string>
+    <string name="faq_a8">一部のメーカー（Xiaomi、Huawei、Oppoなど）は、Android標準のバッテリー最適化に加えて、独自にバックグラウンドアプリを制限しています。「自動起動」または「アプリの起動管理」といった設定項目を探し、FAを許可してください。</string>
+    <string name="faq_q9">FAはオープンソースですか？</string>
+    <string name="faq_a9">はい、GPLv3ライセンスの下で公開されています。ソースコードへのリンクは設定内にあります。</string>
+    <string name="faq_q10">FAは何らかのデータを収集しますか？</string>
+    <string name="faq_a10">いいえ。テレメトリ、解析、アカウントのいずれもありません — このアプリにはネットワーク権限が一切ありません。</string>
+
+    <!-- パニック機能 -->
+    <string name="panic_setup_title">パニック機能</string>
+    <string name="panic_warning_title">⚠ 端末が永久にロックされる現実的なリスクがあります</string>
+    <string name="panic_warning_body">この機能は、発動時に端末へ完全にランダムなパスワードを設定します。失敗した場合、または次のパスワードの外部バックアップを紛失した場合、端末に永久にアクセスできなくなる可能性があります — データ消失を伴う場合もあります。Root専用です。日常使用の端末で作動させる前に、必ず予備の端末でテストしてください。</string>
+    <string name="panic_password_length">パスワードの長さ</string>
+    <string name="panic_press_count">電源ボタンの押下回数</string>
+    <string name="panic_window">時間ウィンドウ（秒）</string>
+    <string name="panic_next_password_title">次のパスワード（今すぐアプリ外に保存してください）</string>
+    <string name="panic_generate_preview">新しい次のパスワードを生成</string>
+    <string name="panic_backup_confirm_label">このパスワードをアプリ外に安全に保存しました</string>
+    <string name="panic_backup_confirm_hint">作動させるには CONFIRM と入力してください</string>
+    <string name="panic_arm">パニック機能を作動させる</string>
+    <string name="panic_disarm">解除</string>
+    <string name="panic_current_credential_label">現在のロック画面パスワード</string>
+    <string name="panic_current_credential_hint">端末内に暗号化して保存され、パスワードを確実に変更するためローカルで使用されます</string>
+    <string name="panic_status_armed">作動中</string>
+    <string name="panic_status_disarmed">未作動</string>
+    <string name="panic_root_required">パニック機能にはRootが必要です — この機能はShizukuに対応していません。</string>
+    <string name="panic_no_power_device">電源キーの入力デバイスが見つかりません — この端末はサポートされていない可能性があります。</string>
+</resources>

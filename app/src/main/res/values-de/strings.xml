@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FA</string>
+
+    <!-- Allgemein -->
+    <string name="common_save">Speichern</string>
+    <string name="common_back">Zurück</string>
+    <string name="common_cancel">Abbrechen</string>
+    <string name="common_confirm">Bestätigen</string>
+
+    <!-- Ziele -->
+    <string name="target_wifi">Wi-Fi</string>
+    <string name="target_mobile_data">Mobile Daten</string>
+    <string name="target_airplane_mode">Flugmodus</string>
+
+    <!-- Modi -->
+    <string name="mode_cyclical">Zyklus</string>
+    <string name="mode_always_on">Immer an</string>
+    <string name="mode_always_off">Immer aus</string>
+    <string name="mode_unmanaged">Nicht verwalten</string>
+
+    <!-- Dauereinheiten -->
+    <string name="duration_unit_seconds">Sekunden</string>
+    <string name="duration_unit_minutes">Minuten</string>
+    <string name="duration_unit_hours">Stunden</string>
+    <string name="duration_unit_days">Tage</string>
+    <string name="duration_unit_months">Monate</string>
+    <string name="duration_unit_years">Jahre</string>
+    <string name="duration_picker_unit_label">Einheit</string>
+    <string name="duration_picker_approx_note">als feste Dauer von 30/365 Tagen angenähert</string>
+
+    <!-- Backend-Präferenz -->
+    <string name="backend_auto">Automatisch</string>
+    <string name="backend_root_only">Nur Root</string>
+    <string name="backend_shizuku_only">Nur Shizuku</string>
+
+    <!-- Startbildschirm -->
+    <string name="home_title">FA — daemon.status</string>
+    <string name="home_automation_title">Automatisierung</string>
+    <string name="home_automation_running">läuft</string>
+    <string name="home_automation_stopped">gestoppt</string>
+    <string name="home_no_backend_title">Kein privilegierter Zugriff</string>
+    <string name="home_no_backend_body">Weder Root noch Shizuku verfügbar — Regeln können nicht ausgeführt werden.</string>
+    <string name="home_no_backend_button">Einrichten</string>
+    <string name="home_rules_title">Regeln</string>
+    <string name="home_panic_title">Notfallfunktion</string>
+    <string name="home_panic_armed">AKTIVIERT</string>
+    <string name="home_panic_disarmed">nicht aktiviert</string>
+    <string name="home_panic_configure">Notfallfunktion konfigurieren</string>
+    <string name="home_status_disabled">deaktiviert</string>
+    <string name="home_status_always_on">immer an</string>
+    <string name="home_status_always_off">immer aus</string>
+    <string name="home_status_next_change">%1$s — nächste Änderung in %2$s</string>
+    <string name="home_reboot_label">Neustart</string>
+    <string name="home_reboot_disabled">deaktiviert</string>
+    <string name="home_reboot_next">nächster Neustart in %1$s</string>
+    <string name="home_state_on">AN</string>
+    <string name="home_state_off">AUS</string>
+
+    <!-- Vordergrunddienst-Benachrichtigung -->
+    <string name="notification_initializing">Wird initialisiert …</string>
+    <string name="notification_unmanaged">%1$s: nicht verwaltet</string>
+    <string name="notification_disabled">%1$s: -</string>
+    <string name="notification_toggle_line">%1$s: %2$s (nächste Änderung in %3$s)</string>
+    <string name="notification_reboot_line">Neustart: in %1$s</string>
+    <string name="notification_channel_name">FA-Automatisierungsstatus</string>
+    <string name="notification_title">FA — Automatisierung aktiv</string>
+
+    <!-- Regel-Editor -->
+    <string name="rule_editor_enabled">Aktiviert</string>
+    <string name="rule_editor_mode">Modus</string>
+    <string name="rule_editor_cycle">Zyklus</string>
+    <string name="rule_editor_active_duration">Aktive Dauer</string>
+    <string name="rule_editor_start_on">Zyklus startet mit AN (statt AUS)</string>
+    <string name="rule_editor_validation_error">Die aktive Dauer muss kürzer als der Zyklus sein.</string>
+    <string name="rule_editor_reboot_title">Neustart</string>
+    <string name="rule_editor_reboot_interval">Intervall</string>
+    <string name="rule_editor_reboot_note">Intervall = Zeit seit dem letzten Start (jeder Start, nicht nur von der App ausgelöste).</string>
+
+    <!-- Berechtigungen / Einrichtung -->
+    <string name="permissions_title">Einrichtung</string>
+    <string name="permissions_root_title">Root</string>
+    <string name="permissions_root_available">verfügbar</string>
+    <string name="permissions_root_unavailable">nicht verfügbar</string>
+    <string name="permissions_root_check">Nach Root suchen</string>
+    <string name="permissions_shizuku_title">Shizuku</string>
+    <string name="permissions_shizuku_available">verfügbar, Berechtigung erteilt</string>
+    <string name="permissions_shizuku_needs_permission">läuft, Berechtigung fehlt</string>
+    <string name="permissions_shizuku_unreachable">nicht erreichbar</string>
+    <string name="permissions_shizuku_instructions">1. Shizuku-App installieren  2. Entwickleroptionen → Drahtlos-Debugging aktivieren  3. In Shizuku koppeln &amp; starten  4. Hier die Berechtigung erteilen. Ohne Root übersteht die Kopplung einen Neustart nicht immer automatisch — aktiviere für die beste Zuverlässigkeit Shizukus eigene Autostart-Option.</string>
+    <string name="permissions_shizuku_grant">Berechtigung erteilen</string>
+    <string name="permissions_battery_title">Akku-Optimierung</string>
+    <string name="permissions_battery_body">Für einen zuverlässigen Langzeitbetrieb im Hintergrund sollte FA von der Akku-Optimierung ausgenommen werden.</string>
+    <string name="permissions_battery_button">Ausnahme anfordern</string>
+    <string name="permissions_oem_title">Herstellerbeschränkungen im Hintergrund</string>
+    <string name="permissions_oem_body">Manche Hersteller (Xiaomi, Huawei, Oppo, …) beenden Hintergrund-Apps selbst mit Ausnahme von der Akku-Optimierung. Suche in den Systemeinstellungen nach \"Autostart\" oder \"App-Start verwalten\" und erlaube FA dort, im Hintergrund zu laufen.</string>
+
+    <!-- Einstellungen -->
+    <string name="settings_title">Einstellungen</string>
+    <string name="settings_language">Sprache</string>
+    <string name="settings_backend_preference">Backend-Präferenz</string>
+    <string name="settings_about_section">Über</string>
+    <string name="settings_version">Version</string>
+    <string name="settings_license">Lizenz</string>
+    <string name="settings_source">Quellcode</string>
+    <string name="settings_help_faq">Hilfe &amp; FAQ</string>
+    <string name="settings_onboarding_replay">Einführung erneut anzeigen</string>
+    <string name="settings_no_internet_note">FA fordert niemals Internetzugriff an — alles läuft vollständig offline, auf dem Gerät.</string>
+
+    <!-- Einführung -->
+    <string name="onboarding_step1_title">Was FA macht</string>
+    <string name="onboarding_step1_body">FA schaltet Wi-Fi, mobile Daten und den Flugmodus nach einem von dir festgelegten Zeitplan ein und aus — von Sekunden bis Jahren — und kann dein Gerät in bestimmten Abständen neu starten. Alles läuft lokal; FA verbindet sich nie mit dem Internet.</string>
+    <string name="onboarding_step2_title">Warum privilegierter Zugriff nötig ist</string>
+    <string name="onboarding_step2_body">Seit Android 10 können Apps Wi-Fi oder mobile Daten nicht mehr direkt umschalten, und auch ein Neustart benötigt erweiterte Rechte. FA braucht entweder Shizuku (kein Root, einmalig über Drahtlos-Debugging gekoppelt) oder Root-Zugriff, um diese Systembefehle auszuführen.</string>
+    <string name="onboarding_step3_title">Shizuku oder Root einrichten</string>
+    <string name="onboarding_step3_body">Öffne die Einrichtung über das Banner auf dem Startbildschirm. Shizuku benötigt kein Root — nur eine einmalige Kopplung über Entwickleroptionen → Drahtlos-Debugging. Ist dein Gerät gerootet, erkennt und nutzt FA es automatisch.</string>
+    <string name="onboarding_step4_title">Eine Regel erstellen</string>
+    <string name="onboarding_step4_body">Tippe auf dem Startbildschirm auf eine beliebige Regel (Wi-Fi, mobile Daten, Flugmodus oder Neustart), um sie zu konfigurieren: Wähle einen Modus, lege fest, wie oft sie wechseln und wie lange sie an bleiben soll, und aktiviere dann den Hauptschalter, um zu starten.</string>
+    <string name="onboarding_step5_title">Die Notfallfunktion</string>
+    <string name="onboarding_step5_body">Eine optionale, nur mit Root nutzbare Funktion: Fünfmaliges Drücken des Netzschalters setzt ein brandneues zufälliges Passwort auf deinem Gerät und sperrt es sofort. Das ist riskant — lies die Warnhinweise auf dem Einrichtungsbildschirm sorgfältig, bevor du sie aktivierst.</string>
+    <string name="onboarding_next">Weiter</string>
+    <string name="onboarding_back">Zurück</string>
+    <string name="onboarding_done">Loslegen</string>
+    <string name="onboarding_skip">Überspringen</string>
+
+    <!-- FAQ -->
+    <string name="faq_title">Hilfe &amp; FAQ</string>
+    <string name="faq_q1">Was macht FA eigentlich?</string>
+    <string name="faq_a1">Es schaltet Wi-Fi, mobile Daten und den Flugmodus automatisch nach einem von dir festgelegten Zeitplan ein/aus und kann dein Gerät regelmäßig neu starten. Vollständig offline, kein Konto, kein Tracking.</string>
+    <string name="faq_q2">Warum braucht es Root oder Shizuku?</string>
+    <string name="faq_a2">Android blockiert seit Android 10 normale Apps daran, Wi-Fi/mobile Daten umzuschalten, und ein Geräteneustart erfordert immer erweiterte Rechte. Root oder Shizuku (eine Root-freie, ADB-basierte Berechtigungsbrücke) sind die einzigen Möglichkeiten, diese Systembefehle auszuführen.</string>
+    <string name="faq_q3">Was ist der Unterschied zwischen Root und Shizuku?</string>
+    <string name="faq_a3">Root gewährt vollen Systemzugriff über eine Root-Manager-App (z. B. Magisk). Shizuku benötigt kein Root — du koppelst es einmal über Entwickleroptionen → Drahtlos-Debugging —, aber die Kopplung muss auf manchen Geräten nach einem Neustart eventuell manuell neu gestartet werden, sofern du nicht Shizukus eigene Autostart-Option aktivierst.</string>
+    <string name="faq_q4">Übersteht die Automatisierung einen Neustart?</string>
+    <string name="faq_a4">Ja, solange der Hauptschalter aktiviert bleibt. Mit Root geschieht dies vollautomatisch. Nur mit Shizuku musst du die Shizuku-App nach einem Neustart eventuell erneut öffnen, sofern die Autostart-Option nicht aktiviert ist.</string>
+    <string name="faq_q5">Nutzt FA das Internet?</string>
+    <string name="faq_a5">Nein. FA hat überhaupt keine Internetberechtigung — alles läuft lokal auf deinem Gerät.</string>
+    <string name="faq_q6">Was passiert bei Monaten/Jahren als Einheit?</string>
+    <string name="faq_a6">Sie werden zur Vereinfachung als feste Dauer von 30 bzw. 365 Tagen angenähert, nicht als exakte Kalendermonate/-jahre.</string>
+    <string name="faq_q7">Ist die Notfallfunktion sicher?</string>
+    <string name="faq_a7">Sie birgt ein reales Risiko, dich bei einem Fehler dauerhaft von deinem Gerät auszusperren. Lies die Warnhinweise auf dem Einrichtungsbildschirm sorgfältig und teste sie auf einem Ersatzgerät, bevor du sie jemals auf deinem täglichen Telefon aktivierst.</string>
+    <string name="faq_q8">Warum beendet mein Hersteller ständig den Hintergrunddienst?</string>
+    <string name="faq_a8">Manche Hersteller (Xiaomi, Huawei, Oppo usw.) schränken Hintergrund-Apps über Androids eigene Akku-Optimierung hinaus ein. Suche nach einer Einstellung namens \"Autostart\" oder \"App-Start verwalten\" und erlaube sie dort für FA.</string>
+    <string name="faq_q9">Ist FA quelloffen?</string>
+    <string name="faq_a9">Ja, lizenziert unter der GPLv3. Der Link zum Quellcode befindet sich in den Einstellungen.</string>
+    <string name="faq_q10">Sammelt FA irgendwelche Daten?</string>
+    <string name="faq_a10">Keine Telemetrie, keine Analysen, keine Konten — die App hat überhaupt keine Netzwerkberechtigung.</string>
+
+    <!-- Notfallfunktion -->
+    <string name="panic_setup_title">Notfallfunktion</string>
+    <string name="panic_warning_title">⚠ Reales Risiko einer dauerhaften Aussperrung</string>
+    <string name="panic_warning_body">Diese Funktion setzt bei Auslösung ein wirklich zufälliges Passwort auf deinem Gerät. Falls es fehlschlägt oder du dein externes Backup des nächsten Passworts verlierst, kannst du dauerhaft von deinem Gerät ausgesperrt werden — einschließlich möglichem Datenverlust. Nur Root. Teste dies auf einem Ersatzgerät, bevor du es jemals auf deinem täglichen Telefon aktivierst.</string>
+    <string name="panic_password_length">Passwortlänge</string>
+    <string name="panic_press_count">Netzschalter-Druckvorgänge</string>
+    <string name="panic_window">Zeitfenster (Sekunden)</string>
+    <string name="panic_next_password_title">Nächstes Passwort (jetzt außerhalb der App sichern)</string>
+    <string name="panic_generate_preview">Neues nächstes Passwort generieren</string>
+    <string name="panic_backup_confirm_label">Ich habe dieses Passwort sicher außerhalb der App gespeichert</string>
+    <string name="panic_backup_confirm_hint">Gib CONFIRM ein, um zu aktivieren</string>
+    <string name="panic_arm">Notfallfunktion aktivieren</string>
+    <string name="panic_disarm">Deaktivieren</string>
+    <string name="panic_current_credential_label">Aktuelles Sperrbildschirm-Passwort</string>
+    <string name="panic_current_credential_hint">Verschlüsselt auf dem Gerät gespeichert, lokal erforderlich, um das Passwort zuverlässig zu ändern</string>
+    <string name="panic_status_armed">AKTIVIERT</string>
+    <string name="panic_status_disarmed">nicht aktiviert</string>
+    <string name="panic_root_required">Die Notfallfunktion erfordert Root — Shizuku wird für diese Funktion nicht unterstützt.</string>
+    <string name="panic_no_power_device">Eingabegerät für den Netzschalter nicht gefunden — dieses Gerät wird möglicherweise nicht unterstützt.</string>
+</resources>

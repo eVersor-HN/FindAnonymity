@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FA</string>
+
+    <!-- Common -->
+    <string name="common_save">Сохранить</string>
+    <string name="common_back">Назад</string>
+    <string name="common_cancel">Отмена</string>
+    <string name="common_confirm">Подтвердить</string>
+
+    <!-- Targets -->
+    <string name="target_wifi">Wi-Fi</string>
+    <string name="target_mobile_data">Мобильные данные</string>
+    <string name="target_airplane_mode">Режим полёта</string>
+
+    <!-- Modes -->
+    <string name="mode_cyclical">Циклический</string>
+    <string name="mode_always_on">Всегда включено</string>
+    <string name="mode_always_off">Всегда выключено</string>
+    <string name="mode_unmanaged">Не управлять</string>
+
+    <!-- Duration units -->
+    <string name="duration_unit_seconds">Секунды</string>
+    <string name="duration_unit_minutes">Минуты</string>
+    <string name="duration_unit_hours">Часы</string>
+    <string name="duration_unit_days">Дни</string>
+    <string name="duration_unit_months">Месяцы</string>
+    <string name="duration_unit_years">Годы</string>
+    <string name="duration_picker_unit_label">Единица</string>
+    <string name="duration_picker_approx_note">приблизительно, как фиксированный период 30/365 дней</string>
+
+    <!-- Backend preference -->
+    <string name="backend_auto">Автоматически</string>
+    <string name="backend_root_only">Только Root</string>
+    <string name="backend_shizuku_only">Только Shizuku</string>
+
+    <!-- Home screen -->
+    <string name="home_title">FA — daemon.status</string>
+    <string name="home_automation_title">Автоматизация</string>
+    <string name="home_automation_running">работает</string>
+    <string name="home_automation_stopped">остановлена</string>
+    <string name="home_no_backend_title">Нет привилегированного доступа</string>
+    <string name="home_no_backend_body">Недоступны ни root, ни Shizuku — правила не могут выполняться.</string>
+    <string name="home_no_backend_button">Настроить</string>
+    <string name="home_rules_title">Правила</string>
+    <string name="home_panic_title">Функция паники</string>
+    <string name="home_panic_armed">АКТИВИРОВАНА</string>
+    <string name="home_panic_disarmed">не активирована</string>
+    <string name="home_panic_configure">Настроить функцию паники</string>
+    <string name="home_status_disabled">отключено</string>
+    <string name="home_status_always_on">всегда включено</string>
+    <string name="home_status_always_off">всегда выключено</string>
+    <string name="home_status_next_change">%1$s — следующее изменение через %2$s</string>
+    <string name="home_reboot_label">Перезагрузка</string>
+    <string name="home_reboot_disabled">отключена</string>
+    <string name="home_reboot_next">следующая перезагрузка через %1$s</string>
+    <string name="home_state_on">ВКЛ</string>
+    <string name="home_state_off">ВЫКЛ</string>
+
+    <!-- Foreground service notification -->
+    <string name="notification_initializing">Инициализация…</string>
+    <string name="notification_unmanaged">%1$s: не управляется</string>
+    <string name="notification_disabled">%1$s: -</string>
+    <string name="notification_toggle_line">%1$s: %2$s (следующее изменение через %3$s)</string>
+    <string name="notification_reboot_line">Перезагрузка: через %1$s</string>
+    <string name="notification_channel_name">Статус автоматизации FA</string>
+    <string name="notification_title">FA — автоматизация активна</string>
+
+    <!-- Rule editor -->
+    <string name="rule_editor_enabled">Включено</string>
+    <string name="rule_editor_mode">Режим</string>
+    <string name="rule_editor_cycle">Цикл</string>
+    <string name="rule_editor_active_duration">Длительность активности</string>
+    <string name="rule_editor_start_on">Цикл начинается с ВКЛ (вместо ВЫКЛ)</string>
+    <string name="rule_editor_validation_error">Длительность активности должна быть меньше длительности цикла.</string>
+    <string name="rule_editor_reboot_title">Перезагрузка</string>
+    <string name="rule_editor_reboot_interval">Интервал</string>
+    <string name="rule_editor_reboot_note">Интервал = время с момента последней загрузки (любой, а не только вызванной приложением).</string>
+
+    <!-- Permissions / setup -->
+    <string name="permissions_title">Настройка</string>
+    <string name="permissions_root_title">Root</string>
+    <string name="permissions_root_available">доступен</string>
+    <string name="permissions_root_unavailable">недоступен</string>
+    <string name="permissions_root_check">Проверить наличие root</string>
+    <string name="permissions_shizuku_title">Shizuku</string>
+    <string name="permissions_shizuku_available">доступен, разрешение предоставлено</string>
+    <string name="permissions_shizuku_needs_permission">запущен, разрешение не предоставлено</string>
+    <string name="permissions_shizuku_unreachable">недоступен</string>
+    <string name="permissions_shizuku_instructions">1. Установите приложение Shizuku  2. Параметры разработчика → включите отладку по Wi-Fi  3. Выполните сопряжение и запустите в Shizuku  4. Предоставьте разрешение здесь. Без root сопряжение не всегда сохраняется автоматически после перезагрузки — для надёжности включите собственную функцию автозапуска Shizuku.</string>
+    <string name="permissions_shizuku_grant">Предоставить разрешение</string>
+    <string name="permissions_battery_title">Оптимизация батареи</string>
+    <string name="permissions_battery_body">Для надёжной длительной работы в фоновом режиме FA следует исключить из оптимизации батареи.</string>
+    <string name="permissions_battery_button">Запросить исключение</string>
+    <string name="permissions_oem_title">Ограничения фона от производителя</string>
+    <string name="permissions_oem_body">Некоторые производители (Xiaomi, Huawei, Oppo и др.) закрывают фоновые приложения даже при отключённой оптимизации батареи. Найдите пункт \"Автозапуск\" или \"Управление запуском приложений\" в системных настройках и разрешите FA работать в фоне.</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Настройки</string>
+    <string name="settings_language">Язык</string>
+    <string name="settings_backend_preference">Предпочитаемый бэкенд</string>
+    <string name="settings_about_section">О приложении</string>
+    <string name="settings_version">Версия</string>
+    <string name="settings_license">Лицензия</string>
+    <string name="settings_source">Исходный код</string>
+    <string name="settings_help_faq">Справка и FAQ</string>
+    <string name="settings_onboarding_replay">Показать вступление снова</string>
+    <string name="settings_no_internet_note">FA никогда не запрашивает доступ к интернету — всё работает полностью автономно, на устройстве.</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_step1_title">Что делает FA</string>
+    <string name="onboarding_step1_body">FA включает и выключает Wi-Fi, мобильные данные и режим полёта по заданному вами расписанию — от секунд до лет — и может перезагружать устройство с определённым интервалом. Всё выполняется локально; FA никогда не подключается к интернету.</string>
+    <string name="onboarding_step2_title">Зачем нужен привилегированный доступ</string>
+    <string name="onboarding_step2_body">Начиная с Android 10 приложения больше не могут напрямую переключать Wi-Fi или мобильные данные, а для перезагрузки также требуется повышенный доступ. FA нужен либо Shizuku (без root, сопряжение выполняется один раз через отладку по Wi-Fi), либо root-доступ для выполнения этих системных команд.</string>
+    <string name="onboarding_step3_title">Настройка Shizuku или Root</string>
+    <string name="onboarding_step3_body">Откройте «Настройку» через баннер на главном экране. Shizuku не требует root — нужно лишь один раз выполнить сопряжение через Параметры разработчика → Отладка по Wi-Fi. Если устройство рутировано, FA обнаружит и будет использовать root автоматически.</string>
+    <string name="onboarding_step4_title">Создание правила</string>
+    <string name="onboarding_step4_body">Нажмите на любое правило на главном экране (Wi-Fi, мобильные данные, режим полёта или перезагрузка), чтобы настроить его: выберите режим, задайте частоту цикла и длительность включённого состояния, затем включите главный переключатель, чтобы запустить.</string>
+    <string name="onboarding_step5_title">Функция паники</string>
+    <string name="onboarding_step5_body">Дополнительная функция, доступная только с root: пятикратное нажатие кнопки питания устанавливает совершенно новый случайный пароль на устройстве и немедленно блокирует его. Это рискованно — перед активацией внимательно прочитайте предупреждения на экране настройки.</string>
+    <string name="onboarding_next">Далее</string>
+    <string name="onboarding_back">Назад</string>
+    <string name="onboarding_done">Начать</string>
+    <string name="onboarding_skip">Пропустить</string>
+
+    <!-- FAQ -->
+    <string name="faq_title">Справка и FAQ</string>
+    <string name="faq_q1">Что именно делает FA?</string>
+    <string name="faq_a1">Приложение автоматически включает и выключает Wi-Fi, мобильные данные и режим полёта по заданному вами расписанию, а также может периодически перезагружать устройство. Полностью автономно, без аккаунта, без слежки.</string>
+    <string name="faq_q2">Зачем нужен Root или Shizuku?</string>
+    <string name="faq_a2">Начиная с Android 10 система блокирует обычным приложениям переключение Wi-Fi/мобильных данных, а перезагрузка устройства всегда требует повышенного доступа. Root или Shizuku (мост разрешений на базе ADB, не требующий root) — единственные способы выполнять эти системные команды.</string>
+    <string name="faq_q3">В чём разница между Root и Shizuku?</string>
+    <string name="faq_a3">Root даёт полный доступ к системе через приложение для управления root-правами (например, Magisk). Shizuku не требует root — сопряжение выполняется один раз через Параметры разработчика → Отладка по Wi-Fi, — но на некоторых устройствах после перезагрузки сопряжение может потребоваться восстановить вручную, если не включена собственная функция автозапуска Shizuku.</string>
+    <string name="faq_q4">Переживёт ли автоматизация перезагрузку?</string>
+    <string name="faq_a4">Да, если главный переключатель остаётся включённым. С root это происходит полностью автоматически. При использовании только Shizuku может понадобиться заново открыть приложение Shizuku после перезагрузки, если не включена функция автозапуска.</string>
+    <string name="faq_q5">Использует ли FA интернет?</string>
+    <string name="faq_a5">Нет. У FA вообще нет разрешения на доступ к интернету — всё выполняется локально на вашем устройстве.</string>
+    <string name="faq_q6">Что происходит при выборе единицы «Месяцы/Годы»?</string>
+    <string name="faq_a6">Для простоты они приблизительно считаются как фиксированный период 30 или 365 дней, а не как точные календарные месяцы/годы.</string>
+    <string name="faq_q7">Безопасна ли функция паники?</string>
+    <string name="faq_a7">Она несёт реальный риск навсегда заблокировать доступ к вашему устройству в случае сбоя. Внимательно прочитайте предупреждения на экране настройки и протестируйте её на запасном устройстве, прежде чем активировать на основном телефоне.</string>
+    <string name="faq_q8">Почему производитель постоянно останавливает фоновую службу?</string>
+    <string name="faq_a8">Некоторые производители (Xiaomi, Huawei, Oppo и др.) ограничивают работу фоновых приложений сверх стандартной оптимизации батареи Android. Найдите пункт \"Автозапуск\" или \"Управление запуском приложений\" и разрешите там работу FA.</string>
+    <string name="faq_q9">Является ли FA приложением с открытым исходным кодом?</string>
+    <string name="faq_a9">Да, оно распространяется по лицензии GPLv3. Ссылка на исходный код находится в настройках.</string>
+    <string name="faq_q10">Собирает ли FA какие-либо данные?</string>
+    <string name="faq_a10">Нет телеметрии, нет аналитики, нет аккаунтов — у приложения вообще нет разрешения на доступ к сети.</string>
+
+    <!-- Panic feature -->
+    <string name="panic_setup_title">Функция паники</string>
+    <string name="panic_warning_title">⚠ Реальный риск полной блокировки устройства</string>
+    <string name="panic_warning_body">При срабатывании эта функция устанавливает по-настоящему случайный пароль на вашем устройстве. Если что-то пойдёт не так, или вы потеряете внешнюю резервную копию следующего пароля, вы можете быть навсегда заблокированы на своём устройстве — вплоть до потери данных. Только для root. Протестируйте на запасном устройстве, прежде чем активировать эту функцию на основном телефоне.</string>
+    <string name="panic_password_length">Длина пароля</string>
+    <string name="panic_press_count">Количество нажатий кнопки питания</string>
+    <string name="panic_window">Временное окно (секунды)</string>
+    <string name="panic_next_password_title">Следующий пароль (сохраните его вне приложения прямо сейчас)</string>
+    <string name="panic_generate_preview">Сгенерировать новый следующий пароль</string>
+    <string name="panic_backup_confirm_label">Я сохранил(а) этот пароль в надёжном месте вне приложения</string>
+    <string name="panic_backup_confirm_hint">Введите CONFIRM для активации</string>
+    <string name="panic_arm">Активировать функцию паники</string>
+    <string name="panic_disarm">Деактивировать</string>
+    <string name="panic_current_credential_label">Текущий пароль экрана блокировки</string>
+    <string name="panic_current_credential_hint">Хранится в зашифрованном виде на устройстве, необходим локально для надёжной смены пароля</string>
+    <string name="panic_status_armed">АКТИВИРОВАНА</string>
+    <string name="panic_status_disarmed">не активирована</string>
+    <string name="panic_root_required">Функция паники требует root — Shizuku для этой функции не поддерживается.</string>
+    <string name="panic_no_power_device">Устройство ввода кнопки питания не найдено — это устройство может не поддерживаться.</string>
+</resources>
