@@ -53,7 +53,8 @@ fun PanicSetupScreen(onBack: () -> Unit, viewModel: PanicViewModel = viewModel()
     val config by viewModel.configFlow.collectAsStateWithLifecycle()
     val pendingPassword by viewModel.pendingPassword.collectAsStateWithLifecycle()
     val armResult by viewModel.armResult.collectAsStateWithLifecycle()
-    val panic = config.panicLock
+    val loadedConfig = config ?: return
+    val panic = loadedConfig.panicLock
 
     var currentCredential by remember { mutableStateOf("") }
     var passwordLength by remember { mutableStateOf(panic.passwordLength.toString()) }

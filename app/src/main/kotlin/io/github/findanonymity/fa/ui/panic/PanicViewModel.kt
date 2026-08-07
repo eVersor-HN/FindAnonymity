@@ -22,8 +22,8 @@ class PanicViewModel(application: Application) : AndroidViewModel(application) {
     private val credentialStore = SecureCredentialStore(app)
     private val daemonInstaller = PanicDaemonInstaller(app.executorManager.rootOnlyExecutor())
 
-    val configFlow: StateFlow<AppConfig> = app.configRepository.configFlow.stateIn(
-        viewModelScope, SharingStarted.WhileSubscribed(5_000), AppConfig(),
+    val configFlow: StateFlow<AppConfig?> = app.configRepository.configFlow.stateIn(
+        viewModelScope, SharingStarted.WhileSubscribed(5_000), null,
     )
 
     private val _pendingPassword = MutableStateFlow(credentialStore.getNextPassword())
@@ -55,7 +55,7 @@ class PanicViewModel(application: Application) : AndroidViewModel(application) {
             return
         }
         viewModelScope.launch {
-            val config = configFlow.value.panicLock
+            val config = configFlow.value?.panicLock ?: PanicLockConfig()
             val result = daemonInstaller.arm(old, next, config.pressCount, config.windowMillis / 1000)
             _armResult.value = result
             if (result is PanicDaemonInstaller.ArmResult.Armed) {

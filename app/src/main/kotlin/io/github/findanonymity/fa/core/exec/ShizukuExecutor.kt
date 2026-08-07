@@ -73,14 +73,14 @@ class ShizukuExecutor(private val appContext: Context) : PrivilegedExecutor {
     }
 
     override suspend fun exec(command: String): ShellResult {
-        val service = ensureBound() ?: return ShellResult(-1, emptyList(), listOf("Shizuku-Dienst nicht gebunden"))
+        val service = ensureBound() ?: return ShellResult(-1, emptyList(), listOf("Shizuku service not bound"))
         return withContext(Dispatchers.IO) {
             try {
                 val raw = service.exec(command)
                 json.decodeFromString(ShellResult.serializer(), raw)
             } catch (e: Exception) {
                 boundService = null // force rebind next time; service may have died
-                ShellResult(-1, emptyList(), listOf(e.message ?: "Shizuku exec fehlgeschlagen"))
+                ShellResult(-1, emptyList(), listOf(e.message ?: "Shizuku exec failed"))
             }
         }
     }

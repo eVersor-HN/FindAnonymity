@@ -55,11 +55,11 @@ class PrivilegedExecutorManager(context: Context) {
             val result = primary.exec(command)
             if (result.isSuccess) return result
         }
-        // Primary failed or unavailable: re-probe and try the fallback.
+        // Primary failed or unavailable: re-probe and try whichever backend the failed one wasn't.
         refreshState()
-        val fallback = selectExecutor()
+        val fallback = selectExecutor()?.takeIf { it !== primary }
         return fallback?.exec(command)
-            ?: ShellResult(-1, emptyList(), listOf("Kein privilegierter Zugriff verfügbar (weder Root noch Shizuku)"))
+            ?: ShellResult(-1, emptyList(), listOf("No privileged access available (neither root nor Shizuku)"))
     }
 
     private suspend fun selectExecutor(): PrivilegedExecutor? {

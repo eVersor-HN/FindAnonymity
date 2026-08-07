@@ -54,17 +54,15 @@ fun ToggleRuleEditorScreen(
     viewModel: RuleEditorViewModel = viewModel(),
 ) {
     val config by viewModel.configFlow.collectAsStateWithLifecycle()
-    var rule by remember { mutableStateOf(ToggleRuleConfig()) }
-    var initialized by remember { mutableStateOf(false) }
+    var rule by remember(target) { mutableStateOf<ToggleRuleConfig?>(null) }
     LaunchedEffect(config, target) {
-        if (!initialized) {
-            rule = ruleFor(config, target)
-            initialized = true
-        }
+        val loaded = config ?: return@LaunchedEffect
+        if (rule == null) rule = ruleFor(loaded, target)
     }
+    val currentRule = rule ?: return
 
-    val isValid = rule.mode != ToggleMode.CYCLICAL ||
-        (rule.activeDuration.toMillis() in 1 until rule.cycleInterval.toMillis().coerceAtLeast(1))
+    val isValid = currentRule.mode != ToggleMode.CYCLICAL ||
+        (currentRule.activeDuration.toMillis() in 1 until currentRule.cycleInterval.toMillis().coerceAtLeast(1))
 
     Scaffold(
         topBar = {
@@ -90,15 +88,15 @@ fun ToggleRuleEditorScreen(
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
                 Text(stringResource(R.string.rule_editor_enabled), style = MaterialTheme.typography.titleSmall)
-                Switch(checked = rule.enabled, onCheckedChange = { rule = rule.copy(enabled = it) })
+                Switch(checked = currentRule.enabled, onCheckedChange = { rule = currentRule.copy(enabled = it) })
             }
 
             Text(stringResource(R.string.rule_editor_mode), style = MaterialTheme.typography.titleSmall)
             SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
                 ToggleMode.entries.forEachIndexed { index, mode ->
                     SegmentedButton(
-                        selected = rule.mode == mode,
-                        onClick = { rule = rule.copy(mode = mode) },
+                        selected = currentRule.mode == mode,
+                        onClick = { rule = currentRule.copy(mode = mode) },
                         shape = SegmentedButtonDefaults.itemShape(
                             index = index,
                             count = ToggleMode.entries.size,
@@ -109,23 +107,23 @@ fun ToggleRuleEditorScreen(
                 }
             }
 
-            if (rule.mode == ToggleMode.CYCLICAL) {
+            if (currentRule.mode == ToggleMode.CYCLICAL) {
                 DurationPicker(
                     label = stringResource(R.string.rule_editor_cycle),
-                    value = rule.cycleInterval,
-                    onValueChange = { rule = rule.copy(cycleInterval = it) },
+                    value = currentRule.cycleInterval,
+                    onValueChange = { rule = currentRule.copy(cycleInterval = it) },
                 )
                 DurationPicker(
                     label = stringResource(R.string.rule_editor_active_duration),
-                    value = rule.activeDuration,
-                    onValueChange = { rule = rule.copy(activeDuration = it) },
+                    value = currentRule.activeDuration,
+                    onValueChange = { rule = currentRule.copy(activeDuration = it) },
                 )
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
                 ) {
                     Text(stringResource(R.string.rule_editor_start_on), style = MaterialTheme.typography.bodyMedium)
-                    Switch(checked = rule.startOn, onCheckedChange = { rule = rule.copy(startOn = it) })
+                    Switch(checked = currentRule.startOn, onCheckedChange = { rule = currentRule.copy(startOn = it) })
                 }
                 if (!isValid) {
                     Text(
@@ -138,7 +136,7 @@ fun ToggleRuleEditorScreen(
 
             Button(
                 onClick = {
-                    viewModel.saveToggleRule(target, rule)
+                    viewModel.saveToggleRule(target, currentRule)
                     onBack()
                 },
                 enabled = isValid,
@@ -157,14 +155,12 @@ fun RebootRuleEditorScreen(
     viewModel: RuleEditorViewModel = viewModel(),
 ) {
     val config by viewModel.configFlow.collectAsStateWithLifecycle()
-    var rule by remember { mutableStateOf(RebootRuleConfig()) }
-    var initialized by remember { mutableStateOf(false) }
+    var rule by remember { mutableStateOf<RebootRuleConfig?>(null) }
     LaunchedEffect(config) {
-        if (!initialized) {
-            rule = config.rebootRule
-            initialized = true
-        }
+        val loaded = config ?: return@LaunchedEffect
+        if (rule == null) rule = loaded.rebootRule
     }
+    val currentRule = rule ?: return
 
     Scaffold(
         topBar = {
@@ -190,12 +186,12 @@ fun RebootRuleEditorScreen(
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
                 Text(stringResource(R.string.rule_editor_enabled), style = MaterialTheme.typography.titleSmall)
-                Switch(checked = rule.enabled, onCheckedChange = { rule = rule.copy(enabled = it) })
+                Switch(checked = currentRule.enabled, onCheckedChange = { rule = currentRule.copy(enabled = it) })
             }
             DurationPicker(
                 label = stringResource(R.string.rule_editor_reboot_interval),
-                value = rule.interval,
-                onValueChange = { rule = rule.copy(interval = it) },
+                value = currentRule.interval,
+                onValueChange = { rule = currentRule.copy(interval = it) },
             )
             Text(
                 stringResource(R.string.rule_editor_reboot_note),
@@ -204,7 +200,7 @@ fun RebootRuleEditorScreen(
             )
             Button(
                 onClick = {
-                    viewModel.saveRebootRule(rule)
+                    viewModel.saveRebootRule(currentRule)
                     onBack()
                 },
                 modifier = Modifier.fillMaxWidth(),
