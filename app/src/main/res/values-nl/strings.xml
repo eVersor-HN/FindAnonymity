@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FA</string>
+
+    <!-- Common -->
+    <string name="common_save">Opslaan</string>
+    <string name="common_back">Terug</string>
+    <string name="common_cancel">Annuleren</string>
+    <string name="common_confirm">Bevestigen</string>
+
+    <!-- Targets -->
+    <string name="target_wifi">Wi-Fi</string>
+    <string name="target_mobile_data">Mobiele data</string>
+    <string name="target_airplane_mode">Vliegtuigmodus</string>
+
+    <!-- Modes -->
+    <string name="mode_cyclical">Cyclus</string>
+    <string name="mode_always_on">Altijd aan</string>
+    <string name="mode_always_off">Altijd uit</string>
+    <string name="mode_unmanaged">Niet beheren</string>
+
+    <!-- Duration units -->
+    <string name="duration_unit_seconds">Seconden</string>
+    <string name="duration_unit_minutes">Minuten</string>
+    <string name="duration_unit_hours">Uren</string>
+    <string name="duration_unit_days">Dagen</string>
+    <string name="duration_unit_months">Maanden</string>
+    <string name="duration_unit_years">Jaren</string>
+    <string name="duration_picker_unit_label">Eenheid</string>
+    <string name="duration_picker_approx_note">benaderd als een vaste duur van 30/365 dagen</string>
+
+    <!-- Backend preference -->
+    <string name="backend_auto">Automatisch</string>
+    <string name="backend_root_only">Alleen root</string>
+    <string name="backend_shizuku_only">Alleen Shizuku</string>
+
+    <!-- Home screen -->
+    <string name="home_title">FA — daemon.status</string>
+    <string name="home_automation_title">Automatisering</string>
+    <string name="home_automation_running">actief</string>
+    <string name="home_automation_stopped">gestopt</string>
+    <string name="home_no_backend_title">Geen bevoorrechte toegang</string>
+    <string name="home_no_backend_body">Noch root, noch Shizuku beschikbaar — regels kunnen niet worden uitgevoerd.</string>
+    <string name="home_no_backend_button">Instellen</string>
+    <string name="home_rules_title">Regels</string>
+    <string name="home_panic_title">Paniekfunctie</string>
+    <string name="home_panic_armed">GEACTIVEERD</string>
+    <string name="home_panic_disarmed">niet geactiveerd</string>
+    <string name="home_panic_configure">Paniekfunctie configureren</string>
+    <string name="home_status_disabled">uitgeschakeld</string>
+    <string name="home_status_always_on">altijd aan</string>
+    <string name="home_status_always_off">altijd uit</string>
+    <string name="home_status_next_change">%1$s — volgende wijziging over %2$s</string>
+    <string name="home_reboot_label">Herstart</string>
+    <string name="home_reboot_disabled">uitgeschakeld</string>
+    <string name="home_reboot_next">volgende herstart over %1$s</string>
+    <string name="home_state_on">AAN</string>
+    <string name="home_state_off">UIT</string>
+
+    <!-- Foreground service notification -->
+    <string name="notification_initializing">Initialiseren…</string>
+    <string name="notification_unmanaged">%1$s: onbeheerd</string>
+    <string name="notification_disabled">%1$s: -</string>
+    <string name="notification_toggle_line">%1$s: %2$s (volgende wijziging over %3$s)</string>
+    <string name="notification_reboot_line">Herstart: over %1$s</string>
+    <string name="notification_channel_name">FA-automatiseringsstatus</string>
+    <string name="notification_title">FA — automatisering actief</string>
+
+    <!-- Rule editor -->
+    <string name="rule_editor_enabled">Ingeschakeld</string>
+    <string name="rule_editor_mode">Modus</string>
+    <string name="rule_editor_cycle">Cyclus</string>
+    <string name="rule_editor_active_duration">Actieve duur</string>
+    <string name="rule_editor_start_on">Cyclus start AAN (in plaats van UIT)</string>
+    <string name="rule_editor_validation_error">De actieve duur moet korter zijn dan de cyclus.</string>
+    <string name="rule_editor_reboot_title">Herstart</string>
+    <string name="rule_editor_reboot_interval">Interval</string>
+    <string name="rule_editor_reboot_note">Interval = tijd sinds het laatste opstarten (elk opstarten, niet alleen door de app veroorzaakt).</string>
+
+    <!-- Permissions / setup -->
+    <string name="permissions_title">Instellen</string>
+    <string name="permissions_root_title">Root</string>
+    <string name="permissions_root_available">beschikbaar</string>
+    <string name="permissions_root_unavailable">niet beschikbaar</string>
+    <string name="permissions_root_check">Controleren op root</string>
+    <string name="permissions_shizuku_title">Shizuku</string>
+    <string name="permissions_shizuku_available">beschikbaar, toestemming verleend</string>
+    <string name="permissions_shizuku_needs_permission">actief, toestemming ontbreekt</string>
+    <string name="permissions_shizuku_unreachable">niet bereikbaar</string>
+    <string name="permissions_shizuku_instructions">1. Installeer de Shizuku-app  2. Ontwikkelaarsopties → schakel Draadloos debuggen in  3. Koppel en start in Shizuku  4. Verleen hier toestemming. Zonder root overleeft de koppeling een herstart niet altijd automatisch — schakel Shizuku\'s eigen autostart-optie in voor de beste betrouwbaarheid.</string>
+    <string name="permissions_shizuku_grant">Toestemming verlenen</string>
+    <string name="permissions_battery_title">Batterijoptimalisatie</string>
+    <string name="permissions_battery_body">Voor betrouwbare langdurige achtergrondwerking moet FA worden uitgesloten van batterijoptimalisatie.</string>
+    <string name="permissions_battery_button">Vrijstelling aanvragen</string>
+    <string name="permissions_oem_title">Achtergrondbeperkingen van de fabrikant</string>
+    <string name="permissions_oem_body">Sommige fabrikanten (Xiaomi, Huawei, Oppo, …) sluiten achtergrond-apps af, zelfs met de vrijstelling voor batterijoptimalisatie. Zoek naar \"Automatisch starten\" of \"App-opstart beheren\" in de systeeminstellingen en sta toe dat FA daar op de achtergrond blijft draaien.</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Instellingen</string>
+    <string name="settings_language">Taal</string>
+    <string name="settings_backend_preference">Voorkeursbackend</string>
+    <string name="settings_about_section">Over</string>
+    <string name="settings_version">Versie</string>
+    <string name="settings_license">Licentie</string>
+    <string name="settings_source">Broncode</string>
+    <string name="settings_help_faq">Help &amp; FAQ</string>
+    <string name="settings_onboarding_replay">Introductie opnieuw tonen</string>
+    <string name="settings_no_internet_note">FA vraagt nooit internettoegang aan — alles werkt volledig offline, op het apparaat zelf.</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_step1_title">Wat FA doet</string>
+    <string name="onboarding_step1_body">FA schakelt Wi-Fi, mobiele data en vliegtuigmodus in en uit volgens een schema dat je zelf instelt — van seconden tot jaren — en kan je apparaat op een interval herstarten. Alles gebeurt lokaal; FA maakt nooit verbinding met internet.</string>
+    <string name="onboarding_step2_title">Waarom bevoorrechte toegang nodig is</string>
+    <string name="onboarding_step2_body">Sinds Android 10 kunnen apps Wi-Fi of mobiele data niet meer rechtstreeks schakelen, en ook herstarten vereist verhoogde toegang. FA heeft ofwel Shizuku (geen root, eenmalig gekoppeld via Draadloos debuggen) ofwel roottoegang nodig om deze systeemopdrachten uit te voeren.</string>
+    <string name="onboarding_step3_title">Shizuku of root instellen</string>
+    <string name="onboarding_step3_body">Open Instellen via de banner op het startscherm. Shizuku heeft geen root nodig — alleen een eenmalige koppeling via Ontwikkelaarsopties → Draadloos debuggen. Als je apparaat geroot is, detecteert FA dit en gebruikt het automatisch.</string>
+    <string name="onboarding_step4_title">Een regel maken</string>
+    <string name="onboarding_step4_body">Tik op een regel op het startscherm (Wi-Fi, mobiele data, vliegtuigmodus of herstart) om deze te configureren: kies een modus, stel in hoe vaak deze moet wisselen en hoe lang hij aan blijft, en zet dan de hoofdschakelaar aan om te starten.</string>
+    <string name="onboarding_step5_title">De paniekfunctie</string>
+    <string name="onboarding_step5_body">Een optionele functie, alleen met root: vijf keer op de aan/uit-knop drukken stelt een volledig nieuw, willekeurig wachtwoord in op je apparaat en vergrendelt het onmiddellijk. Dit is risicovol — lees de waarschuwingen op het instellingenscherm zorgvuldig door voordat je dit activeert.</string>
+    <string name="onboarding_next">Volgende</string>
+    <string name="onboarding_back">Terug</string>
+    <string name="onboarding_done">Aan de slag</string>
+    <string name="onboarding_skip">Overslaan</string>
+
+    <!-- FAQ -->
+    <string name="faq_title">Help &amp; FAQ</string>
+    <string name="faq_q1">Wat doet FA precies?</string>
+    <string name="faq_a1">Het schakelt automatisch Wi-Fi, mobiele data en vliegtuigmodus in/uit volgens een schema dat je instelt, en kan je apparaat periodiek herstarten. Volledig offline, geen account, geen tracking.</string>
+    <string name="faq_q2">Waarom is Root of Shizuku nodig?</string>
+    <string name="faq_a2">Android blokkeert al sinds versie 10 dat gewone apps Wi-Fi/mobiele data schakelen, en het herstarten van het apparaat vereist altijd verhoogde toegang. Root of Shizuku (een rootloze, op ADB gebaseerde toestemmingsbrug) zijn de enige manieren om deze systeemopdrachten uit te voeren.</string>
+    <string name="faq_q3">Wat is het verschil tussen Root en Shizuku?</string>
+    <string name="faq_a3">Root geeft volledige systeemtoegang via een rootbeheer-app (bijv. Magisk). Shizuku heeft geen root nodig — je koppelt het eenmalig via Ontwikkelaarsopties → Draadloos debuggen — maar op sommige apparaten moet de koppeling na een herstart mogelijk handmatig opnieuw worden gestart, tenzij je Shizuku\'s eigen autostart-optie inschakelt.</string>
+    <string name="faq_q4">Overleeft de automatisering een herstart?</string>
+    <string name="faq_a4">Ja, zolang je de hoofdschakelaar aan laat staan. Met root gebeurt dit volledig automatisch. Met alleen Shizuku moet je mogelijk de Shizuku-app opnieuw openen na een herstart, tenzij de autostart-optie is ingeschakeld.</string>
+    <string name="faq_q5">Gebruikt FA het internet?</string>
+    <string name="faq_a5">Nee. FA heeft helemaal geen internettoestemming — alles werkt lokaal op je apparaat.</string>
+    <string name="faq_q6">Wat gebeurt er met Maanden/Jaren als eenheid?</string>
+    <string name="faq_a6">Voor de eenvoud worden deze benaderd als een vaste duur van 30 of 365 dagen, niet als exacte kalendermaanden/-jaren.</string>
+    <string name="faq_q7">Is de paniekfunctie veilig?</string>
+    <string name="faq_a7">Er is een reëel risico dat je permanent buitengesloten raakt van je apparaat als er iets misgaat. Lees de waarschuwingen op het instellingenscherm zorgvuldig door en test de functie op een reserveapparaat voordat je hem activeert op je dagelijkse telefoon.</string>
+    <string name="faq_q8">Waarom blijft mijn fabrikant de achtergrondservice afsluiten?</string>
+    <string name="faq_a8">Sommige fabrikanten (Xiaomi, Huawei, Oppo enz.) beperken achtergrond-apps verder dan Android\'s eigen batterijoptimalisatie. Zoek naar een instelling als \"Automatisch starten\" of \"App-opstart beheren\" en sta FA daar toe.</string>
+    <string name="faq_q9">Is FA open source?</string>
+    <string name="faq_a9">Ja, onder de GPLv3-licentie. De link naar de broncode staat in Instellingen.</string>
+    <string name="faq_q10">Verzamelt FA gegevens?</string>
+    <string name="faq_a10">Geen telemetrie, geen analytics, geen accounts — de app heeft helemaal geen netwerktoestemming.</string>
+
+    <!-- Panic feature -->
+    <string name="panic_setup_title">Paniekfunctie</string>
+    <string name="panic_warning_title">⚠ Reëel risico op permanente uitsluiting</string>
+    <string name="panic_warning_body">Deze functie stelt bij activering een echt willekeurig wachtwoord in op je apparaat. Als dit mislukt, of als je de externe back-up van het volgende wachtwoord kwijtraakt, kun je permanent buitengesloten raken van je apparaat — inclusief mogelijk gegevensverlies. Alleen met root. Test dit op een reserveapparaat voordat je het ooit activeert op je dagelijkse telefoon.</string>
+    <string name="panic_password_length">Wachtwoordlengte</string>
+    <string name="panic_press_count">Aantal keren op de aan/uit-knop drukken</string>
+    <string name="panic_window">Tijdvenster (seconden)</string>
+    <string name="panic_next_password_title">Volgend wachtwoord (bewaar dit nu buiten de app)</string>
+    <string name="panic_generate_preview">Nieuw volgend wachtwoord genereren</string>
+    <string name="panic_backup_confirm_label">Ik heb dit wachtwoord veilig buiten de app bewaard</string>
+    <string name="panic_backup_confirm_hint">Typ CONFIRM om te activeren</string>
+    <string name="panic_arm">Paniekfunctie activeren</string>
+    <string name="panic_disarm">Deactiveren</string>
+    <string name="panic_current_credential_label">Huidig wachtwoord van vergrendelscherm</string>
+    <string name="panic_current_credential_hint">Versleuteld opgeslagen op het apparaat, lokaal nodig om het wachtwoord betrouwbaar te wijzigen</string>
+    <string name="panic_status_armed">GEACTIVEERD</string>
+    <string name="panic_status_disarmed">niet geactiveerd</string>
+    <string name="panic_root_required">De paniekfunctie vereist root — Shizuku wordt niet ondersteund voor deze functie.</string>
+    <string name="panic_no_power_device">Invoerapparaat voor de aan/uit-knop niet gevonden — dit apparaat wordt mogelijk niet ondersteund.</string>
+</resources>

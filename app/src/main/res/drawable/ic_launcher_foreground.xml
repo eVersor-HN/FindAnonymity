@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- "A" main strokes: two legs + crossbar -->
+    <path
+        android:strokeColor="#39FF9C"
+        android:strokeWidth="5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M54,26 L30,82 M54,26 L78,82 M40,60 L68,60" />
+    <!-- synapse branch ticks, neural-link accent -->
+    <path
+        android:strokeColor="#39FF9C"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:pathData="M54,26 L46,17 M54,26 L62,17 M30,82 L19,88 M78,82 L89,88 M40,60 L30,54 M68,60 L78,54" />
+    <!-- neural nodes -->
+    <path
+        android:fillColor="#39FF9C"
+        android:pathData="
+            M50,26 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0
+            M26,82 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0
+            M74,82 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0
+            M36,60 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0
+            M64,60 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0" />
+</vector>

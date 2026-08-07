@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FA</string>
+
+    <!-- Common -->
+    <string name="common_save">Kaydet</string>
+    <string name="common_back">Geri</string>
+    <string name="common_cancel">İptal</string>
+    <string name="common_confirm">Onayla</string>
+
+    <!-- Targets -->
+    <string name="target_wifi">Wi-Fi</string>
+    <string name="target_mobile_data">Mobil veri</string>
+    <string name="target_airplane_mode">Uçak modu</string>
+
+    <!-- Modes -->
+    <string name="mode_cyclical">Döngü</string>
+    <string name="mode_always_on">Her zaman açık</string>
+    <string name="mode_always_off">Her zaman kapalı</string>
+    <string name="mode_unmanaged">Yönetme</string>
+
+    <!-- Duration units -->
+    <string name="duration_unit_seconds">Saniye</string>
+    <string name="duration_unit_minutes">Dakika</string>
+    <string name="duration_unit_hours">Saat</string>
+    <string name="duration_unit_days">Gün</string>
+    <string name="duration_unit_months">Ay</string>
+    <string name="duration_unit_years">Yıl</string>
+    <string name="duration_picker_unit_label">Birim</string>
+    <string name="duration_picker_approx_note">sabit 30/365 günlük süre olarak yaklaşık hesaplanır</string>
+
+    <!-- Backend preference -->
+    <string name="backend_auto">Otomatik</string>
+    <string name="backend_root_only">Yalnızca Root</string>
+    <string name="backend_shizuku_only">Yalnızca Shizuku</string>
+
+    <!-- Home screen -->
+    <string name="home_title">FA — daemon.status</string>
+    <string name="home_automation_title">Otomasyon</string>
+    <string name="home_automation_running">çalışıyor</string>
+    <string name="home_automation_stopped">durduruldu</string>
+    <string name="home_no_backend_title">Ayrıcalıklı erişim yok</string>
+    <string name="home_no_backend_body">Ne root ne de Shizuku kullanılabilir — kurallar çalışamaz.</string>
+    <string name="home_no_backend_button">Kur</string>
+    <string name="home_rules_title">Kurallar</string>
+    <string name="home_panic_title">Panik özelliği</string>
+    <string name="home_panic_armed">DEVREDE</string>
+    <string name="home_panic_disarmed">devrede değil</string>
+    <string name="home_panic_configure">Panik özelliğini yapılandır</string>
+    <string name="home_status_disabled">devre dışı</string>
+    <string name="home_status_always_on">her zaman açık</string>
+    <string name="home_status_always_off">her zaman kapalı</string>
+    <string name="home_status_next_change">%1$s — sonraki değişiklik %2$s sonra</string>
+    <string name="home_reboot_label">Yeniden başlatma</string>
+    <string name="home_reboot_disabled">devre dışı</string>
+    <string name="home_reboot_next">sonraki yeniden başlatma %1$s sonra</string>
+    <string name="home_state_on">AÇIK</string>
+    <string name="home_state_off">KAPALI</string>
+
+    <!-- Foreground service notification -->
+    <string name="notification_initializing">Başlatılıyor…</string>
+    <string name="notification_unmanaged">%1$s: yönetilmiyor</string>
+    <string name="notification_disabled">%1$s: -</string>
+    <string name="notification_toggle_line">%1$s: %2$s (sonraki değişiklik %3$s sonra)</string>
+    <string name="notification_reboot_line">Yeniden başlatma: %1$s sonra</string>
+    <string name="notification_channel_name">FA otomasyon durumu</string>
+    <string name="notification_title">FA — otomasyon etkin</string>
+
+    <!-- Rule editor -->
+    <string name="rule_editor_enabled">Etkin</string>
+    <string name="rule_editor_mode">Mod</string>
+    <string name="rule_editor_cycle">Döngü</string>
+    <string name="rule_editor_active_duration">Etkin süre</string>
+    <string name="rule_editor_start_on">Döngü AÇIK ile başlasın (KAPALI yerine)</string>
+    <string name="rule_editor_validation_error">Etkin süre, döngüden kısa olmalıdır.</string>
+    <string name="rule_editor_reboot_title">Yeniden başlatma</string>
+    <string name="rule_editor_reboot_interval">Aralık</string>
+    <string name="rule_editor_reboot_note">Aralık = son önyüklemeden bu yana geçen süre (herhangi bir önyükleme, yalnızca uygulama tarafından tetiklenenler değil).</string>
+
+    <!-- Permissions / setup -->
+    <string name="permissions_title">Kurulum</string>
+    <string name="permissions_root_title">Root</string>
+    <string name="permissions_root_available">kullanılabilir</string>
+    <string name="permissions_root_unavailable">kullanılamıyor</string>
+    <string name="permissions_root_check">Root\'u kontrol et</string>
+    <string name="permissions_shizuku_title">Shizuku</string>
+    <string name="permissions_shizuku_available">kullanılabilir, izin verildi</string>
+    <string name="permissions_shizuku_needs_permission">çalışıyor, izin eksik</string>
+    <string name="permissions_shizuku_unreachable">ulaşılamıyor</string>
+    <string name="permissions_shizuku_instructions">1. Shizuku uygulamasını yükleyin  2. Geliştirici seçenekleri → Kablosuz hata ayıklamayı etkinleştirin  3. Shizuku\'da eşleştirin ve başlatın  4. İzni buradan verin. Root olmadan eşleştirme, yeniden başlatma sonrasında her zaman otomatik olarak devam etmeyebilir — en iyi güvenilirlik için Shizuku\'nun kendi otomatik başlatma seçeneğini etkinleştirin.</string>
+    <string name="permissions_shizuku_grant">İzin ver</string>
+    <string name="permissions_battery_title">Pil optimizasyonu</string>
+    <string name="permissions_battery_body">Güvenilir, uzun süreli arka plan çalışması için FA\'nın pil optimizasyonundan muaf tutulması gerekir.</string>
+    <string name="permissions_battery_button">Muafiyet iste</string>
+    <string name="permissions_oem_title">Üretici arka plan kısıtlamaları</string>
+    <string name="permissions_oem_body">Bazı üreticiler (Xiaomi, Huawei, Oppo…) pil optimizasyonu muafiyeti olsa bile arka plan uygulamalarını kapatır. Sistem ayarlarında \"Otomatik başlatma\" veya \"Uygulama başlatmayı yönet\" seçeneğini bulun ve FA\'nın arka planda çalışmasına izin verin.</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Ayarlar</string>
+    <string name="settings_language">Dil</string>
+    <string name="settings_backend_preference">Arka uç tercihi</string>
+    <string name="settings_about_section">Hakkında</string>
+    <string name="settings_version">Sürüm</string>
+    <string name="settings_license">Lisans</string>
+    <string name="settings_source">Kaynak kodu</string>
+    <string name="settings_help_faq">Yardım ve SSS</string>
+    <string name="settings_onboarding_replay">Tanıtımı tekrar göster</string>
+    <string name="settings_no_internet_note">FA hiçbir zaman internet erişimi istemez — her şey tamamen çevrimdışı, cihaz üzerinde çalışır.</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_step1_title">FA ne yapar</string>
+    <string name="onboarding_step1_body">FA, Wi-Fi\'yi, mobil veriyi ve uçak modunu sizin belirlediğiniz bir programa göre açar ve kapatır — saniyelerden yıllara kadar — ve cihazınızı belirli bir aralıkla yeniden başlatabilir. Her şey yerel olarak çalışır; FA hiçbir zaman internete bağlanmaz.</string>
+    <string name="onboarding_step2_title">Ayrıcalıklı erişim neden gerekli</string>
+    <string name="onboarding_step2_body">Android 10\'dan itibaren uygulamalar artık Wi-Fi\'yi veya mobil veriyi doğrudan açıp kapatamaz ve yeniden başlatma da yükseltilmiş erişim gerektirir. FA, bu sistem komutlarını çalıştırmak için ya Shizuku\'ya (root gerektirmez, Kablosuz Hata Ayıklama üzerinden bir kez eşleştirilir) ya da root erişimine ihtiyaç duyar.</string>
+    <string name="onboarding_step3_title">Shizuku veya Root kurulumu</string>
+    <string name="onboarding_step3_body">Ana ekrandaki banner\'dan Kurulumu açın. Shizuku root gerektirmez — yalnızca Geliştirici Seçenekleri → Kablosuz Hata Ayıklama üzerinden tek seferlik bir eşleştirme yeterlidir. Cihazınız root\'luysa FA bunu otomatik olarak algılar ve kullanır.</string>
+    <string name="onboarding_step4_title">Kural oluşturma</string>
+    <string name="onboarding_step4_body">Yapılandırmak için ana ekrandaki herhangi bir kurala (Wi-Fi, mobil veri, uçak modu veya yeniden başlatma) dokunun: bir mod seçin, ne sıklıkla döngüye gireceğini ve ne kadar süre açık kalacağını ayarlayın, ardından başlatmak için ana anahtarı açın.</string>
+    <string name="onboarding_step5_title">Panik özelliği</string>
+    <string name="onboarding_step5_body">Yalnızca root ile kullanılabilen isteğe bağlı bir özellik: güç düğmesine 5 kez basmak cihazınızda tamamen yeni, rastgele bir parola belirler ve cihazı hemen kilitler. Bu risklidir — devreye almadan önce kurulum ekranındaki uyarıları dikkatlice okuyun.</string>
+    <string name="onboarding_next">İleri</string>
+    <string name="onboarding_back">Geri</string>
+    <string name="onboarding_done">Başla</string>
+    <string name="onboarding_skip">Atla</string>
+
+    <!-- FAQ -->
+    <string name="faq_title">Yardım ve SSS</string>
+    <string name="faq_q1">FA tam olarak ne yapar?</string>
+    <string name="faq_a1">Sizin belirlediğiniz bir programa göre Wi-Fi\'yi, mobil veriyi ve uçak modunu otomatik olarak açıp kapatır ve cihazınızı periyodik olarak yeniden başlatabilir. Tamamen çevrimdışıdır, hesap gerektirmez, izleme yapmaz.</string>
+    <string name="faq_q2">Neden Root veya Shizuku gerekiyor?</string>
+    <string name="faq_a2">Android, sürüm 10\'dan itibaren normal uygulamaların Wi-Fi/mobil veriyi açıp kapatmasını engellemiştir ve cihazı yeniden başlatmak her zaman yükseltilmiş erişim gerektirir. Root veya Shizuku (root gerektirmeyen, ADB tabanlı bir izin köprüsü) bu sistem komutlarını çalıştırmanın tek yoludur.</string>
+    <string name="faq_q3">Root ile Shizuku arasındaki fark nedir?</string>
+    <string name="faq_a3">Root, bir root yöneticisi uygulaması (örneğin Magisk) aracılığıyla tam sistem erişimi sağlar. Shizuku root gerektirmez — Geliştirici Seçenekleri → Kablosuz Hata Ayıklama üzerinden bir kez eşleştirirsiniz — ancak bazı cihazlarda, Shizuku\'nun kendi otomatik başlatma seçeneğini etkinleştirmediğiniz sürece, yeniden başlatma sonrasında eşleştirmenin elle yeniden başlatılması gerekebilir.</string>
+    <string name="faq_q4">Otomasyon yeniden başlatmadan sonra devam eder mi?</string>
+    <string name="faq_a4">Evet, ana anahtarı açık bıraktığınız sürece. Root ile bu tamamen otomatiktir. Yalnızca Shizuku kullanıyorsanız, otomatik başlatma seçeneği etkin değilse yeniden başlatmadan sonra Shizuku uygulamasını tekrar açmanız gerekebilir.</string>
+    <string name="faq_q5">FA interneti kullanıyor mu?</string>
+    <string name="faq_a5">Hayır. FA\'nın hiçbir internet izni yoktur — her şey cihazınızda yerel olarak çalışır.</string>
+    <string name="faq_q6">Ay/Yıl birimiyle ne olur?</string>
+    <string name="faq_a6">Basitlik için bunlar tam takvim ayı/yılı olarak değil, sabit 30 veya 365 günlük bir süre olarak yaklaşık hesaplanır.</string>
+    <string name="faq_q7">Panik özelliği güvenli mi?</string>
+    <string name="faq_a7">Bir şeyler ters giderse cihazınıza kalıcı olarak erişiminizi kaybetme riski gerçektir. Kurulum ekranındaki uyarıları dikkatlice okuyun ve günlük kullandığınız telefonda devreye almadan önce yedek bir cihazda test edin.</string>
+    <string name="faq_q8">Üreticim arka plan hizmetini neden sürekli kapatıyor?</string>
+    <string name="faq_a8">Bazı üreticiler (Xiaomi, Huawei, Oppo vb.) arka plan uygulamalarını Android\'in kendi pil optimizasyonunun ötesinde kısıtlar. \"Otomatik başlatma\" veya \"Uygulama başlatmayı yönet\" ayarını bulun ve FA\'ya orada izin verin.</string>
+    <string name="faq_q9">FA açık kaynak mı?</string>
+    <string name="faq_a9">Evet, GPLv3 lisansı altındadır. Kaynak kodu bağlantısı Ayarlar\'dadır.</string>
+    <string name="faq_q10">FA herhangi bir veri topluyor mu?</string>
+    <string name="faq_a10">Telemetri yok, analiz yok, hesap yok — uygulamanın hiçbir ağ izni yoktur.</string>
+
+    <!-- Panic feature -->
+    <string name="panic_setup_title">Panik özelliği</string>
+    <string name="panic_warning_title">⚠ Kalıcı olarak kilitlenme riski gerçektir</string>
+    <string name="panic_warning_body">Bu özellik tetiklendiğinde cihazınızda gerçekten rastgele bir parola belirler. Başarısız olursa veya bir sonraki parolanın harici yedeğini kaybederseniz, cihazınıza kalıcı olarak kilitlenebilirsiniz — olası veri kaybı dahil. Yalnızca root. Günlük kullandığınız telefonda devreye almadan önce yedek bir cihazda test edin.</string>
+    <string name="panic_password_length">Parola uzunluğu</string>
+    <string name="panic_press_count">Güç düğmesine basma sayısı</string>
+    <string name="panic_window">Zaman penceresi (saniye)</string>
+    <string name="panic_next_password_title">Sonraki parola (şimdi bunu uygulama dışında bir yere kaydedin)</string>
+    <string name="panic_generate_preview">Yeni sonraki parolayı oluştur</string>
+    <string name="panic_backup_confirm_label">Bu parolayı uygulama dışında güvenli bir şekilde kaydettim</string>
+    <string name="panic_backup_confirm_hint">Devreye almak için CONFIRM yazın</string>
+    <string name="panic_arm">Panik özelliğini devreye al</string>
+    <string name="panic_disarm">Devre dışı bırak</string>
+    <string name="panic_current_credential_label">Mevcut kilit ekranı parolası</string>
+    <string name="panic_current_credential_hint">Cihazda şifrelenmiş olarak saklanır, parolayı güvenilir şekilde değiştirmek için yerel olarak gereklidir</string>
+    <string name="panic_status_armed">DEVREDE</string>
+    <string name="panic_status_disarmed">devrede değil</string>
+    <string name="panic_root_required">Panik özelliği root gerektirir — Shizuku bu özellik için desteklenmez.</string>
+    <string name="panic_no_power_device">Güç tuşu giriş cihazı bulunamadı — bu cihaz desteklenmiyor olabilir.</string>
+</resources>

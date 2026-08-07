@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FA</string>
+
+    <!-- सामान्य -->
+    <string name="common_save">सहेजें</string>
+    <string name="common_back">वापस</string>
+    <string name="common_cancel">रद्द करें</string>
+    <string name="common_confirm">पुष्टि करें</string>
+
+    <!-- लक्ष्य -->
+    <string name="target_wifi">Wi-Fi</string>
+    <string name="target_mobile_data">मोबाइल डेटा</string>
+    <string name="target_airplane_mode">एयरप्लेन मोड</string>
+
+    <!-- मोड -->
+    <string name="mode_cyclical">चक्रीय</string>
+    <string name="mode_always_on">हमेशा चालू</string>
+    <string name="mode_always_off">हमेशा बंद</string>
+    <string name="mode_unmanaged">प्रबंधित न करें</string>
+
+    <!-- अवधि इकाइयाँ -->
+    <string name="duration_unit_seconds">सेकंड</string>
+    <string name="duration_unit_minutes">मिनट</string>
+    <string name="duration_unit_hours">घंटे</string>
+    <string name="duration_unit_days">दिन</string>
+    <string name="duration_unit_months">महीने</string>
+    <string name="duration_unit_years">वर्ष</string>
+    <string name="duration_picker_unit_label">इकाई</string>
+    <string name="duration_picker_approx_note">एक निश्चित 30/365-दिन की अवधि के रूप में अनुमानित</string>
+
+    <!-- बैकएंड प्राथमिकता -->
+    <string name="backend_auto">स्वचालित</string>
+    <string name="backend_root_only">केवल Root</string>
+    <string name="backend_shizuku_only">केवल Shizuku</string>
+
+    <!-- होम स्क्रीन -->
+    <string name="home_title">FA — daemon.status</string>
+    <string name="home_automation_title">ऑटोमेशन</string>
+    <string name="home_automation_running">चल रहा है</string>
+    <string name="home_automation_stopped">रुका हुआ है</string>
+    <string name="home_no_backend_title">कोई विशेषाधिकृत एक्सेस नहीं</string>
+    <string name="home_no_backend_body">न तो root और न ही Shizuku उपलब्ध है — नियम नहीं चल सकते।</string>
+    <string name="home_no_backend_button">सेटअप करें</string>
+    <string name="home_rules_title">नियम</string>
+    <string name="home_panic_title">पैनिक फ़ीचर</string>
+    <string name="home_panic_armed">सक्रिय</string>
+    <string name="home_panic_disarmed">सक्रिय नहीं</string>
+    <string name="home_panic_configure">पैनिक फ़ीचर कॉन्फ़िगर करें</string>
+    <string name="home_status_disabled">अक्षम</string>
+    <string name="home_status_always_on">हमेशा चालू</string>
+    <string name="home_status_always_off">हमेशा बंद</string>
+    <string name="home_status_next_change">%1$s — अगला बदलाव %2$s में</string>
+    <string name="home_reboot_label">रीबूट</string>
+    <string name="home_reboot_disabled">अक्षम</string>
+    <string name="home_reboot_next">अगला रीबूट %1$s में</string>
+    <string name="home_state_on">चालू</string>
+    <string name="home_state_off">बंद</string>
+
+    <!-- फ़ोरग्राउंड सेवा सूचना -->
+    <string name="notification_initializing">आरंभ किया जा रहा है …</string>
+    <string name="notification_unmanaged">%1$s: अप्रबंधित</string>
+    <string name="notification_disabled">%1$s: -</string>
+    <string name="notification_toggle_line">%1$s: %2$s (अगला बदलाव %3$s में)</string>
+    <string name="notification_reboot_line">रीबूट: %1$s में</string>
+    <string name="notification_channel_name">FA ऑटोमेशन स्थिति</string>
+    <string name="notification_title">FA — ऑटोमेशन सक्रिय</string>
+
+    <!-- नियम संपादक -->
+    <string name="rule_editor_enabled">सक्षम</string>
+    <string name="rule_editor_mode">मोड</string>
+    <string name="rule_editor_cycle">चक्र</string>
+    <string name="rule_editor_active_duration">सक्रिय अवधि</string>
+    <string name="rule_editor_start_on">चक्र चालू (ON) से शुरू हो (बंद के बजाय)</string>
+    <string name="rule_editor_validation_error">सक्रिय अवधि चक्र से छोटी होनी चाहिए।</string>
+    <string name="rule_editor_reboot_title">रीबूट</string>
+    <string name="rule_editor_reboot_interval">अंतराल</string>
+    <string name="rule_editor_reboot_note">अंतराल = अंतिम बूट के बाद से बीता समय (कोई भी बूट, न कि केवल ऐप द्वारा किया गया)।</string>
+
+    <!-- अनुमतियाँ / सेटअप -->
+    <string name="permissions_title">सेटअप</string>
+    <string name="permissions_root_title">Root</string>
+    <string name="permissions_root_available">उपलब्ध</string>
+    <string name="permissions_root_unavailable">उपलब्ध नहीं</string>
+    <string name="permissions_root_check">Root की जाँच करें</string>
+    <string name="permissions_shizuku_title">Shizuku</string>
+    <string name="permissions_shizuku_available">उपलब्ध, अनुमति दी गई</string>
+    <string name="permissions_shizuku_needs_permission">चल रहा है, अनुमति गायब है</string>
+    <string name="permissions_shizuku_unreachable">पहुँच योग्य नहीं</string>
+    <string name="permissions_shizuku_instructions">1. Shizuku ऐप इंस्टॉल करें  2. डेवलपर विकल्प ← वायरलेस डिबगिंग सक्षम करें  3. Shizuku में पेयर करें और शुरू करें  4. यहाँ अनुमति दें। root के बिना, पेयरिंग हर बार रीबूट के बाद अपने आप कायम नहीं रहती — बेहतर विश्वसनीयता के लिए Shizuku का अपना ऑटो-स्टार्ट विकल्प सक्षम करें।</string>
+    <string name="permissions_shizuku_grant">अनुमति दें</string>
+    <string name="permissions_battery_title">बैटरी ऑप्टिमाइज़ेशन</string>
+    <string name="permissions_battery_body">विश्वसनीय दीर्घकालिक बैकग्राउंड संचालन के लिए, FA को बैटरी ऑप्टिमाइज़ेशन से छूट दी जानी चाहिए।</string>
+    <string name="permissions_battery_button">छूट का अनुरोध करें</string>
+    <string name="permissions_oem_title">निर्माता की बैकग्राउंड पाबंदियाँ</string>
+    <string name="permissions_oem_body">कुछ निर्माता (Xiaomi, Huawei, Oppo, …) बैटरी ऑप्टिमाइज़ेशन से छूट होने पर भी बैकग्राउंड ऐप्स को बंद कर देते हैं। सिस्टम सेटिंग्स में \"Autostart\" या \"Manage app launch\" खोजें और वहाँ FA को बैकग्राउंड में चलने की अनुमति दें।</string>
+
+    <!-- सेटिंग्स -->
+    <string name="settings_title">सेटिंग्स</string>
+    <string name="settings_language">भाषा</string>
+    <string name="settings_backend_preference">बैकएंड प्राथमिकता</string>
+    <string name="settings_about_section">बारे में</string>
+    <string name="settings_version">संस्करण</string>
+    <string name="settings_license">लाइसेंस</string>
+    <string name="settings_source">स्रोत कोड</string>
+    <string name="settings_help_faq">सहायता और सामान्य प्रश्न</string>
+    <string name="settings_onboarding_replay">परिचय फिर से दिखाएँ</string>
+    <string name="settings_no_internet_note">FA कभी भी इंटरनेट एक्सेस का अनुरोध नहीं करता — सब कुछ पूरी तरह ऑफ़लाइन, डिवाइस पर ही चलता है।</string>
+
+    <!-- परिचय -->
+    <string name="onboarding_step1_title">FA क्या करता है</string>
+    <string name="onboarding_step1_body">FA आपके द्वारा तय किए गए शेड्यूल पर Wi-Fi, मोबाइल डेटा और एयरप्लेन मोड को चालू-बंद करता है — सेकंडों से लेकर वर्षों तक — और आपके डिवाइस को एक अंतराल पर रीबूट भी कर सकता है। सब कुछ स्थानीय रूप से चलता है; FA कभी इंटरनेट से नहीं जुड़ता।</string>
+    <string name="onboarding_step2_title">विशेषाधिकृत एक्सेस की आवश्यकता क्यों है</string>
+    <string name="onboarding_step2_body">Android 10 के बाद से, ऐप्स सीधे Wi-Fi या मोबाइल डेटा को टॉगल नहीं कर सकते, और रीबूट के लिए भी उच्च-स्तरीय एक्सेस चाहिए। इन सिस्टम कमांड को चलाने के लिए FA को या तो Shizuku (root की ज़रूरत नहीं, वायरलेस डिबगिंग के ज़रिए एक बार पेयर करना होता है) या root एक्सेस चाहिए।</string>
+    <string name="onboarding_step3_title">Shizuku या Root सेटअप करना</string>
+    <string name="onboarding_step3_body">होम स्क्रीन बैनर से सेटअप खोलें। Shizuku के लिए root की ज़रूरत नहीं — बस डेवलपर विकल्प ← वायरलेस डिबगिंग के ज़रिए एक बार पेयरिंग करनी होती है। अगर आपका डिवाइस रूटेड है, तो FA इसे अपने आप पहचानकर उपयोग करता है।</string>
+    <string name="onboarding_step4_title">एक नियम बनाना</string>
+    <string name="onboarding_step4_body">इसे कॉन्फ़िगर करने के लिए होम स्क्रीन पर किसी भी नियम (Wi-Fi, मोबाइल डेटा, एयरप्लेन मोड, या रीबूट) पर टैप करें: एक मोड चुनें, यह सेट करें कि यह कितनी बार चक्र करे और कितनी देर चालू रहे, फिर शुरू करने के लिए मुख्य स्विच चालू करें।</string>
+    <string name="onboarding_step5_title">पैनिक फ़ीचर</string>
+    <string name="onboarding_step5_body">एक वैकल्पिक, केवल-root फ़ीचर: पावर बटन को 5 बार दबाने से आपके डिवाइस पर एक बिल्कुल नया, यादृच्छिक पासवर्ड सेट हो जाता है और वह तुरंत लॉक हो जाता है। यह जोखिम भरा है — इसे सक्रिय करने से पहले इसकी सेटअप स्क्रीन पर दी गई चेतावनियाँ ध्यान से पढ़ें।</string>
+    <string name="onboarding_next">अगला</string>
+    <string name="onboarding_back">वापस</string>
+    <string name="onboarding_done">शुरू करें</string>
+    <string name="onboarding_skip">छोड़ें</string>
+
+    <!-- सामान्य प्रश्न -->
+    <string name="faq_title">सहायता और सामान्य प्रश्न</string>
+    <string name="faq_q1">FA असल में क्या करता है?</string>
+    <string name="faq_a1">यह आपके तय किए शेड्यूल पर Wi-Fi, मोबाइल डेटा और एयरप्लेन मोड को अपने आप चालू/बंद करता है, और आपके डिवाइस को समय-समय पर रीबूट कर सकता है। पूरी तरह ऑफ़लाइन, बिना किसी अकाउंट, बिना किसी ट्रैकिंग के।</string>
+    <string name="faq_q2">इसे Root या Shizuku की ज़रूरत क्यों है?</string>
+    <string name="faq_a2">Android 10 के बाद से Android ने सामान्य ऐप्स को Wi-Fi/मोबाइल डेटा टॉगल करने से रोक दिया है, और डिवाइस रीबूट के लिए हमेशा उच्च-स्तरीय एक्सेस चाहिए होता है। ये सिस्टम कमांड चलाने का एकमात्र तरीका Root या Shizuku (एक बिना-root, ADB-आधारित अनुमति ब्रिज) ही है।</string>
+    <string name="faq_q3">Root और Shizuku में क्या फ़र्क़ है?</string>
+    <string name="faq_a3">Root एक root मैनेजर ऐप (जैसे Magisk) के ज़रिए पूरा सिस्टम एक्सेस देता है। Shizuku के लिए root की ज़रूरत नहीं — आप इसे डेवलपर विकल्प ← वायरलेस डिबगिंग के ज़रिए एक बार पेयर करते हैं — लेकिन कुछ डिवाइसों पर रीबूट के बाद इसकी पेयरिंग को मैन्युअली दोबारा शुरू करना पड़ सकता है, जब तक कि आप Shizuku का अपना ऑटो-स्टार्ट विकल्प सक्षम न करें।</string>
+    <string name="faq_q4">क्या ऑटोमेशन रीबूट के बाद भी बना रहेगा?</string>
+    <string name="faq_a4">हाँ, अगर आप मुख्य स्विच चालू रहने देते हैं। root के साथ, यह पूरी तरह स्वचालित है। केवल Shizuku के साथ, हो सकता है कि रीबूट के बाद आपको Shizuku ऐप दोबारा खोलना पड़े, जब तक कि इसका ऑटो-स्टार्ट विकल्प सक्षम न हो।</string>
+    <string name="faq_q5">क्या FA इंटरनेट का उपयोग करता है?</string>
+    <string name="faq_a5">नहीं। FA के पास बिल्कुल भी इंटरनेट अनुमति नहीं है — सब कुछ आपके डिवाइस पर स्थानीय रूप से चलता है।</string>
+    <string name="faq_q6">इकाई के रूप में महीने/वर्ष चुनने पर क्या होता है?</string>
+    <string name="faq_a6">सरलता के लिए इन्हें एक निश्चित 30-दिन / 365-दिन की अवधि के रूप में अनुमानित किया जाता है, न कि सटीक कैलेंडर महीनों/वर्षों के रूप में।</string>
+    <string name="faq_q7">क्या पैनिक फ़ीचर सुरक्षित है?</string>
+    <string name="faq_a7">अगर कुछ गलत हो जाए तो इसमें आपके डिवाइस से हमेशा के लिए लॉक हो जाने का वास्तविक जोखिम है। इसकी सेटअप स्क्रीन की चेतावनियाँ ध्यान से पढ़ें, और अपने रोज़मर्रा के फ़ोन पर इसे सक्रिय करने से पहले किसी अतिरिक्त डिवाइस पर इसका परीक्षण करें।</string>
+    <string name="faq_q8">मेरा निर्माता बैकग्राउंड सर्विस को बार-बार बंद क्यों करता रहता है?</string>
+    <string name="faq_a8">कुछ निर्माता (Xiaomi, Huawei, Oppo, आदि) Android के अपने बैटरी ऑप्टिमाइज़ेशन से आगे बढ़कर बैकग्राउंड ऐप्स को प्रतिबंधित करते हैं। \"Autostart\" या \"Manage app launch\" जैसी सेटिंग खोजें और वहाँ FA को अनुमति दें।</string>
+    <string name="faq_q9">क्या FA ओपन सोर्स है?</string>
+    <string name="faq_a9">हाँ, यह GPLv3 के तहत लाइसेंस प्राप्त है। स्रोत कोड का लिंक सेटिंग्स में है।</string>
+    <string name="faq_q10">क्या FA कोई डेटा एकत्र करता है?</string>
+    <string name="faq_a10">कोई टेलीमेट्री नहीं, कोई एनालिटिक्स नहीं, कोई अकाउंट नहीं — ऐप के पास बिल्कुल भी नेटवर्क अनुमति नहीं है।</string>
+
+    <!-- पैनिक फ़ीचर -->
+    <string name="panic_setup_title">पैनिक फ़ीचर</string>
+    <string name="panic_warning_title">⚠ स्थायी रूप से लॉक होने का वास्तविक जोखिम</string>
+    <string name="panic_warning_body">सक्रिय होने पर यह फ़ीचर आपके डिवाइस पर एक वास्तविक रूप से यादृच्छिक पासवर्ड सेट करता है। अगर यह विफल हो जाता है, या आप अगले पासवर्ड का अपना बाहरी बैकअप खो देते हैं, तो आप अपने डिवाइस से हमेशा के लिए लॉक हो सकते हैं — जिसमें डेटा खोने की संभावना भी शामिल है। केवल Root। इसे अपने रोज़मर्रा के फ़ोन पर सक्रिय करने से पहले किसी अतिरिक्त डिवाइस पर परीक्षण करें।</string>
+    <string name="panic_password_length">पासवर्ड की लंबाई</string>
+    <string name="panic_press_count">पावर बटन दबाने की संख्या</string>
+    <string name="panic_window">समय विंडो (सेकंड में)</string>
+    <string name="panic_next_password_title">अगला पासवर्ड (इसे अभी ऐप के बाहर सहेजें)</string>
+    <string name="panic_generate_preview">नया अगला-पासवर्ड जनरेट करें</string>
+    <string name="panic_backup_confirm_label">मैंने यह पासवर्ड ऐप के बाहर सुरक्षित रूप से सहेज लिया है</string>
+    <string name="panic_backup_confirm_hint">सक्रिय करने के लिए CONFIRM टाइप करें</string>
+    <string name="panic_arm">पैनिक फ़ीचर सक्रिय करें</string>
+    <string name="panic_disarm">निष्क्रिय करें</string>
+    <string name="panic_current_credential_label">वर्तमान लॉक स्क्रीन पासवर्ड</string>
+    <string name="panic_current_credential_hint">डिवाइस पर एन्क्रिप्टेड रूप से संग्रहीत, पासवर्ड को विश्वसनीय रूप से बदलने के लिए स्थानीय रूप से आवश्यक</string>
+    <string name="panic_status_armed">सक्रिय</string>
+    <string name="panic_status_disarmed">सक्रिय नहीं</string>
+    <string name="panic_root_required">पैनिक फ़ीचर के लिए root आवश्यक है — इस फ़ीचर के लिए Shizuku समर्थित नहीं है।</string>
+    <string name="panic_no_power_device">पावर की इनपुट डिवाइस नहीं मिला — यह डिवाइस समर्थित नहीं हो सकता।</string>
+</resources>

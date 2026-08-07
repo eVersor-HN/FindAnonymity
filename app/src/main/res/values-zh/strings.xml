@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FA</string>
+
+    <!-- 通用 -->
+    <string name="common_save">保存</string>
+    <string name="common_back">返回</string>
+    <string name="common_cancel">取消</string>
+    <string name="common_confirm">确认</string>
+
+    <!-- 管理目标 -->
+    <string name="target_wifi">Wi-Fi</string>
+    <string name="target_mobile_data">移动数据</string>
+    <string name="target_airplane_mode">飞行模式</string>
+
+    <!-- 模式 -->
+    <string name="mode_cyclical">循环</string>
+    <string name="mode_always_on">始终开启</string>
+    <string name="mode_always_off">始终关闭</string>
+    <string name="mode_unmanaged">不管理</string>
+
+    <!-- 时长单位 -->
+    <string name="duration_unit_seconds">秒</string>
+    <string name="duration_unit_minutes">分钟</string>
+    <string name="duration_unit_hours">小时</string>
+    <string name="duration_unit_days">天</string>
+    <string name="duration_unit_months">月</string>
+    <string name="duration_unit_years">年</string>
+    <string name="duration_picker_unit_label">单位</string>
+    <string name="duration_picker_approx_note">按固定的 30/365 天估算</string>
+
+    <!-- 后端偏好 -->
+    <string name="backend_auto">自动</string>
+    <string name="backend_root_only">仅 Root</string>
+    <string name="backend_shizuku_only">仅 Shizuku</string>
+
+    <!-- 主屏幕 -->
+    <string name="home_title">FA — daemon.status</string>
+    <string name="home_automation_title">自动化</string>
+    <string name="home_automation_running">运行中</string>
+    <string name="home_automation_stopped">已停止</string>
+    <string name="home_no_backend_title">无特权访问</string>
+    <string name="home_no_backend_body">Root 和 Shizuku 均不可用 — 规则无法运行。</string>
+    <string name="home_no_backend_button">前往设置</string>
+    <string name="home_rules_title">规则</string>
+    <string name="home_panic_title">紧急功能</string>
+    <string name="home_panic_armed">已启用</string>
+    <string name="home_panic_disarmed">未启用</string>
+    <string name="home_panic_configure">配置紧急功能</string>
+    <string name="home_status_disabled">已禁用</string>
+    <string name="home_status_always_on">始终开启</string>
+    <string name="home_status_always_off">始终关闭</string>
+    <string name="home_status_next_change">%1$s — %2$s 后变化</string>
+    <string name="home_reboot_label">重启</string>
+    <string name="home_reboot_disabled">已禁用</string>
+    <string name="home_reboot_next">%1$s 后重启</string>
+    <string name="home_state_on">开</string>
+    <string name="home_state_off">关</string>
+
+    <!-- 前台服务通知 -->
+    <string name="notification_initializing">正在初始化…</string>
+    <string name="notification_unmanaged">%1$s：不管理</string>
+    <string name="notification_disabled">%1$s：-</string>
+    <string name="notification_toggle_line">%1$s：%2$s（%3$s 后变化）</string>
+    <string name="notification_reboot_line">重启：%1$s 后</string>
+    <string name="notification_channel_name">FA 自动化状态</string>
+    <string name="notification_title">FA — 自动化运行中</string>
+
+    <!-- 规则编辑器 -->
+    <string name="rule_editor_enabled">已启用</string>
+    <string name="rule_editor_mode">模式</string>
+    <string name="rule_editor_cycle">循环周期</string>
+    <string name="rule_editor_active_duration">激活时长</string>
+    <string name="rule_editor_start_on">循环从开启开始（而非关闭）</string>
+    <string name="rule_editor_validation_error">激活时长必须短于循环周期。</string>
+    <string name="rule_editor_reboot_title">重启</string>
+    <string name="rule_editor_reboot_interval">间隔</string>
+    <string name="rule_editor_reboot_note">间隔 = 距上次开机的时间（任何一次开机，不仅限于应用触发的重启）。</string>
+
+    <!-- 权限 / 设置 -->
+    <string name="permissions_title">设置</string>
+    <string name="permissions_root_title">Root</string>
+    <string name="permissions_root_available">可用</string>
+    <string name="permissions_root_unavailable">不可用</string>
+    <string name="permissions_root_check">检查 Root</string>
+    <string name="permissions_shizuku_title">Shizuku</string>
+    <string name="permissions_shizuku_available">可用，已授权</string>
+    <string name="permissions_shizuku_needs_permission">运行中，缺少权限</string>
+    <string name="permissions_shizuku_unreachable">无法连接</string>
+    <string name="permissions_shizuku_instructions">1. 安装 Shizuku 应用  2. 开发者选项 → 启用无线调试  3. 在 Shizuku 中配对并启动  4. 在此处授予权限。没有 Root 时，配对不一定能在重启后自动保留 — 建议启用 Shizuku 自带的自启动选项以获得最佳可靠性。</string>
+    <string name="permissions_shizuku_grant">授予权限</string>
+    <string name="permissions_battery_title">电池优化</string>
+    <string name="permissions_battery_body">为确保长期稳定的后台运行，建议将 FA 加入电池优化白名单。</string>
+    <string name="permissions_battery_button">申请豁免</string>
+    <string name="permissions_oem_title">厂商后台限制</string>
+    <string name="permissions_oem_body">部分厂商（小米、华为、Oppo 等）即使在获得电池优化豁免后，仍会杀掉后台应用。请在系统设置中查找“自启动”或“应用启动管理”，并允许 FA 在后台运行。</string>
+
+    <!-- 设置 -->
+    <string name="settings_title">设置</string>
+    <string name="settings_language">语言</string>
+    <string name="settings_backend_preference">后端偏好</string>
+    <string name="settings_about_section">关于</string>
+    <string name="settings_version">版本</string>
+    <string name="settings_license">许可证</string>
+    <string name="settings_source">源代码</string>
+    <string name="settings_help_faq">帮助与常见问题</string>
+    <string name="settings_onboarding_replay">再次显示引导</string>
+    <string name="settings_no_internet_note">FA 从不请求联网权限 — 一切均完全离线、在本机运行。</string>
+
+    <!-- 引导 -->
+    <string name="onboarding_step1_title">FA 的功能</string>
+    <string name="onboarding_step1_body">FA 按照你设定的计划开关 Wi-Fi、移动数据和飞行模式 — 从几秒到几年皆可 — 还能按固定间隔重启设备。一切均在本地运行；FA 从不联网。</string>
+    <string name="onboarding_step2_title">为什么需要特权访问</string>
+    <string name="onboarding_step2_body">自 Android 10 起，应用已无法直接切换 Wi-Fi 或移动数据，重启也需要提升权限。FA 需要 Shizuku（无需 Root，通过无线调试配对一次即可）或 Root 权限来执行这些系统命令。</string>
+    <string name="onboarding_step3_title">设置 Shizuku 或 Root</string>
+    <string name="onboarding_step3_body">从主屏幕横幅进入设置。Shizuku 无需 Root — 只需通过开发者选项 → 无线调试完成一次性配对。如果你的设备已 Root，FA 会自动检测并使用。</string>
+    <string name="onboarding_step4_title">创建规则</string>
+    <string name="onboarding_step4_body">点击主屏幕上的任意规则（Wi-Fi、移动数据、飞行模式或重启）进行配置：选择模式，设置循环周期及开启时长，然后打开主开关即可启动。</string>
+    <string name="onboarding_step5_title">紧急功能</string>
+    <string name="onboarding_step5_body">一项可选的、仅限 Root 的功能：连按电源键 5 次会立即为设备设置一个全新的随机密码并锁定设备。此功能存在风险 — 启用前请仔细阅读其设置界面中的警告。</string>
+    <string name="onboarding_next">下一步</string>
+    <string name="onboarding_back">返回</string>
+    <string name="onboarding_done">开始使用</string>
+    <string name="onboarding_skip">跳过</string>
+
+    <!-- 常见问题 -->
+    <string name="faq_title">帮助与常见问题</string>
+    <string name="faq_q1">FA 到底是做什么的？</string>
+    <string name="faq_a1">它会按照你设定的计划自动开关 Wi-Fi、移动数据和飞行模式，并可定期重启设备。完全离线，无需账号，无追踪。</string>
+    <string name="faq_q2">为什么需要 Root 或 Shizuku？</string>
+    <string name="faq_a2">自 Android 10 起，普通应用已被禁止切换 Wi-Fi/移动数据，设备重启也始终需要提升权限。Root 或 Shizuku（一种无需 Root、基于 ADB 的权限桥接工具）是执行这些系统命令的唯一方式。</string>
+    <string name="faq_q3">Root 和 Shizuku 有什么区别？</string>
+    <string name="faq_a3">Root 通过 Root 管理应用（例如 Magisk）提供完整的系统访问权限。Shizuku 无需 Root — 只需通过开发者选项 → 无线调试配对一次 — 但在部分设备上，重启后可能需要手动重新配对，除非启用 Shizuku 自带的自启动选项。</string>
+    <string name="faq_q4">自动化能在重启后继续生效吗？</string>
+    <string name="faq_a4">可以，只要主开关保持开启。使用 Root 时完全自动。仅使用 Shizuku 时，除非启用了自启动选项，否则重启后可能需要重新打开 Shizuku 应用。</string>
+    <string name="faq_q5">FA 会使用网络吗？</string>
+    <string name="faq_a5">不会。FA 完全没有联网权限 — 一切都在你的设备本地运行。</string>
+    <string name="faq_q6">以“月”/“年”为单位时是如何计算的？</string>
+    <string name="faq_a6">为简化处理，它们分别按固定的 30 天 / 365 天估算，而非精确的日历月份/年份。</string>
+    <string name="faq_q7">紧急功能安全吗？</string>
+    <string name="faq_a7">如果出现意外，它确实存在使你永久无法访问设备的真实风险。启用前请仔细阅读其设置界面中的警告，并在正式用于日常手机之前，先在备用设备上测试。</string>
+    <string name="faq_q8">为什么厂商总是杀掉后台服务？</string>
+    <string name="faq_a8">部分厂商（小米、华为、Oppo 等）在 Android 自带的电池优化之外，还会额外限制后台应用。请查找“自启动”或“应用启动管理”设置项，并允许 FA 在其中运行。</string>
+    <string name="faq_q9">FA 是开源的吗？</string>
+    <string name="faq_a9">是的，采用 GPLv3 许可证。源代码链接在“设置”中。</string>
+    <string name="faq_q10">FA 会收集数据吗？</string>
+    <string name="faq_a10">不会。没有遥测，没有分析，没有账号 — 该应用完全没有网络权限。</string>
+
+    <!-- 紧急功能 -->
+    <string name="panic_setup_title">紧急功能</string>
+    <string name="panic_warning_title">⚠ 存在永久锁定的真实风险</string>
+    <string name="panic_warning_body">此功能在触发时会为你的设备设置一个真正随机的密码。如果失败，或你丢失了下一个密码的外部备份，你可能会被永久锁定在设备之外 — 包括可能的数据丢失。仅限 Root。在正式用于日常手机之前，请先在备用设备上测试。</string>
+    <string name="panic_password_length">密码长度</string>
+    <string name="panic_press_count">电源键按压次数</string>
+    <string name="panic_window">时间窗口（秒）</string>
+    <string name="panic_next_password_title">下一个密码（请立即在应用外保存）</string>
+    <string name="panic_generate_preview">生成新的下一个密码</string>
+    <string name="panic_backup_confirm_label">我已在应用外安全保存此密码</string>
+    <string name="panic_backup_confirm_hint">输入 CONFIRM 以启用</string>
+    <string name="panic_arm">启用紧急功能</string>
+    <string name="panic_disarm">停用</string>
+    <string name="panic_current_credential_label">当前锁屏密码</string>
+    <string name="panic_current_credential_hint">加密存储于本机，用于在本地可靠地更改密码</string>
+    <string name="panic_status_armed">已启用</string>
+    <string name="panic_status_disarmed">未启用</string>
+    <string name="panic_root_required">紧急功能需要 Root — 此功能不支持 Shizuku。</string>
+    <string name="panic_no_power_device">未找到电源键输入设备 — 此设备可能不受支持。</string>
+</resources>

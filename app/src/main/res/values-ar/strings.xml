@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FA</string>
+
+    <!-- عام -->
+    <string name="common_save">حفظ</string>
+    <string name="common_back">رجوع</string>
+    <string name="common_cancel">إلغاء</string>
+    <string name="common_confirm">تأكيد</string>
+
+    <!-- الأهداف -->
+    <string name="target_wifi">Wi-Fi</string>
+    <string name="target_mobile_data">بيانات الجوال</string>
+    <string name="target_airplane_mode">وضع الطيران</string>
+
+    <!-- الأوضاع -->
+    <string name="mode_cyclical">دوري</string>
+    <string name="mode_always_on">تشغيل دائم</string>
+    <string name="mode_always_off">إيقاف دائم</string>
+    <string name="mode_unmanaged">بدون إدارة</string>
+
+    <!-- وحدات المدة -->
+    <string name="duration_unit_seconds">ثوانٍ</string>
+    <string name="duration_unit_minutes">دقائق</string>
+    <string name="duration_unit_hours">ساعات</string>
+    <string name="duration_unit_days">أيام</string>
+    <string name="duration_unit_months">أشهر</string>
+    <string name="duration_unit_years">سنوات</string>
+    <string name="duration_picker_unit_label">الوحدة</string>
+    <string name="duration_picker_approx_note">تقريبًا بمدة ثابتة تبلغ 30/365 يومًا</string>
+
+    <!-- تفضيل الوصول الخلفي -->
+    <string name="backend_auto">تلقائي</string>
+    <string name="backend_root_only">Root فقط</string>
+    <string name="backend_shizuku_only">Shizuku فقط</string>
+
+    <!-- الشاشة الرئيسية -->
+    <string name="home_title">FA — daemon.status</string>
+    <string name="home_automation_title">الأتمتة</string>
+    <string name="home_automation_running">قيد التشغيل</string>
+    <string name="home_automation_stopped">متوقفة</string>
+    <string name="home_no_backend_title">لا يوجد وصول متميز</string>
+    <string name="home_no_backend_body">لا يتوفر root ولا Shizuku — لا يمكن تشغيل القواعد.</string>
+    <string name="home_no_backend_button">الإعداد</string>
+    <string name="home_rules_title">القواعد</string>
+    <string name="home_panic_title">ميزة الذعر</string>
+    <string name="home_panic_armed">مُفعّلة</string>
+    <string name="home_panic_disarmed">غير مفعّلة</string>
+    <string name="home_panic_configure">تهيئة ميزة الذعر</string>
+    <string name="home_status_disabled">معطّلة</string>
+    <string name="home_status_always_on">تشغيل دائم</string>
+    <string name="home_status_always_off">إيقاف دائم</string>
+    <string name="home_status_next_change">%1$s — التغيير التالي خلال %2$s</string>
+    <string name="home_reboot_label">إعادة التشغيل</string>
+    <string name="home_reboot_disabled">معطّلة</string>
+    <string name="home_reboot_next">إعادة التشغيل التالية خلال %1$s</string>
+    <string name="home_state_on">تشغيل</string>
+    <string name="home_state_off">إيقاف</string>
+
+    <!-- إشعار الخدمة الأمامية -->
+    <string name="notification_initializing">جارٍ التهيئة …</string>
+    <string name="notification_unmanaged">%1$s: غير مُدار</string>
+    <string name="notification_disabled">%1$s: -</string>
+    <string name="notification_toggle_line">%1$s: %2$s (التغيير التالي خلال %3$s)</string>
+    <string name="notification_reboot_line">إعادة التشغيل: خلال %1$s</string>
+    <string name="notification_channel_name">حالة أتمتة FA</string>
+    <string name="notification_title">FA — الأتمتة نشطة</string>
+
+    <!-- محرر القواعد -->
+    <string name="rule_editor_enabled">مفعّلة</string>
+    <string name="rule_editor_mode">الوضع</string>
+    <string name="rule_editor_cycle">الدورة</string>
+    <string name="rule_editor_active_duration">مدة التفعيل</string>
+    <string name="rule_editor_start_on">تبدأ الدورة بالتشغيل (بدلاً من الإيقاف)</string>
+    <string name="rule_editor_validation_error">يجب أن تكون مدة التفعيل أقصر من الدورة.</string>
+    <string name="rule_editor_reboot_title">إعادة التشغيل</string>
+    <string name="rule_editor_reboot_interval">الفاصل الزمني</string>
+    <string name="rule_editor_reboot_note">الفاصل الزمني = الوقت منذ آخر إقلاع (أي إقلاع، وليس فقط ما يُشغّله التطبيق).</string>
+
+    <!-- الأذونات / الإعداد -->
+    <string name="permissions_title">الإعداد</string>
+    <string name="permissions_root_title">Root</string>
+    <string name="permissions_root_available">متوفر</string>
+    <string name="permissions_root_unavailable">غير متوفر</string>
+    <string name="permissions_root_check">التحقق من Root</string>
+    <string name="permissions_shizuku_title">Shizuku</string>
+    <string name="permissions_shizuku_available">متوفر، تم منح الإذن</string>
+    <string name="permissions_shizuku_needs_permission">قيد التشغيل، الإذن مفقود</string>
+    <string name="permissions_shizuku_unreachable">غير قابل للوصول</string>
+    <string name="permissions_shizuku_instructions">1. ثبّت تطبيق Shizuku  2. خيارات المطوّر ← فعّل تصحيح الأخطاء اللاسلكي  3. اقترن وابدأ التشغيل في Shizuku  4. امنح الإذن هنا. بدون root، لا يبقى الاقتران فعّالًا دائمًا بعد إعادة التشغيل تلقائيًا — فعّل خيار البدء التلقائي الخاص بـ Shizuku للحصول على أفضل موثوقية.</string>
+    <string name="permissions_shizuku_grant">منح الإذن</string>
+    <string name="permissions_battery_title">تحسين البطارية</string>
+    <string name="permissions_battery_body">للحصول على تشغيل خلفي موثوق طويل الأمد، يجب استثناء FA من تحسين البطارية.</string>
+    <string name="permissions_battery_button">طلب الاستثناء</string>
+    <string name="permissions_oem_title">قيود الشركة المصنّعة على العمل في الخلفية</string>
+    <string name="permissions_oem_body">تُغلق بعض الشركات المصنّعة (Xiaomi، Huawei، Oppo، …) التطبيقات العاملة في الخلفية حتى مع استثناء تحسين البطارية. ابحث عن \"بدء تلقائي\" أو \"إدارة تشغيل التطبيقات\" في إعدادات النظام واسمح لتطبيق FA بالعمل في الخلفية هناك.</string>
+
+    <!-- الإعدادات -->
+    <string name="settings_title">الإعدادات</string>
+    <string name="settings_language">اللغة</string>
+    <string name="settings_backend_preference">تفضيل الوصول الخلفي</string>
+    <string name="settings_about_section">حول</string>
+    <string name="settings_version">الإصدار</string>
+    <string name="settings_license">الترخيص</string>
+    <string name="settings_source">الشيفرة المصدرية</string>
+    <string name="settings_help_faq">المساعدة والأسئلة الشائعة</string>
+    <string name="settings_onboarding_replay">إعادة عرض التعريف بالتطبيق</string>
+    <string name="settings_no_internet_note">لا يطلب FA الوصول إلى الإنترنت مطلقًا — كل شيء يعمل بالكامل دون اتصال، على الجهاز.</string>
+
+    <!-- التعريف بالتطبيق -->
+    <string name="onboarding_step1_title">ما الذي يفعله FA</string>
+    <string name="onboarding_step1_body">يقوم FA بتشغيل وإيقاف Wi-Fi وبيانات الجوال ووضع الطيران وفق جدول تحدده أنت — من ثوانٍ إلى سنوات — ويمكنه إعادة تشغيل جهازك على فترات منتظمة. كل شيء يعمل محليًا؛ لا يتصل FA بالإنترنت أبدًا.</string>
+    <string name="onboarding_step2_title">لماذا يلزم الوصول المتميز</string>
+    <string name="onboarding_step2_body">منذ Android 10، لم تعد التطبيقات قادرة على تبديل Wi-Fi أو بيانات الجوال مباشرةً، كما تتطلب إعادة التشغيل صلاحيات مرتفعة أيضًا. يحتاج FA إما إلى Shizuku (بدون root، يُقترن مرة واحدة عبر التصحيح اللاسلكي) أو إلى صلاحية root لتشغيل أوامر النظام هذه.</string>
+    <string name="onboarding_step3_title">إعداد Shizuku أو Root</string>
+    <string name="onboarding_step3_body">افتح الإعداد من شريط الشاشة الرئيسية. لا يحتاج Shizuku إلى root — فقط اقتران لمرة واحدة عبر خيارات المطوّر ← التصحيح اللاسلكي. إذا كان جهازك مُجذّرًا (root)، يكتشفه FA ويستخدمه تلقائيًا.</string>
+    <string name="onboarding_step4_title">إنشاء قاعدة</string>
+    <string name="onboarding_step4_body">اضغط على أي قاعدة في الشاشة الرئيسية (Wi-Fi، بيانات الجوال، وضع الطيران، أو إعادة التشغيل) لتهيئتها: اختر وضعًا، وحدّد عدد مرات الدورة ومدة بقائها مفعّلة، ثم فعّل المفتاح الرئيسي للبدء.</string>
+    <string name="onboarding_step5_title">ميزة الذعر</string>
+    <string name="onboarding_step5_body">ميزة اختيارية تعمل فقط مع root: الضغط على زر التشغيل 5 مرات يضبط كلمة مرور عشوائية جديدة تمامًا على جهازك ويقفله فورًا. هذا أمر محفوف بالمخاطر — اقرأ التحذيرات في شاشة إعدادها بعناية قبل تفعيلها.</string>
+    <string name="onboarding_next">التالي</string>
+    <string name="onboarding_back">رجوع</string>
+    <string name="onboarding_done">ابدأ الآن</string>
+    <string name="onboarding_skip">تخطي</string>
+
+    <!-- الأسئلة الشائعة -->
+    <string name="faq_title">المساعدة والأسئلة الشائعة</string>
+    <string name="faq_q1">ماذا يفعل FA بالضبط؟</string>
+    <string name="faq_a1">يقوم تلقائيًا بتبديل Wi-Fi وبيانات الجوال ووضع الطيران وفق جدول تحدده، ويمكنه إعادة تشغيل جهازك دوريًا. يعمل بالكامل دون اتصال، بدون حساب، وبدون تتبع.</string>
+    <string name="faq_q2">لماذا يحتاج إلى Root أو Shizuku؟</string>
+    <string name="faq_a2">حظر Android على التطبيقات العادية تبديل Wi-Fi/بيانات الجوال منذ Android 10، وتتطلب إعادة تشغيل الجهاز دائمًا صلاحيات مرتفعة. Root أو Shizuku (جسر أذونات قائم على ADB بدون root) هما الطريقتان الوحيدتان لتشغيل أوامر النظام هذه.</string>
+    <string name="faq_q3">ما الفرق بين Root و Shizuku؟</string>
+    <string name="faq_a3">يمنح Root وصولاً كاملاً للنظام عبر تطبيق إدارة root (مثل Magisk). لا يحتاج Shizuku إلى root — إذ تقترنه مرة واحدة عبر خيارات المطوّر ← التصحيح اللاسلكي — لكن اقترانه قد يحتاج إلى إعادة تشغيل يدوية بعد إعادة تشغيل الجهاز على بعض الأجهزة، ما لم تُفعّل خيار البدء التلقائي الخاص بـ Shizuku.</string>
+    <string name="faq_q4">هل تستمر الأتمتة بعد إعادة التشغيل؟</string>
+    <string name="faq_a4">نعم، إذا تركت المفتاح الرئيسي مفعّلاً. مع root، يتم ذلك تلقائيًا بالكامل. مع Shizuku فقط، قد تحتاج إلى إعادة فتح تطبيق Shizuku بعد إعادة التشغيل ما لم يكن خيار البدء التلقائي مفعّلاً.</string>
+    <string name="faq_q5">هل يستخدم FA الإنترنت؟</string>
+    <string name="faq_a5">لا. لا يملك FA إذن الوصول إلى الإنترنت إطلاقًا — كل شيء يعمل محليًا على جهازك.</string>
+    <string name="faq_q6">ماذا يحدث عند استخدام الأشهر/السنوات كوحدة؟</string>
+    <string name="faq_a6">يتم تقريبها إلى مدة ثابتة تبلغ 30 يومًا / 365 يومًا للتبسيط، وليست أشهرًا/سنوات تقويمية دقيقة.</string>
+    <string name="faq_q7">هل ميزة الذعر آمنة؟</string>
+    <string name="faq_a7">تحمل خطرًا حقيقيًا بقفل جهازك بشكل دائم إذا حدث خطأ ما. اقرأ تحذيرات شاشة إعدادها بعناية، واختبرها على جهاز احتياطي قبل تفعيلها على هاتفك اليومي.</string>
+    <string name="faq_q8">لماذا تستمر الشركة المصنّعة لجهازي في إيقاف الخدمة العاملة في الخلفية؟</string>
+    <string name="faq_a8">تُقيّد بعض الشركات المصنّعة (Xiaomi، Huawei، Oppo، إلخ) التطبيقات العاملة في الخلفية بما يتجاوز تحسين البطارية الخاص بـ Android. ابحث عن إعداد \"بدء تلقائي\" أو \"إدارة تشغيل التطبيقات\" واسمح لـ FA بذلك هناك.</string>
+    <string name="faq_q9">هل FA مفتوح المصدر؟</string>
+    <string name="faq_a9">نعم، مرخّص بموجب GPLv3. رابط الشيفرة المصدرية موجود في الإعدادات.</string>
+    <string name="faq_q10">هل يجمع FA أي بيانات؟</string>
+    <string name="faq_a10">لا توجد قياسات استخدام، ولا تحليلات، ولا حسابات — لا يملك التطبيق أي إذن وصول للشبكة إطلاقًا.</string>
+
+    <!-- ميزة الذعر -->
+    <string name="panic_setup_title">ميزة الذعر</string>
+    <string name="panic_warning_title">⚠ خطر حقيقي بالقفل الدائم</string>
+    <string name="panic_warning_body">تضبط هذه الميزة كلمة مرور عشوائية حقيقية على جهازك عند تفعيلها. إذا فشلت العملية، أو فقدت نسختك الاحتياطية الخارجية لكلمة المرور التالية، فقد يُقفل جهازك بشكل دائم — بما في ذلك احتمال فقدان البيانات. Root فقط. اختبرها على جهاز احتياطي قبل تفعيلها على هاتفك اليومي.</string>
+    <string name="panic_password_length">طول كلمة المرور</string>
+    <string name="panic_press_count">عدد ضغطات زر التشغيل</string>
+    <string name="panic_window">النافذة الزمنية (بالثواني)</string>
+    <string name="panic_next_password_title">كلمة المرور التالية (احفظها خارج التطبيق الآن)</string>
+    <string name="panic_generate_preview">توليد كلمة مرور تالية جديدة</string>
+    <string name="panic_backup_confirm_label">لقد حفظت كلمة المرور هذه بأمان خارج التطبيق</string>
+    <string name="panic_backup_confirm_hint">اكتب CONFIRM للتفعيل</string>
+    <string name="panic_arm">تفعيل ميزة الذعر</string>
+    <string name="panic_disarm">إلغاء التفعيل</string>
+    <string name="panic_current_credential_label">كلمة مرور قفل الشاشة الحالية</string>
+    <string name="panic_current_credential_hint">مخزّنة مشفّرة على الجهاز، لازمة محليًا لتغيير كلمة المرور بشكل موثوق</string>
+    <string name="panic_status_armed">مُفعّلة</string>
+    <string name="panic_status_disarmed">غير مفعّلة</string>
+    <string name="panic_root_required">تتطلب ميزة الذعر صلاحية root — Shizuku غير مدعوم لهذه الميزة.</string>
+    <string name="panic_no_power_device">لم يتم العثور على جهاز إدخال زر التشغيل — قد لا يكون هذا الجهاز مدعومًا.</string>
+</resources>
