@@ -18,8 +18,8 @@ class RuleEditorViewModel(application: Application) : AndroidViewModel(applicati
 
     private val app get() = getApplication<FaApp>()
 
-    val configFlow: StateFlow<AppConfig> = app.configRepository.configFlow.stateIn(
-        viewModelScope, SharingStarted.WhileSubscribed(5_000), AppConfig(),
+    val configFlow: StateFlow<AppConfig?> = app.configRepository.configFlow.stateIn(
+        viewModelScope, SharingStarted.WhileSubscribed(5_000), null,
     )
 
     fun saveToggleRule(target: ToggleTarget, rule: ToggleRuleConfig) {

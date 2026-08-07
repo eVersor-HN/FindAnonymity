@@ -25,8 +25,15 @@ class ShizukuUserService : IUserService.Stub() {
     private fun runCommand(command: String): ShellResult {
         return try {
             val process = ProcessBuilder("sh", "-c", command).redirectErrorStream(false).start()
-            val stdout = process.inputStream.bufferedReader().readLines()
+            // Drain stdout/stderr on separate threads: reading them sequentially on this thread
+            // would deadlock if the process fills the OS pipe buffer on the stream read second.
+            var stdout: List<String> = emptyList()
+            val stdoutThread = Thread {
+                stdout = process.inputStream.bufferedReader().readLines()
+            }
+            stdoutThread.start()
             val stderr = process.errorStream.bufferedReader().readLines()
+            stdoutThread.join()
             val exitCode = process.waitFor()
             ShellResult(exitCode, stdout, stderr)
         } catch (e: Exception) {
