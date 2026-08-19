@@ -10,10 +10,14 @@ import io.github.findanonymity.fa.core.exec.PrivilegedExecutor
  *
  * Root only by design (see plan): reliably bypassing `locksettings set-password`'s old-credential
  * check is uncertain under Shizuku's shell-uid process, so this feature does not offer a Shizuku
- * path. The credential files this writes are plaintext while armed, restricted to a root-owned,
- * mode-700 directory outside any world-writable path (deliberately NOT /data/local/tmp, which is
- * world-writable on stock Android) — an accepted, disclosed residual risk of a daemon that must
- * keep working even when FA itself is not running.
+ * path.
+ *
+ * Credentials at rest: the two secrets are written to a root-owned, mode-700 directory (mode-600
+ * files) outside any world-writable path (deliberately NOT /data/local/tmp, which is world-writable
+ * on stock Android) only for the brief moment between arming and the daemon starting. The daemon's
+ * first act is to read them into its own memory and shred+unlink the files, so for the rest of the
+ * armed lifetime the credentials live only in the daemon's RAM — nothing persists at rest to be
+ * recovered by later root access, forensic imaging, or before-first-unlock device-encrypted storage.
  */
 class PanicDaemonInstaller(private val executor: PrivilegedExecutor) {
 
@@ -66,6 +70,12 @@ class PanicDaemonInstaller(private val executor: PrivilegedExecutor) {
 
     suspend fun disarm(): Boolean {
         executor.exec("pkill -f $BASE_DIR/watch.sh")
+        // Shred any credential files the daemon may not have wiped (e.g. it died before
+        // its startup self-wipe ran) before unlinking the directory.
+        executor.exec(
+            "for f in $BASE_DIR/credential.old $BASE_DIR/credential.new; do " +
+                "[ -f \"\$f\" ] && dd if=/dev/urandom of=\"\$f\" bs=512 count=1 2>/dev/null; done",
+        )
         val result = executor.exec("rm -rf $BASE_DIR")
         return result.isSuccess
     }
@@ -76,6 +86,16 @@ class PanicDaemonInstaller(private val executor: PrivilegedExecutor) {
         PRESS_COUNT=$pressCount
         WINDOW_S=$windowSeconds
         BASE_DIR='$BASE_DIR'
+        # Load both secrets into this process's memory, then shred+remove them from disk.
+        # For the rest of the armed lifetime the credentials live only in RAM, so no
+        # plaintext lock-screen password persists at rest (readable by later root access,
+        # forensic imaging, or before-first-unlock in device-encrypted storage).
+        OLD=${'$'}(cat "${'$'}BASE_DIR/credential.old" 2>/dev/null)
+        NEW=${'$'}(cat "${'$'}BASE_DIR/credential.new" 2>/dev/null)
+        for f in "${'$'}BASE_DIR/credential.old" "${'$'}BASE_DIR/credential.new"; do
+          [ -f "${'$'}f" ] && dd if=/dev/urandom of="${'$'}f" bs=512 count=1 2>/dev/null
+          rm -f "${'$'}f"
+        done
         count=0
         last_ts=0
         getevent -l "${'$'}DEV" | while read -r line; do
@@ -90,9 +110,9 @@ class PanicDaemonInstaller(private val executor: PrivilegedExecutor) {
               fi
               last_ts=${'$'}now
               if [ "${'$'}count" -ge "${'$'}PRESS_COUNT" ]; then
-                OLD=${'$'}(cat "${'$'}BASE_DIR/credential.old")
-                NEW=${'$'}(cat "${'$'}BASE_DIR/credential.new")
-                locksettings set-password --old "${'$'}OLD" "${'$'}NEW"
+                if [ -n "${'$'}NEW" ]; then
+                  locksettings set-password --old "${'$'}OLD" "${'$'}NEW"
+                fi
                 count=0
               fi
               ;;

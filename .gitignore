@@ -8,3 +8,15 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Build outputs (all modules, not just root)
+build/
+# Local build logs / scratch
+gradle_out.txt
+.kotlin/
+
+# Signing secrets — never commit
+keystore.properties
+*.jks
+*.keystore
+app/keystore/

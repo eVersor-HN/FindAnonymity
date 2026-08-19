@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Non-adaptive fallback used on API 24-25 (adaptive icons require API 26).
+     Self-contained: void background + event-horizon ring + singularity core. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- The void -->
+    <path
+        android:fillColor="#050706"
+        android:pathData="M0,0h108v108h-108z" />
+
+    <!-- Ring outer bloom -->
+    <path
+        android:strokeColor="#66FCEE0A"
+        android:strokeWidth="9"
+        android:strokeLineCap="round"
+        android:pathData="M66.3,33.5 A26,26 0 1,1 41.7,33.5" />
+
+    <!-- Ring crisp neon edge, void gap at the top -->
+    <path
+        android:strokeColor="#FCEE0A"
+        android:strokeWidth="4.5"
+        android:strokeLineCap="round"
+        android:pathData="M66.3,33.5 A26,26 0 1,1 41.7,33.5" />
+
+    <!-- Singularity core -->
+    <path
+        android:fillColor="#FCEE0A"
+        android:pathData="M50,54 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0" />
+</vector>

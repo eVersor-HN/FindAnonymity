@@ -8,7 +8,6 @@ import androidx.datastore.preferences.preferencesDataStore
 import io.github.findanonymity.fa.data.model.AppConfig
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
 
 private val Context.dataStore by preferencesDataStore(name = "fa_config")
@@ -38,7 +37,9 @@ class AppConfigRepository(private val context: Context) {
         if (raw == null) return AppConfig()
         return try {
             json.decodeFromString(AppConfig.serializer(), raw)
-        } catch (e: SerializationException) {
+        } catch (e: Exception) {
+            // SerializationException on schema drift, IllegalArgumentException on malformed JSON:
+            // either way fall back to defaults rather than crashing the service/UI on read.
             AppConfig()
         }
     }

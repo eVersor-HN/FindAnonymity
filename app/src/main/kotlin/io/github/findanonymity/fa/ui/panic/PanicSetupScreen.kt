@@ -10,7 +10,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -39,8 +39,8 @@ import io.github.findanonymity.fa.R
 import io.github.findanonymity.fa.core.exec.BackendState
 import io.github.findanonymity.fa.panic.PanicDaemonInstaller
 import io.github.findanonymity.fa.ui.components.TerminalCard
-import io.github.findanonymity.fa.ui.theme.PhosphorGreen
-import io.github.findanonymity.fa.ui.theme.TerminalRed
+import io.github.findanonymity.fa.ui.theme.CorpoYellow
+import io.github.findanonymity.fa.ui.theme.CorpoRed
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -68,7 +68,7 @@ fun PanicSetupScreen(onBack: () -> Unit, viewModel: PanicViewModel = viewModel()
                 title = { Text(stringResource(R.string.panic_setup_title)) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Icon(Icons.Filled.ArrowBack, contentDescription = stringResource(R.string.common_back))
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.common_back))
                     }
                 },
             )
@@ -86,7 +86,7 @@ fun PanicSetupScreen(onBack: () -> Unit, viewModel: PanicViewModel = viewModel()
                 Text(
                     stringResource(R.string.panic_warning_title),
                     style = MaterialTheme.typography.titleSmall,
-                    color = TerminalRed,
+                    color = CorpoRed,
                 )
                 Text(
                     stringResource(R.string.panic_warning_body),
@@ -101,11 +101,11 @@ fun PanicSetupScreen(onBack: () -> Unit, viewModel: PanicViewModel = viewModel()
                         Text(
                             stringResource(R.string.panic_status_armed),
                             style = MaterialTheme.typography.titleMedium,
-                            color = TerminalRed,
+                            color = CorpoRed,
                         )
                         Button(
                             onClick = { viewModel.disarm() },
-                            colors = ButtonDefaults.buttonColors(containerColor = TerminalRed),
+                            colors = ButtonDefaults.buttonColors(containerColor = CorpoRed),
                             modifier = Modifier.padding(top = 8.dp),
                         ) {
                             Text(stringResource(R.string.panic_disarm))
@@ -187,7 +187,7 @@ fun PanicSetupScreen(onBack: () -> Unit, viewModel: PanicViewModel = viewModel()
                             Text(
                                 stringResource(R.string.panic_next_password_title),
                                 style = MaterialTheme.typography.titleSmall,
-                                color = PhosphorGreen,
+                                color = CorpoYellow,
                             )
                             SelectionContainer {
                                 Text(
@@ -215,7 +215,7 @@ fun PanicSetupScreen(onBack: () -> Unit, viewModel: PanicViewModel = viewModel()
                             Button(
                                 onClick = { viewModel.confirmBackupAndArm() },
                                 enabled = confirmText == "CONFIRM" && currentCredential.isNotEmpty(),
-                                colors = ButtonDefaults.buttonColors(containerColor = TerminalRed),
+                                colors = ButtonDefaults.buttonColors(containerColor = CorpoRed),
                                 modifier = Modifier.padding(top = 8.dp),
                             ) {
                                 Text(stringResource(R.string.panic_arm))
@@ -225,12 +225,12 @@ fun PanicSetupScreen(onBack: () -> Unit, viewModel: PanicViewModel = viewModel()
 
                     when (val result = armResult) {
                         is PanicDaemonInstaller.ArmResult.CommandFailed -> {
-                            Text(result.message, color = TerminalRed, style = MaterialTheme.typography.bodySmall)
+                            Text(result.message, color = CorpoRed, style = MaterialTheme.typography.bodySmall)
                         }
                         PanicDaemonInstaller.ArmResult.NoPowerKeyDeviceFound -> {
                             Text(
                                 stringResource(R.string.panic_no_power_device),
-                                color = TerminalRed,
+                                color = CorpoRed,
                                 style = MaterialTheme.typography.bodySmall,
                             )
                         }

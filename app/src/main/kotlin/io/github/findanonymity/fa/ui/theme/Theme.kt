@@ -1,5 +1,6 @@
 package io.github.findanonymity.fa.ui.theme
 
+import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Shapes
@@ -7,38 +8,41 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 
-private val TerminalColorScheme = darkColorScheme(
-    primary = PhosphorGreen,
-    onPrimary = TerminalBackground,
-    secondary = TerminalCyan,
-    onSecondary = TerminalBackground,
-    tertiary = TerminalAmber,
-    error = TerminalRed,
-    onError = TerminalBackground,
-    background = TerminalBackground,
-    onBackground = TextPrimary,
-    surface = TerminalSurface,
-    onSurface = TextPrimary,
-    surfaceVariant = TerminalSurfaceRaised,
-    onSurfaceVariant = TextSecondary,
-    outline = TerminalBorder,
+private val CorpoColorScheme = darkColorScheme(
+    primary = CorpoYellow,
+    onPrimary = CorpoVoid,
+    secondary = CorpoCyan,
+    onSecondary = CorpoVoid,
+    tertiary = CorpoAmber,
+    onTertiary = CorpoVoid,
+    error = CorpoRed,
+    onError = CorpoVoid,
+    background = CorpoVoid,
+    onBackground = CorpoTextPrimary,
+    surface = CorpoSurface,
+    onSurface = CorpoTextPrimary,
+    surfaceVariant = CorpoSurfaceRaised,
+    onSurfaceVariant = CorpoTextSecondary,
+    outline = CorpoSteel,
+    outlineVariant = CorpoSteel,
 )
 
-// Sharp, near-rectangular corners — a restrained terminal look, not a rounded consumer-app one.
-private val TerminalShapes = Shapes(
-    extraSmall = RoundedCornerShape(2.dp),
-    small = RoundedCornerShape(2.dp),
-    medium = RoundedCornerShape(4.dp),
-    large = RoundedCornerShape(4.dp),
-    extraLarge = RoundedCornerShape(6.dp),
+// Corpo-cyberpunk geometry: hard rectangular edges, with a single chamfered corner on
+// larger surfaces (the clipped-corner motif of corporate HUD panels).
+private val CorpoShapes = Shapes(
+    extraSmall = RoundedCornerShape(0.dp),
+    small = RoundedCornerShape(0.dp),
+    medium = CutCornerShape(topEnd = 10.dp),
+    large = CutCornerShape(topEnd = 14.dp),
+    extraLarge = CutCornerShape(topEnd = 18.dp),
 )
 
 @Composable
 fun FaTheme(content: @Composable () -> Unit) {
     MaterialTheme(
-        colorScheme = TerminalColorScheme,
-        typography = TerminalTypography,
-        shapes = TerminalShapes,
+        colorScheme = CorpoColorScheme,
+        typography = CorpoTypography,
+        shapes = CorpoShapes,
         content = content,
     )
 }

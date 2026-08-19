@@ -65,6 +65,9 @@ class PanicViewModel(application: Application) : AndroidViewModel(application) {
                         backupConfirmedAtEpochMillis = System.currentTimeMillis(),
                     )
                 }
+                // The daemon now holds both secrets in RAM; drop the app's own copies so the
+                // real lock-screen password no longer lives in any at-rest store while armed.
+                credentialStore.clear()
                 _pendingPassword.value = null
             }
         }
