@@ -36,4 +36,9 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     fun refreshBackendState() {
         viewModelScope.launch { app.executorManager.refreshState() }
     }
+
+    /** Triggers Shizuku's own "connect / grant permission" dialog (the Canta-style flow). */
+    fun connectShizuku() {
+        viewModelScope.launch { app.executorManager.requestShizukuPermission() }
+    }
 }

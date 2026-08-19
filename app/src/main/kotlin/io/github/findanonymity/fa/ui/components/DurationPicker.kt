@@ -2,9 +2,9 @@ package io.github.findanonymity.fa.ui.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -39,7 +39,7 @@ fun DurationPicker(
     var expanded by remember { mutableStateOf(false) }
 
     Column(modifier = modifier) {
-        Row {
+        Row(modifier = Modifier.fillMaxWidth()) {
             OutlinedTextField(
                 value = textValue,
                 onValueChange = { input ->
@@ -52,13 +52,13 @@ fun DurationPicker(
                 label = { Text(label) },
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                modifier = Modifier.widthIn(min = 90.dp),
+                modifier = Modifier.weight(1f),
             )
             Spacer(modifier = Modifier.width(8.dp))
             ExposedDropdownMenuBox(
                 expanded = expanded,
                 onExpandedChange = { expanded = it },
-                modifier = Modifier.widthIn(min = 130.dp),
+                modifier = Modifier.weight(1.25f),
             ) {
                 OutlinedTextField(
                     value = stringResource(value.unit.labelRes),
@@ -66,7 +66,7 @@ fun DurationPicker(
                     readOnly = true,
                     label = { Text(stringResource(R.string.duration_picker_unit_label)) },
                     trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
-                    modifier = Modifier.menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable),
+                    modifier = Modifier.fillMaxWidth().menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable),
                 )
                 ExposedDropdownMenu(
                     expanded = expanded,

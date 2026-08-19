@@ -1,6 +1,8 @@
 package io.github.findanonymity.fa
 
 import android.app.Application
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import io.github.findanonymity.fa.core.exec.PrivilegedExecutorManager
 import io.github.findanonymity.fa.data.AppConfigRepository
 import kotlinx.coroutines.CoroutineScope
@@ -20,6 +22,13 @@ class FaApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        // Default the app to English until the user explicitly picks a language in Settings,
+        // rather than following the system locale.
+        if (AppCompatDelegate.getApplicationLocales().isEmpty) {
+            AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("en"))
+        }
+
         configRepository = AppConfigRepository(this)
         executorManager = PrivilegedExecutorManager(this)
 

@@ -35,6 +35,12 @@ object NotificationHelper {
             context, 0, openAppIntent,
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT,
         )
+        val stopIntent = Intent(context, NotificationActionReceiver::class.java)
+            .setAction(NotificationActionReceiver.ACTION_STOP)
+        val stopPendingIntent = PendingIntent.getBroadcast(
+            context, 1, stopIntent,
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT,
+        )
         return NotificationCompat.Builder(context, CHANNEL_ID)
             .setContentTitle(context.getString(R.string.notification_title))
             .setContentText(statusText)
@@ -43,6 +49,7 @@ object NotificationHelper {
             .setOngoing(true)
             .setContentIntent(pendingIntent)
             .setPriority(NotificationCompat.PRIORITY_LOW)
+            .addAction(R.drawable.ic_notification, context.getString(R.string.notification_stop), stopPendingIntent)
             .build()
     }
 }

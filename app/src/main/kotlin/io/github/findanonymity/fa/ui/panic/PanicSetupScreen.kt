@@ -11,6 +11,7 @@ import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -20,6 +21,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -38,6 +40,7 @@ import io.github.findanonymity.fa.FaApp
 import io.github.findanonymity.fa.R
 import io.github.findanonymity.fa.core.exec.BackendState
 import io.github.findanonymity.fa.panic.PanicDaemonInstaller
+import io.github.findanonymity.fa.ui.components.FormContainer
 import io.github.findanonymity.fa.ui.components.TerminalCard
 import io.github.findanonymity.fa.ui.theme.CorpoAmber
 import io.github.findanonymity.fa.ui.theme.CorpoYellow
@@ -64,6 +67,38 @@ fun PanicSetupScreen(onBack: () -> Unit, viewModel: PanicViewModel = viewModel()
     var pressCount by remember { mutableStateOf(panic.pressCount.toString()) }
     var windowSeconds by remember { mutableStateOf((panic.windowMillis / 1000).toString()) }
     var confirmText by remember { mutableStateOf("") }
+    var showArmDialog by remember { mutableStateOf(false) }
+
+    if (showArmDialog) {
+        AlertDialog(
+            onDismissRequest = { showArmDialog = false },
+            title = { Text(stringResource(R.string.panic_arm_dialog_title), color = CorpoRed) },
+            text = {
+                Text(
+                    stringResource(
+                        R.string.panic_arm_dialog_body,
+                        passwordLength.toIntOrNull() ?: panic.passwordLength,
+                        pressCount.toIntOrNull() ?: panic.pressCount,
+                        windowSeconds.toIntOrNull() ?: (panic.windowMillis / 1000).toInt(),
+                    ),
+                    style = MaterialTheme.typography.bodySmall,
+                )
+            },
+            confirmButton = {
+                TextButton(onClick = {
+                    showArmDialog = false
+                    viewModel.confirmBackupAndArm()
+                }) {
+                    Text(stringResource(R.string.panic_arm), color = CorpoRed)
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showArmDialog = false }) {
+                    Text(stringResource(R.string.panic_dialog_cancel))
+                }
+            },
+        )
+    }
 
     Scaffold(
         topBar = {
@@ -77,14 +112,7 @@ fun PanicSetupScreen(onBack: () -> Unit, viewModel: PanicViewModel = viewModel()
             )
         },
     ) { padding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .padding(16.dp)
-                .verticalScroll(rememberScrollState()),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-        ) {
+        FormContainer(scaffoldPadding = padding) {
             TerminalCard(modifier = Modifier.fillMaxWidth()) {
                 Text(
                     stringResource(R.string.panic_warning_title),
@@ -231,7 +259,7 @@ fun PanicSetupScreen(onBack: () -> Unit, viewModel: PanicViewModel = viewModel()
                                     .padding(top = 8.dp),
                             )
                             Button(
-                                onClick = { viewModel.confirmBackupAndArm() },
+                                onClick = { showArmDialog = true },
                                 enabled = confirmText == "CONFIRM" && currentCredential.isNotEmpty(),
                                 colors = ButtonDefaults.buttonColors(containerColor = CorpoRed),
                                 modifier = Modifier.padding(top = 8.dp),

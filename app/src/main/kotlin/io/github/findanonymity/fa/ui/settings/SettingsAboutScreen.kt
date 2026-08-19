@@ -1,5 +1,8 @@
 package io.github.findanonymity.fa.ui.settings
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -41,7 +44,21 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import io.github.findanonymity.fa.FaApp
 import io.github.findanonymity.fa.R
 import io.github.findanonymity.fa.data.model.BackendPreference
+import io.github.findanonymity.fa.ui.components.FormContainer
 import io.github.findanonymity.fa.ui.components.TerminalCard
+import io.github.findanonymity.fa.ui.theme.CorpoYellow
+
+private const val GITHUB_URL = "https://github.com/eVersor-HN/FindAnonymity"
+private const val RELEASES_URL = "https://github.com/eVersor-HN/FindAnonymity/releases/latest"
+private const val KOFI_URL = "https://ko-fi.com/eversorhn"
+
+private fun openUrl(context: Context, url: String) {
+    runCatching {
+        context.startActivity(
+            Intent(Intent.ACTION_VIEW, Uri.parse(url)).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
+        )
+    }
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -49,6 +66,7 @@ fun SettingsAboutScreen(
     onBack: () -> Unit,
     onOpenFaq: () -> Unit,
     onReplayOnboarding: () -> Unit,
+    onOpenPermissions: () -> Unit,
     viewModel: SettingsViewModel = viewModel(),
 ) {
     val context = LocalContext.current
@@ -72,14 +90,7 @@ fun SettingsAboutScreen(
             )
         },
     ) { padding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .padding(16.dp)
-                .verticalScroll(rememberScrollState()),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-        ) {
+        FormContainer(scaffoldPadding = padding) {
             TerminalCard(modifier = Modifier.fillMaxWidth()) {
                 Text(stringResource(R.string.settings_language), style = MaterialTheme.typography.titleSmall)
                 ExposedDropdownMenuBox(
@@ -139,27 +150,64 @@ fun SettingsAboutScreen(
                 Button(onClick = onOpenFaq, modifier = Modifier.fillMaxWidth()) {
                     Text(stringResource(R.string.settings_help_faq))
                 }
+                Button(onClick = onOpenPermissions, modifier = Modifier.fillMaxWidth().padding(top = 8.dp)) {
+                    Text(stringResource(R.string.settings_permissions))
+                }
                 Button(onClick = onReplayOnboarding, modifier = Modifier.fillMaxWidth().padding(top = 8.dp)) {
                     Text(stringResource(R.string.settings_onboarding_replay))
                 }
             }
 
             TerminalCard(modifier = Modifier.fillMaxWidth()) {
-                Text(stringResource(R.string.settings_about_section), style = MaterialTheme.typography.titleSmall)
+                Text(stringResource(R.string.settings_updates_section), style = MaterialTheme.typography.titleSmall)
                 Text(
                     "${stringResource(R.string.settings_version)}: ${io.github.findanonymity.fa.BuildConfig.VERSION_NAME}",
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.padding(top = 4.dp),
                 )
                 Text(
+                    stringResource(R.string.settings_update_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.padding(top = 4.dp),
+                )
+                Button(
+                    onClick = { openUrl(context, RELEASES_URL) },
+                    modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                ) {
+                    Text(stringResource(R.string.settings_check_updates))
+                }
+            }
+
+            TerminalCard(modifier = Modifier.fillMaxWidth()) {
+                Text(stringResource(R.string.settings_about_section), style = MaterialTheme.typography.titleSmall)
+                Text(
+                    stringResource(R.string.settings_about_author),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = CorpoYellow,
+                    modifier = Modifier.padding(top = 4.dp),
+                )
+                Text(
                     "${stringResource(R.string.settings_license)}: GPLv3",
                     style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.padding(top = 4.dp),
                 )
                 Text(
                     stringResource(R.string.settings_no_internet_note),
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.padding(top = 8.dp),
                 )
+                Button(
+                    onClick = { openUrl(context, GITHUB_URL) },
+                    modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                ) {
+                    Text(stringResource(R.string.settings_github))
+                }
+                Button(
+                    onClick = { openUrl(context, KOFI_URL) },
+                    modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                ) {
+                    Text(stringResource(R.string.settings_support))
+                }
             }
         }
     }

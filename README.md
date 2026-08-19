@@ -1,10 +1,19 @@
 # FA — Find Anonymity
 
-> Scheduled connectivity control, timed reboots, and a duress panic-lock for Android — driven over a privileged backend (root **or** Shizuku). Offline, no account, no telemetry.
+> Periodically break the continuous trail of where your phone has been — on your own schedule,
+> only when you want — and save battery while you're at it. Android, offline, no account, no telemetry.
 
-FA is a privacy / anti-surveillance automation tool. It runs a foreground service that
-enforces your rules against wall-clock time (anchor-based, so Doze slack never compounds)
-and shows a live status countdown in its notification.
+**Support development:** [Ko-fi](https://ko-fi.com/eversorhn) · [PayPal](https://paypal.me/FAMarco) · Bitcoin `bc1qv92c3eyeqvhgfnez7spfd7v2aytkhpshsl65yv`
+
+FA is a scheduler for your phone's radios. On intervals you define, it switches **Wi-Fi**, **mobile
+data**, and **airplane mode** off and back on again, so your device stops emitting a gap-free,
+always-on record of your whereabouts. It is deliberately **selective and punctual** — you choose
+when and how often the gaps happen — and dropping the radios also **saves energy**. It can reboot
+your device on a timer too, and includes an optional root duress panic-lock.
+
+Under the hood it runs a foreground service that enforces your rules against wall-clock time
+(anchor-based, so Doze slack never compounds) and shows a live status countdown in its notification
+that you can stop from there.
 
 ## Features
 
@@ -38,12 +47,16 @@ FA needs a privileged backend to issue system commands. It supports two:
   OEM/Android version (test on a spare device first), and protection ends at reboot with no
   auto re‑arm. Use root for a panic‑lock you can rely on.
 
-Minimum **Android 7.0 (API 24)**; target Android 16 (API 36).
+Minimum **Android 12 (API 31)**; target Android 16 (API 36).
 
 ## Install
 
 Download the signed APK from the [latest release](../../releases/latest) and install it.
 Verify the download against the published `SHA-256` checksum first.
+
+**Updating:** FA has no auto-update (no network access by design). To update, download the newest
+signed APK from Releases and install it over the old one — same signing key, so it updates in place.
+The in-app **Settings → Updates** button opens the Releases page for you.
 
 ## Build from source
 
@@ -82,6 +95,14 @@ Then `./gradlew assembleRelease`. Without `keystore.properties` the release buil
 - FA makes **no network requests.** The only privileged actions are the documented shell
   commands it runs on your behalf.
 
+## Support
+
+FA is free and offline. If it's useful to you:
+
+- **Ko-fi:** https://ko-fi.com/eversorhn
+- **PayPal:** https://paypal.me/FAMarco
+- **Bitcoin:** `bc1qv92c3eyeqvhgfnez7spfd7v2aytkhpshsl65yv`
+
 ## License
 
-[GNU GPL v3.0](LICENSE) © eVersor‑HN.
+[GNU GPL v3.0](LICENSE) © Marco Aurelio Fattizzo (eVersor‑HN).

@@ -1,9 +1,14 @@
 package io.github.findanonymity.fa.ui
 
+import android.Manifest
 import android.content.Context
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.compose.setContent
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -46,8 +51,13 @@ private object Routes {
 }
 
 class MainActivity : AppCompatActivity() {
+
+    private val requestNotifPermission =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { /* result not needed */ }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        maybeRequestNotificationPermission()
         setContent {
             FaTheme {
                 val navController = rememberNavController()
@@ -90,6 +100,7 @@ class MainActivity : AppCompatActivity() {
                             onBack = { navController.popBackStack() },
                             onOpenFaq = { navController.navigate(Routes.FAQ) },
                             onReplayOnboarding = { navController.navigate(Routes.ONBOARDING) },
+                            onOpenPermissions = { navController.navigate(Routes.PERMISSIONS) },
                         )
                     }
                     composable(Routes.FAQ) {
@@ -100,6 +111,16 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+    }
+
+    /** On Android 13+ the ongoing status notification is only shown if this runtime permission is granted. */
+    private fun maybeRequestNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) !=
+            PackageManager.PERMISSION_GRANTED
+        ) {
+            requestNotifPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
         }
     }
 }

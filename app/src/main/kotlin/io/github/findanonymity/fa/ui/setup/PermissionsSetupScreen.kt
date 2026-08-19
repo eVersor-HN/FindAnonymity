@@ -32,6 +32,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import io.github.findanonymity.fa.FaApp
 import io.github.findanonymity.fa.R
 import io.github.findanonymity.fa.core.exec.BackendState
+import io.github.findanonymity.fa.ui.components.FormContainer
 import io.github.findanonymity.fa.ui.components.TerminalCard
 import io.github.findanonymity.fa.ui.theme.CorpoYellow
 import io.github.findanonymity.fa.ui.theme.CorpoAmber
@@ -57,14 +58,7 @@ fun PermissionsSetupScreen(onBack: () -> Unit) {
             )
         },
     ) { padding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .padding(16.dp)
-                .verticalScroll(rememberScrollState()),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-        ) {
+        FormContainer(scaffoldPadding = padding) {
             TerminalCard(modifier = Modifier.fillMaxWidth()) {
                 Text(stringResource(R.string.permissions_root_title), style = MaterialTheme.typography.titleSmall)
                 Text(

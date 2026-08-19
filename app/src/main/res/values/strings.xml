@@ -42,7 +42,17 @@
     <string name="home_no_backend_title">No privileged access</string>
     <string name="home_no_backend_body">Neither root nor Shizuku available — rules cannot run.</string>
     <string name="home_no_backend_button">Set up</string>
+    <string name="home_backend_title">Backend</string>
+    <string name="home_backend_label">Status</string>
+    <string name="home_backend_root">Root connected</string>
+    <string name="home_backend_shizuku_ok">Shizuku connected</string>
+    <string name="home_backend_shizuku_perm">Shizuku found — tap Connect</string>
+    <string name="home_backend_none">No backend (root or Shizuku)</string>
+    <string name="home_backend_connect">Connect Shizuku</string>
+    <string name="home_backend_setup">Setup / help</string>
+    <string name="notification_stop">Stop</string>
     <string name="home_rules_title">Rules</string>
+    <string name="home_rules_hint">Tap a row to configure it</string>
     <string name="home_panic_title">Panic feature</string>
     <string name="home_panic_armed">ARMED</string>
     <string name="home_panic_disarmed">not armed</string>
@@ -106,10 +116,30 @@
     <string name="settings_help_faq">Help &amp; FAQ</string>
     <string name="settings_onboarding_replay">Show onboarding again</string>
     <string name="settings_no_internet_note">FA never requests internet access — everything runs fully offline, on-device.</string>
+    <string name="settings_permissions">Permissions &amp; setup</string>
+    <string name="settings_updates_section">Updates</string>
+    <string name="settings_update_hint">FA has no auto-update. Download the newest signed APK from GitHub and install it over this one (same signature) to update.</string>
+    <string name="settings_check_updates">Get the latest version (GitHub)</string>
+    <string name="settings_about_author">Made by Marco Aurelio Fattizzo (eVersor-HN)</string>
+    <string name="settings_github">GitHub / source code</string>
+    <string name="settings_support">Support development (Ko-fi)</string>
+    <string name="faq_tutorial_title">Getting started</string>
+    <string name="faq_step1_title">1 · Get a backend</string>
+    <string name="faq_step1_body">FA needs a privileged backend to change system settings. If your phone is rooted, that works. No root? Install the free \"Shizuku\" app from the Play Store or GitHub.</string>
+    <string name="faq_step2_title">2 · Start Shizuku</string>
+    <string name="faq_step2_body">Open Shizuku and start it — on Android 11+ via Wireless Debugging, otherwise via a PC/ADB. It must show \"running\".</string>
+    <string name="faq_step3_title">3 · Connect FA</string>
+    <string name="faq_step3_body">Open FA. On the Backend card tap \"Connect Shizuku\" and allow the permission. The card should then read \"Shizuku connected\".</string>
+    <string name="faq_step4_title">4 · Create a rule</string>
+    <string name="faq_step4_body">Tap a rule such as Wi-Fi, choose \"Cycle\", set how long it stays on and the full cycle length (e.g. on 1 min, cycle 3 min = 2 min off), then Save.</string>
+    <string name="faq_step5_title">5 · Turn on Automation</string>
+    <string name="faq_step5_body">Flip the Automation switch on the home screen. A notification then shows a live countdown of what changes when — you can stop everything from there.</string>
+    <string name="faq_step6_title">6 · Optional: Panic-lock</string>
+    <string name="faq_step6_body">Root only. It rotates your lock-screen password on rapid power-button presses. Read every warning first and back up the new password outside the phone.</string>
 
     <!-- Onboarding -->
     <string name="onboarding_step1_title">What FA does</string>
-    <string name="onboarding_step1_body">FA turns Wi-Fi, mobile data, and airplane mode on and off on a schedule you define — from seconds to years — and can reboot your device on an interval. Everything runs locally; FA never connects to the internet.</string>
+    <string name="onboarding_step1_body">On a schedule you define — from seconds to years — FA periodically switches Wi-Fi, mobile data, and airplane mode off and back on, so your phone stops leaving a continuous, gap-free trail of where you are. Only in the intervals you choose, whenever you want. It also saves battery and can reboot the device on a timer. Everything runs locally; FA never connects to the internet.</string>
     <string name="onboarding_step2_title">Why privileged access is needed</string>
     <string name="onboarding_step2_body">Since Android 10, apps can no longer toggle Wi-Fi or mobile data directly, and rebooting needs elevated access too. FA needs either Shizuku (no root, paired once via Wireless Debugging) or root access to run these system commands.</string>
     <string name="onboarding_step3_title">Setting up Shizuku or Root</string>
@@ -126,7 +156,7 @@
     <!-- FAQ -->
     <string name="faq_title">Help &amp; FAQ</string>
     <string name="faq_q1">What does FA actually do?</string>
-    <string name="faq_a1">It automatically switches Wi-Fi, mobile data, and airplane mode on/off on a schedule you set, and can reboot your device periodically. Fully offline, no account, no tracking.</string>
+    <string name="faq_a1">On a schedule you set, it periodically drops your connectivity (Wi-Fi / mobile data / airplane mode) and brings it back — so you are not continuously trackable without pause, and you save battery. It can also reboot the device periodically. Fully offline, no account, no tracking.</string>
     <string name="faq_q2">Why does it need Root or Shizuku?</string>
     <string name="faq_a2">Android has blocked regular apps from toggling Wi-Fi/mobile data since Android 10, and device reboot always requires elevated access. Root or Shizuku (a no-root, ADB-based permission bridge) are the only ways to run these system commands.</string>
     <string name="faq_q3">What\'s the difference between Root and Shizuku?</string>
@@ -168,4 +198,7 @@
     <string name="panic_shizuku_experimental_title">⚠ Shizuku mode is experimental</string>
     <string name="panic_shizuku_experimental_body">Without root the panic-lock runs over Shizuku, with weaker guarantees: (1) changing the lock-screen password from Shizuku is not guaranteed on every Android/OEM version — test it on a spare device before relying on it; (2) protection ENDS at reboot and does not re-arm automatically, because Shizuku is not running that early. For dependable protection, use root.</string>
     <string name="panic_no_power_device">Power key input device not found — this device may not be supported.</string>
+    <string name="panic_arm_dialog_title">⚠ Arm panic-lock?</string>
+    <string name="panic_arm_dialog_body">Read this before you arm:\n\n• When triggered, a %1$d-character fully random password becomes your lock-screen password.\n• Trigger = pressing the power button %2$d times within %3$d seconds.\n• You MUST have saved that password somewhere outside this phone. If you lose it, you can be permanently locked out — possibly with data loss.\n• After a trigger, the screen unlocks only with the new password.\n• Backend: root is reliable; Shizuku is experimental and may not work on every device.\n\nOnly arm if you understand and accept this risk.</string>
+    <string name="panic_dialog_cancel">Cancel</string>
 </resources>

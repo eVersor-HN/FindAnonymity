@@ -42,7 +42,17 @@
     <string name="home_no_backend_title">Kein privilegierter Zugriff</string>
     <string name="home_no_backend_body">Weder Root noch Shizuku verfügbar — Regeln können nicht ausgeführt werden.</string>
     <string name="home_no_backend_button">Einrichten</string>
+    <string name="home_backend_title">Backend</string>
+    <string name="home_backend_label">Status</string>
+    <string name="home_backend_root">Root verbunden</string>
+    <string name="home_backend_shizuku_ok">Shizuku verbunden</string>
+    <string name="home_backend_shizuku_perm">Shizuku gefunden — auf Verbinden tippen</string>
+    <string name="home_backend_none">Kein Backend (Root oder Shizuku)</string>
+    <string name="home_backend_connect">Mit Shizuku verbinden</string>
+    <string name="home_backend_setup">Einrichten / Hilfe</string>
+    <string name="notification_stop">Stopp</string>
     <string name="home_rules_title">Regeln</string>
+    <string name="home_rules_hint">Zum Einstellen auf eine Zeile tippen</string>
     <string name="home_panic_title">Notfallfunktion</string>
     <string name="home_panic_armed">AKTIVIERT</string>
     <string name="home_panic_disarmed">nicht aktiviert</string>
@@ -106,10 +116,30 @@
     <string name="settings_help_faq">Hilfe &amp; FAQ</string>
     <string name="settings_onboarding_replay">Einführung erneut anzeigen</string>
     <string name="settings_no_internet_note">FA fordert niemals Internetzugriff an — alles läuft vollständig offline, auf dem Gerät.</string>
+    <string name="settings_permissions">Berechtigungen &amp; Einrichtung</string>
+    <string name="settings_updates_section">Updates</string>
+    <string name="settings_update_hint">FA hat kein Auto-Update. Lade die neueste signierte APK von GitHub und installiere sie über diese (gleiche Signatur), um zu aktualisieren.</string>
+    <string name="settings_check_updates">Neueste Version holen (GitHub)</string>
+    <string name="settings_about_author">Von Marco Aurelio Fattizzo (eVersor-HN)</string>
+    <string name="settings_github">GitHub / Quellcode</string>
+    <string name="settings_support">Entwicklung unterstützen (Ko-fi)</string>
+    <string name="faq_tutorial_title">Erste Schritte</string>
+    <string name="faq_step1_title">1 · Backend besorgen</string>
+    <string name="faq_step1_body">FA braucht ein privilegiertes Backend, um Systemeinstellungen zu ändern. Ist dein Handy gerootet, passt das. Kein Root? Installiere die kostenlose App \"Shizuku\" aus dem Play Store oder von GitHub.</string>
+    <string name="faq_step2_title">2 · Shizuku starten</string>
+    <string name="faq_step2_body">Öffne Shizuku und starte es — ab Android 11 über Wireless Debugging, sonst per PC/ADB. Es muss \"läuft\" anzeigen.</string>
+    <string name="faq_step3_title">3 · FA verbinden</string>
+    <string name="faq_step3_body">Öffne FA. Tippe auf der Backend-Karte auf \"Mit Shizuku verbinden\" und erlaube die Berechtigung. Danach sollte dort \"Shizuku verbunden\" stehen.</string>
+    <string name="faq_step4_title">4 · Regel anlegen</string>
+    <string name="faq_step4_body">Tippe z. B. auf Wi-Fi, wähle \"Cycle\", stelle ein, wie lange es an bleibt und die volle Zykluslänge (z. B. 1 min an, Zyklus 3 min = 2 min aus), dann Speichern.</string>
+    <string name="faq_step5_title">5 · Automatisierung einschalten</string>
+    <string name="faq_step5_body">Lege den Automatisierungs-Schalter auf dem Startbildschirm um. Eine Benachrichtigung zeigt dann live, was wann umschaltet — von dort kannst du alles stoppen.</string>
+    <string name="faq_step6_title">6 · Optional: Panic-Lock</string>
+    <string name="faq_step6_body">Nur mit Root. Er ändert bei schnellem Drücken der Ein-/Aus-Taste dein Sperrbildschirm-Passwort. Lies zuerst alle Warnungen und sichere das neue Passwort außerhalb des Handys.</string>
 
     <!-- Einführung -->
     <string name="onboarding_step1_title">Was FA macht</string>
-    <string name="onboarding_step1_body">FA schaltet Wi-Fi, mobile Daten und den Flugmodus nach einem von dir festgelegten Zeitplan ein und aus — von Sekunden bis Jahren — und kann dein Gerät in bestimmten Abständen neu starten. Alles läuft lokal; FA verbindet sich nie mit dem Internet.</string>
+    <string name="onboarding_step1_body">Nach einem von dir festgelegten Zeitplan — von Sekunden bis Jahren — schaltet FA Wi-Fi, mobile Daten und den Flugmodus punktuell aus und wieder ein, damit dein Handy keine lückenlose, durchgehende Spur deines Aufenthaltsorts hinterlässt. Nur in den Intervallen, die du wählst, wann immer du willst. Das spart auch Akku und kann das Gerät zeitgesteuert neu starten. Alles läuft lokal; FA verbindet sich nie mit dem Internet.</string>
     <string name="onboarding_step2_title">Warum privilegierter Zugriff nötig ist</string>
     <string name="onboarding_step2_body">Seit Android 10 können Apps Wi-Fi oder mobile Daten nicht mehr direkt umschalten, und auch ein Neustart benötigt erweiterte Rechte. FA braucht entweder Shizuku (kein Root, einmalig über Drahtlos-Debugging gekoppelt) oder Root-Zugriff, um diese Systembefehle auszuführen.</string>
     <string name="onboarding_step3_title">Shizuku oder Root einrichten</string>
@@ -126,7 +156,7 @@
     <!-- FAQ -->
     <string name="faq_title">Hilfe &amp; FAQ</string>
     <string name="faq_q1">Was macht FA eigentlich?</string>
-    <string name="faq_a1">Es schaltet Wi-Fi, mobile Daten und den Flugmodus automatisch nach einem von dir festgelegten Zeitplan ein/aus und kann dein Gerät regelmäßig neu starten. Vollständig offline, kein Konto, kein Tracking.</string>
+    <string name="faq_a1">Nach einem von dir festgelegten Zeitplan unterbricht es punktuell deine Verbindung (Wi-Fi / mobile Daten / Flugmodus) und stellt sie wieder her — damit du nicht durchgehend ohne Pause verfolgbar bist und Akku sparst. Es kann das Gerät auch regelmäßig neu starten. Vollständig offline, kein Konto, kein Tracking.</string>
     <string name="faq_q2">Warum braucht es Root oder Shizuku?</string>
     <string name="faq_a2">Android blockiert seit Android 10 normale Apps daran, Wi-Fi/mobile Daten umzuschalten, und ein Geräteneustart erfordert immer erweiterte Rechte. Root oder Shizuku (eine Root-freie, ADB-basierte Berechtigungsbrücke) sind die einzigen Möglichkeiten, diese Systembefehle auszuführen.</string>
     <string name="faq_q3">Was ist der Unterschied zwischen Root und Shizuku?</string>
@@ -168,4 +198,7 @@
     <string name="panic_shizuku_experimental_title">⚠ Shizuku-Modus ist experimentell</string>
     <string name="panic_shizuku_experimental_body">Ohne Root läuft der Panic-Lock über Shizuku, mit schwächeren Garantien: (1) Das Ändern des Sperrbildschirm-Passworts aus Shizuku funktioniert nicht auf jeder Android-/OEM-Version — teste es auf einem Ersatzgerät, bevor du dich darauf verlässt; (2) der Schutz ENDET beim Neustart und wird nicht automatisch wieder scharfgeschaltet, weil Shizuku zu diesem Zeitpunkt nicht läuft. Für zuverlässigen Schutz nutze Root.</string>
     <string name="panic_no_power_device">Eingabegerät für den Netzschalter nicht gefunden — dieses Gerät wird möglicherweise nicht unterstützt.</string>
+    <string name="panic_arm_dialog_title">⚠ Panic-Lock scharfschalten?</string>
+    <string name="panic_arm_dialog_body">Lies das, bevor du scharfschaltest:\n\n• Bei Auslösung wird ein %1$d Zeichen langes, vollständig zufälliges Passwort dein Sperrbildschirm-Passwort.\n• Auslöser = %2$d× die Ein-/Aus-Taste innerhalb von %3$d Sekunden drücken.\n• Du MUSST dieses Passwort außerhalb dieses Handys gesichert haben. Verlierst du es, kannst du dauerhaft ausgesperrt werden — evtl. mit Datenverlust.\n• Nach dem Auslösen lässt sich der Bildschirm nur mit dem neuen Passwort entsperren.\n• Backend: Root ist zuverlässig; Shizuku ist experimentell und funktioniert evtl. nicht auf jedem Gerät.\n\nNur scharfschalten, wenn du dieses Risiko verstehst und akzeptierst.</string>
+    <string name="panic_dialog_cancel">Abbrechen</string>
 </resources>

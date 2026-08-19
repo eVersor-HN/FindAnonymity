@@ -1,6 +1,6 @@
 package io.github.findanonymity.fa.ui.home
 
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -8,16 +8,20 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.Button
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -41,6 +45,7 @@ import io.github.findanonymity.fa.data.model.ToggleTarget
 import io.github.findanonymity.fa.service.RuleScheduler
 import io.github.findanonymity.fa.ui.components.StatusRow
 import io.github.findanonymity.fa.ui.components.TerminalCard
+import io.github.findanonymity.fa.ui.theme.CorpoCyan
 import io.github.findanonymity.fa.ui.theme.CorpoYellow
 import io.github.findanonymity.fa.ui.theme.CorpoAmber
 import io.github.findanonymity.fa.ui.theme.CorpoRed
@@ -74,22 +79,28 @@ fun HomeScreen(
             )
         },
     ) { padding ->
-        LazyColumn(
+        LazyVerticalGrid(
+            columns = GridCells.Adaptive(minSize = 340.dp),
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding),
         ) {
-            item {
+            item(span = { GridItemSpan(maxLineSpan) }) {
                 MasterSwitchCard(
                     enabled = config.masterAutomationEnabled,
                     onToggle = viewModel::setMasterEnabled,
                 )
             }
 
-            if (backendState is BackendState.NoneAvailable) {
-                item { NoBackendBanner(onClick = onOpenPermissions) }
+            item(span = { GridItemSpan(maxLineSpan) }) {
+                BackendStatusCard(
+                    state = backendState,
+                    onConnectShizuku = viewModel::connectShizuku,
+                    onOpenSetup = onOpenPermissions,
+                )
             }
 
             item {
@@ -99,7 +110,13 @@ fun HomeScreen(
                         style = MaterialTheme.typography.titleSmall,
                         color = CorpoYellow,
                     )
-                    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                    Text(
+                        stringResource(R.string.home_rules_hint),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(top = 2.dp, bottom = 8.dp),
+                    )
+                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         listOf(
                             ToggleTarget.WIFI to config.wifiRule,
                             ToggleTarget.MOBILE_DATA to config.dataRule,
@@ -177,23 +194,46 @@ private fun MasterSwitchCard(enabled: Boolean, onToggle: (Boolean) -> Unit) {
 }
 
 @Composable
-private fun NoBackendBanner(onClick: () -> Unit) {
+private fun BackendStatusCard(
+    state: BackendState,
+    onConnectShizuku: () -> Unit,
+    onOpenSetup: () -> Unit,
+) {
+    val statusText: String
+    val accent: androidx.compose.ui.graphics.Color
+    val showConnect: Boolean
+    when (state) {
+        is BackendState.RootAvailable -> {
+            statusText = stringResource(R.string.home_backend_root); accent = CorpoCyan; showConnect = false
+        }
+        is BackendState.ShizukuAvailable -> {
+            statusText = stringResource(R.string.home_backend_shizuku_ok); accent = CorpoCyan; showConnect = false
+        }
+        is BackendState.ShizukuNeedsPermission -> {
+            statusText = stringResource(R.string.home_backend_shizuku_perm); accent = CorpoAmber; showConnect = true
+        }
+        is BackendState.NoneAvailable -> {
+            statusText = stringResource(R.string.home_backend_none); accent = CorpoAmber; showConnect = true
+        }
+    }
     TerminalCard(modifier = Modifier.fillMaxWidth()) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Icon(Icons.Filled.Warning, contentDescription = null, tint = CorpoAmber)
-            Column(modifier = Modifier.padding(start = 8.dp)) {
-                Text(
-                    stringResource(R.string.home_no_backend_title),
-                    color = CorpoAmber,
-                    style = MaterialTheme.typography.titleSmall,
-                )
-                Text(
-                    stringResource(R.string.home_no_backend_body),
-                    style = MaterialTheme.typography.bodySmall,
-                )
-                Button(onClick = onClick, modifier = Modifier.padding(top = 8.dp)) {
-                    Text(stringResource(R.string.home_no_backend_button))
+        Text(stringResource(R.string.home_backend_title), style = MaterialTheme.typography.titleSmall, color = CorpoYellow)
+        StatusRow(
+            label = stringResource(R.string.home_backend_label),
+            statusText = statusText,
+            accentColor = accent,
+        )
+        Row(
+            modifier = Modifier.padding(top = 8.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            if (showConnect) {
+                Button(onClick = onConnectShizuku) {
+                    Text(stringResource(R.string.home_backend_connect))
                 }
+            }
+            TextButton(onClick = onOpenSetup) {
+                Text(stringResource(R.string.home_backend_setup))
             }
         }
     }
@@ -218,14 +258,12 @@ private fun ToggleRuleRow(target: ToggleTarget, rule: ToggleRuleConfig, now: Lon
         phase?.shouldBeOn == true -> CorpoYellow
         else -> CorpoAmber
     }
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(onClick = onClick),
-        horizontalArrangement = Arrangement.SpaceBetween,
-    ) {
-        StatusRow(label = stringResource(target.labelRes), statusText = statusText, accentColor = color)
-    }
+    RuleRowSurface(
+        label = stringResource(target.labelRes),
+        statusText = statusText,
+        accent = color,
+        onClick = onClick,
+    )
 }
 
 @Composable
@@ -235,16 +273,46 @@ private fun RebootRuleRow(rule: RebootRuleConfig, now: Long, onClick: () -> Unit
     } else {
         stringResource(R.string.home_reboot_next, formatCountdown(RuleScheduler.millisUntilReboot(rule, now)))
     }
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(onClick = onClick),
+    RuleRowSurface(
+        label = stringResource(R.string.home_reboot_label),
+        statusText = statusText,
+        accent = if (rule.enabled) CorpoYellow else MaterialTheme.colorScheme.onSurfaceVariant,
+        onClick = onClick,
+    )
+}
+
+/**
+ * A clearly-tappable rule row: its own outlined surface with a ripple and a trailing chevron, so
+ * it reads as an interactive list item rather than plain status text.
+ */
+@Composable
+private fun RuleRowSurface(label: String, statusText: String, accent: androidx.compose.ui.graphics.Color, onClick: () -> Unit) {
+    Surface(
+        onClick = onClick,
+        shape = MaterialTheme.shapes.small,
+        color = MaterialTheme.colorScheme.surface,
+        border = BorderStroke(1.dp, accent.copy(alpha = 0.55f)),
+        modifier = Modifier.fillMaxWidth(),
     ) {
-        StatusRow(
-            label = stringResource(R.string.home_reboot_label),
-            statusText = statusText,
-            accentColor = if (rule.enabled) CorpoYellow else MaterialTheme.colorScheme.onSurfaceVariant,
-        )
+        Row(
+            modifier = Modifier.padding(horizontal = 12.dp, vertical = 12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(label, style = MaterialTheme.typography.titleSmall, color = accent)
+                Text(
+                    statusText,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    modifier = Modifier.padding(top = 1.dp),
+                )
+            }
+            Icon(
+                Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                contentDescription = null,
+                tint = accent,
+            )
+        }
     }
 }
 
