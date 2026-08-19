@@ -17,6 +17,20 @@
     <string name="mode_cyclical">Cycle</string>
     <string name="mode_always_on">Always on</string>
     <string name="mode_always_off">Always off</string>
+    <string name="mode_scheduled">Schedule</string>
+    <string name="weekday_mon">Mon</string>
+    <string name="weekday_tue">Tue</string>
+    <string name="weekday_wed">Wed</string>
+    <string name="weekday_thu">Thu</string>
+    <string name="weekday_fri">Fri</string>
+    <string name="weekday_sat">Sat</string>
+    <string name="weekday_sun">Sun</string>
+    <string name="schedule_days">Days</string>
+    <string name="schedule_from">From</string>
+    <string name="schedule_to">To</string>
+    <string name="schedule_on_during">Radio ON during the window (off outside)</string>
+    <string name="schedule_off_during">Radio OFF during the window (on outside)</string>
+    <string name="schedule_validation_error">Pick at least one day, and an end time after the start.</string>
     <string name="mode_unmanaged">Don\'t manage</string>
 
     <!-- Duration units -->

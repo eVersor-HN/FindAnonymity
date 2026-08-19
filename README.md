@@ -17,9 +17,10 @@ that you can stop from there.
 
 ## Features
 
-- **Connectivity scheduler** — cycle **Wi‑Fi**, **mobile data**, and **airplane mode** on a
-  timer (cyclical / always‑on / always‑off / unmanaged). Shrink your device's connectivity
-  window to reduce trackability.
+- **Connectivity scheduler** — control **Wi‑Fi**, **mobile data**, and **airplane mode** by a
+  repeating **cycle** (e.g. on 1 min every 3 min) or a **clock schedule** (on/off between two
+  times on the weekdays you pick), plus always‑on / always‑off / unmanaged. Shrink your device's
+  connectivity window to reduce trackability. Edit one rule, or all three at once.
 - **Timed reboots** — reboot on an interval to clear volatile state and return the device to a
   fresh, before‑first‑unlock security posture.
 - **Panic‑lock (duress defense)** — a detached root daemon watches for rapid power‑button

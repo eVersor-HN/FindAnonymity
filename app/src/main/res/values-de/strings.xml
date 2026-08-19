@@ -17,6 +17,20 @@
     <string name="mode_cyclical">Zyklus</string>
     <string name="mode_always_on">Immer an</string>
     <string name="mode_always_off">Immer aus</string>
+    <string name="mode_scheduled">Zeitplan</string>
+    <string name="weekday_mon">Mo</string>
+    <string name="weekday_tue">Di</string>
+    <string name="weekday_wed">Mi</string>
+    <string name="weekday_thu">Do</string>
+    <string name="weekday_fri">Fr</string>
+    <string name="weekday_sat">Sa</string>
+    <string name="weekday_sun">So</string>
+    <string name="schedule_days">Tage</string>
+    <string name="schedule_from">Von</string>
+    <string name="schedule_to">Bis</string>
+    <string name="schedule_on_during">Im Fenster AN (außerhalb aus)</string>
+    <string name="schedule_off_during">Im Fenster AUS (außerhalb an)</string>
+    <string name="schedule_validation_error">Mindestens einen Tag wählen und eine Endzeit nach der Startzeit.</string>
     <string name="mode_unmanaged">Nicht verwalten</string>
 
     <!-- Dauereinheiten -->

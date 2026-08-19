@@ -39,6 +39,7 @@ import io.github.findanonymity.fa.data.model.ToggleTarget
 import io.github.findanonymity.fa.ui.components.CorpoButton
 import io.github.findanonymity.fa.ui.components.DurationPicker
 import io.github.findanonymity.fa.ui.components.FormContainer
+import io.github.findanonymity.fa.ui.components.ScheduleFields
 import io.github.findanonymity.fa.ui.theme.CorpoRed
 
 private fun ruleFor(config: AppConfig, target: ToggleTarget): ToggleRuleConfig = when (target) {
@@ -62,8 +63,13 @@ fun ToggleRuleEditorScreen(
     }
     val currentRule = rule ?: return
 
-    val isValid = currentRule.mode != ToggleMode.CYCLICAL ||
-        (currentRule.activeDuration.toMillis() in 1 until currentRule.cycleInterval.toMillis().coerceAtLeast(1))
+    val isValid = when (currentRule.mode) {
+        ToggleMode.CYCLICAL ->
+            currentRule.activeDuration.toMillis() in 1 until currentRule.cycleInterval.toMillis().coerceAtLeast(1)
+        ToggleMode.SCHEDULED ->
+            currentRule.scheduleStartMinute < currentRule.scheduleEndMinute && currentRule.scheduleDaysMask != 0
+        else -> true
+    }
 
     Scaffold(
         topBar = {
@@ -117,6 +123,13 @@ fun ToggleRuleEditorScreen(
                         color = CorpoRed,
                         style = MaterialTheme.typography.bodySmall,
                     )
+                }
+            }
+
+            if (currentRule.mode == ToggleMode.SCHEDULED) {
+                ScheduleFields(currentRule) { rule = it }
+                if (!isValid) {
+                    Text(stringResource(R.string.schedule_validation_error), color = CorpoRed, style = MaterialTheme.typography.bodySmall)
                 }
             }
 
@@ -216,8 +229,13 @@ fun BulkRuleEditorScreen(
             ),
         )
     }
-    val isValid = rule.mode != ToggleMode.CYCLICAL ||
-        (rule.activeDuration.toMillis() in 1 until rule.cycleInterval.toMillis().coerceAtLeast(1))
+    val isValid = when (rule.mode) {
+        ToggleMode.CYCLICAL ->
+            rule.activeDuration.toMillis() in 1 until rule.cycleInterval.toMillis().coerceAtLeast(1)
+        ToggleMode.SCHEDULED ->
+            rule.scheduleStartMinute < rule.scheduleEndMinute && rule.scheduleDaysMask != 0
+        else -> true
+    }
 
     Scaffold(
         topBar = {
@@ -266,6 +284,13 @@ fun BulkRuleEditorScreen(
                     Text(stringResource(R.string.rule_editor_validation_error), color = CorpoRed, style = MaterialTheme.typography.bodySmall)
                 }
             }
+            if (rule.mode == ToggleMode.SCHEDULED) {
+                ScheduleFields(rule) { rule = it }
+                if (!isValid) {
+                    Text(stringResource(R.string.schedule_validation_error), color = CorpoRed, style = MaterialTheme.typography.bodySmall)
+                }
+            }
+
             CorpoButton(
                 text = stringResource(R.string.rule_editor_bulk_apply),
                 onClick = { viewModel.saveAllToggleRules(rule); onBack() },

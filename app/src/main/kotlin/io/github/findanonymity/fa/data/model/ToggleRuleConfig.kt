@@ -12,6 +12,11 @@ data class ToggleRuleConfig(
     val activeDuration: Duration2 = Duration2(5, CycleTimeUnit.MINUTES),
     val startOn: Boolean = true,
     val cycleAnchorEpochMillis: Long? = null,
+    // SCHEDULED mode: a daily clock-time window on selected weekdays.
+    val scheduleStartMinute: Int = 8 * 60,   // 08:00, minute-of-day
+    val scheduleEndMinute: Int = 22 * 60,    // 22:00, minute-of-day
+    val scheduleDaysMask: Int = 0x7F,        // bit0=Mon … bit6=Sun; all days by default
+    val scheduleOnDuringWindow: Boolean = true, // true: ON inside window / OFF outside (invert if false)
 )
 
 enum class ToggleTarget(@StringRes val labelRes: Int, val command: TargetCommands) {
