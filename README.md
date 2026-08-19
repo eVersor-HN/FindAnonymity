@@ -67,11 +67,16 @@ Then `./gradlew assembleRelease`. Without `keystore.properties` the release buil
 
 - **No plaintext credentials at rest.** When the panic‑lock is armed, the daemon reads its two
   secrets into memory and immediately shreds + unlinks the on‑disk copies. For the rest of the
-  armed lifetime the credentials live only in the daemon's RAM.
-- The next lock‑screen password is generated with `SecureRandom`; the current credential is held
-  in Android Keystore‑backed `EncryptedSharedPreferences` and cleared once the daemon holds it.
-- **Known limitation:** after any reboot — including FA's own scheduled reboot — the panic
-  daemon does **not** auto‑re‑arm; `armed` in config may still read true. Re‑arm manually.
+  armed lifetime the daemon holds them only in RAM.
+- **Re‑arm survives reboots.** A reboot (including FA's own scheduled one) kills the detached
+  daemon, so FA re‑arms it on `BOOT_COMPLETED` from Keystore‑encrypted copies of the two
+  secrets. Those copies (never plaintext, Android Keystore / StrongBox‑backed, this‑app‑only)
+  are what makes re‑arm possible; they are cleared on disarm. Re‑arm is fail‑closed — missing
+  credentials or no root simply means no daemon and no password change.
+- The next lock‑screen password is generated with `SecureRandom`.
+- **Post‑trigger nuance:** if a panic had already rotated the password, the stored `old`
+  credential is stale, so re‑arm restores a daemon whose next trigger is a harmless no‑op until
+  you reconfigure — never a lockout.
 - FA makes **no network requests.** The only privileged actions are the documented shell
   commands it runs on your behalf.
 

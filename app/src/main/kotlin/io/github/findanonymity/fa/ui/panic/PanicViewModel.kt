@@ -65,9 +65,10 @@ class PanicViewModel(application: Application) : AndroidViewModel(application) {
                         backupConfirmedAtEpochMillis = System.currentTimeMillis(),
                     )
                 }
-                // The daemon now holds both secrets in RAM; drop the app's own copies so the
-                // real lock-screen password no longer lives in any at-rest store while armed.
-                credentialStore.clear()
+                // The daemon holds both secrets in RAM and has shredded its plaintext on-disk
+                // copies. We deliberately KEEP the app's Keystore-encrypted copies (never
+                // plaintext) while armed: they are what BootReceiver re-arms the daemon from
+                // after a reboot — including this app's own scheduled reboot. Cleared on disarm.
                 _pendingPassword.value = null
             }
         }
