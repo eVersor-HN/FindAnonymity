@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.weight
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -25,8 +24,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import io.github.findanonymity.fa.R
-import io.github.findanonymity.fa.ui.theme.PhosphorGreen
-import io.github.findanonymity.fa.ui.theme.TerminalBorder
+import io.github.findanonymity.fa.ui.theme.CorpoYellow
+import io.github.findanonymity.fa.ui.theme.CorpoSteel
 
 private data class OnboardingStep(val titleRes: Int, val bodyRes: Int)
 
@@ -59,12 +58,12 @@ fun OnboardingScreen(onDone: () -> Unit) {
                             modifier = Modifier
                                 .weight(1f)
                                 .height(3.dp)
-                                .background(if (index <= stepIndex) PhosphorGreen else TerminalBorder),
+                                .background(if (index <= stepIndex) CorpoYellow else CorpoSteel),
                         )
                     }
                 }
                 Spacer(modifier = Modifier.height(32.dp))
-                Text(stringResource(step.titleRes), style = MaterialTheme.typography.titleLarge, color = PhosphorGreen)
+                Text(stringResource(step.titleRes), style = MaterialTheme.typography.titleLarge, color = CorpoYellow)
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(stringResource(step.bodyRes), style = MaterialTheme.typography.bodyLarge)
             }

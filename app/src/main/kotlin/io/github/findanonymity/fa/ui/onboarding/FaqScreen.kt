@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -22,7 +22,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import io.github.findanonymity.fa.R
 import io.github.findanonymity.fa.ui.components.TerminalCard
-import io.github.findanonymity.fa.ui.theme.PhosphorGreen
+import io.github.findanonymity.fa.ui.theme.CorpoYellow
 
 private data class FaqEntry(val questionRes: Int, val answerRes: Int)
 
@@ -48,7 +48,7 @@ fun FaqScreen(onBack: () -> Unit) {
                 title = { Text(stringResource(R.string.faq_title)) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Icon(Icons.Filled.ArrowBack, contentDescription = stringResource(R.string.common_back))
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.common_back))
                     }
                 },
             )
@@ -66,7 +66,7 @@ fun FaqScreen(onBack: () -> Unit) {
                     Text(
                         stringResource(entry.questionRes),
                         style = MaterialTheme.typography.titleSmall,
-                        color = PhosphorGreen,
+                        color = CorpoYellow,
                     )
                     Text(
                         stringResource(entry.answerRes),

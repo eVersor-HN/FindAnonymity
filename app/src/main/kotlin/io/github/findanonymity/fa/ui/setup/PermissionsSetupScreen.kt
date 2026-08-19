@@ -12,7 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -33,8 +33,8 @@ import io.github.findanonymity.fa.FaApp
 import io.github.findanonymity.fa.R
 import io.github.findanonymity.fa.core.exec.BackendState
 import io.github.findanonymity.fa.ui.components.TerminalCard
-import io.github.findanonymity.fa.ui.theme.PhosphorGreen
-import io.github.findanonymity.fa.ui.theme.TerminalAmber
+import io.github.findanonymity.fa.ui.theme.CorpoYellow
+import io.github.findanonymity.fa.ui.theme.CorpoAmber
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -51,7 +51,7 @@ fun PermissionsSetupScreen(onBack: () -> Unit) {
                 title = { Text(stringResource(R.string.permissions_title)) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Icon(Icons.Filled.ArrowBack, contentDescription = stringResource(R.string.common_back))
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.common_back))
                     }
                 },
             )
@@ -75,7 +75,7 @@ fun PermissionsSetupScreen(onBack: () -> Unit) {
                             R.string.permissions_root_unavailable
                         },
                     ),
-                    color = if (backendState == BackendState.RootAvailable) PhosphorGreen else TerminalAmber,
+                    color = if (backendState == BackendState.RootAvailable) CorpoYellow else CorpoAmber,
                     style = MaterialTheme.typography.bodyMedium,
                 )
                 Button(
@@ -96,7 +96,7 @@ fun PermissionsSetupScreen(onBack: () -> Unit) {
                             else -> R.string.permissions_shizuku_unreachable
                         },
                     ),
-                    color = if (backendState == BackendState.ShizukuAvailable) PhosphorGreen else TerminalAmber,
+                    color = if (backendState == BackendState.ShizukuAvailable) CorpoYellow else CorpoAmber,
                     style = MaterialTheme.typography.bodyMedium,
                 )
                 Text(
@@ -140,7 +140,7 @@ fun PermissionsSetupScreen(onBack: () -> Unit) {
                 Text(
                     stringResource(R.string.permissions_oem_title),
                     style = MaterialTheme.typography.titleSmall,
-                    color = TerminalAmber,
+                    color = CorpoAmber,
                 )
                 Text(
                     stringResource(R.string.permissions_oem_body),

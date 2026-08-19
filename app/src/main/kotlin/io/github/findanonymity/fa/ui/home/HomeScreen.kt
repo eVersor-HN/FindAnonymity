@@ -41,9 +41,9 @@ import io.github.findanonymity.fa.data.model.ToggleTarget
 import io.github.findanonymity.fa.service.RuleScheduler
 import io.github.findanonymity.fa.ui.components.StatusRow
 import io.github.findanonymity.fa.ui.components.TerminalCard
-import io.github.findanonymity.fa.ui.theme.PhosphorGreen
-import io.github.findanonymity.fa.ui.theme.TerminalAmber
-import io.github.findanonymity.fa.ui.theme.TerminalRed
+import io.github.findanonymity.fa.ui.theme.CorpoYellow
+import io.github.findanonymity.fa.ui.theme.CorpoAmber
+import io.github.findanonymity.fa.ui.theme.CorpoRed
 import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -97,7 +97,7 @@ fun HomeScreen(
                     Text(
                         stringResource(R.string.home_rules_title),
                         style = MaterialTheme.typography.titleSmall,
-                        color = PhosphorGreen,
+                        color = CorpoYellow,
                     )
                     Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
                         listOf(
@@ -126,14 +126,14 @@ fun HomeScreen(
                     Text(
                         stringResource(R.string.home_panic_title),
                         style = MaterialTheme.typography.titleSmall,
-                        color = TerminalRed,
+                        color = CorpoRed,
                     )
                     StatusRow(
                         label = stringResource(R.string.settings_title),
                         statusText = stringResource(
                             if (config.panicLock.armed) R.string.home_panic_armed else R.string.home_panic_disarmed,
                         ),
-                        accentColor = if (config.panicLock.armed) TerminalRed else TerminalAmber,
+                        accentColor = if (config.panicLock.armed) CorpoRed else CorpoAmber,
                     )
                     Button(onClick = onOpenPanic, modifier = Modifier.padding(top = 8.dp)) {
                         Text(stringResource(R.string.home_panic_configure))
@@ -168,7 +168,7 @@ private fun MasterSwitchCard(enabled: Boolean, onToggle: (Boolean) -> Unit) {
                         if (enabled) R.string.home_automation_running else R.string.home_automation_stopped,
                     ),
                     style = MaterialTheme.typography.bodySmall,
-                    color = if (enabled) PhosphorGreen else MaterialTheme.colorScheme.onSurfaceVariant,
+                    color = if (enabled) CorpoYellow else MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
             Switch(checked = enabled, onCheckedChange = onToggle)
@@ -180,11 +180,11 @@ private fun MasterSwitchCard(enabled: Boolean, onToggle: (Boolean) -> Unit) {
 private fun NoBackendBanner(onClick: () -> Unit) {
     TerminalCard(modifier = Modifier.fillMaxWidth()) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Icon(Icons.Filled.Warning, contentDescription = null, tint = TerminalAmber)
+            Icon(Icons.Filled.Warning, contentDescription = null, tint = CorpoAmber)
             Column(modifier = Modifier.padding(start = 8.dp)) {
                 Text(
                     stringResource(R.string.home_no_backend_title),
-                    color = TerminalAmber,
+                    color = CorpoAmber,
                     style = MaterialTheme.typography.titleSmall,
                 )
                 Text(
@@ -215,8 +215,8 @@ private fun ToggleRuleRow(target: ToggleTarget, rule: ToggleRuleConfig, now: Lon
     }
     val color = when {
         !rule.enabled -> MaterialTheme.colorScheme.onSurfaceVariant
-        phase?.shouldBeOn == true -> PhosphorGreen
-        else -> TerminalAmber
+        phase?.shouldBeOn == true -> CorpoYellow
+        else -> CorpoAmber
     }
     Row(
         modifier = Modifier
@@ -243,7 +243,7 @@ private fun RebootRuleRow(rule: RebootRuleConfig, now: Long, onClick: () -> Unit
         StatusRow(
             label = stringResource(R.string.home_reboot_label),
             statusText = statusText,
-            accentColor = if (rule.enabled) PhosphorGreen else MaterialTheme.colorScheme.onSurfaceVariant,
+            accentColor = if (rule.enabled) CorpoYellow else MaterialTheme.colorScheme.onSurfaceVariant,
         )
     }
 }

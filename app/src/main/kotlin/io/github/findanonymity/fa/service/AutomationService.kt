@@ -100,7 +100,7 @@ class AutomationService : LifecycleService() {
 
     private suspend fun runStatusNotificationLoop(config: AppConfig) {
         while (true) {
-            updateNotification(config, buildStatusText(config))
+            updateNotification(buildStatusText(config))
             delay(1_000L)
         }
     }
@@ -158,8 +158,7 @@ class AutomationService : LifecycleService() {
         executorManager.exec(command)
     }
 
-    private fun updateNotification(config: AppConfig, fallbackText: String) {
-        val text = if (config.masterAutomationEnabled) buildStatusText(config) else fallbackText
+    private fun updateNotification(text: String) {
         NotificationHelper.ensureChannel(this)
         val notification = NotificationHelper.buildStatusNotification(this, text)
         val manager = getSystemService(Context.NOTIFICATION_SERVICE) as android.app.NotificationManager

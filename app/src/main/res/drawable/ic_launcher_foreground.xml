@@ -4,26 +4,35 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <!-- "A" main strokes: two legs + crossbar -->
+
+    <!-- Event-horizon ring, outer bloom (fake neon glow) -->
     <path
-        android:strokeColor="#39FF9C"
+        android:strokeColor="#66FCEE0A"
+        android:strokeWidth="11"
+        android:strokeLineCap="round"
+        android:pathData="M64.3,25.8 A30,30 0 1,1 43.7,25.8" />
+
+    <!-- Event-horizon ring, crisp neon edge with a void gap at the top -->
+    <path
+        android:strokeColor="#FCEE0A"
         android:strokeWidth="5"
         android:strokeLineCap="round"
-        android:strokeLineJoin="round"
-        android:pathData="M54,26 L30,82 M54,26 L78,82 M40,60 L68,60" />
-    <!-- synapse branch ticks, neural-link accent -->
+        android:pathData="M64.3,25.8 A30,30 0 1,1 43.7,25.8" />
+
+    <!-- Inner cyberpunk accent ring (thin cyan, offset gap at bottom) -->
     <path
-        android:strokeColor="#39FF9C"
-        android:strokeWidth="2.5"
+        android:strokeColor="#6634E7F5"
+        android:strokeWidth="1.6"
         android:strokeLineCap="round"
-        android:pathData="M54,26 L46,17 M54,26 L62,17 M30,82 L19,88 M78,82 L89,88 M40,60 L30,54 M68,60 L78,54" />
-    <!-- neural nodes -->
+        android:pathData="M43.7,73.4 A20,20 0 1,1 64.3,73.4" />
+
+    <!-- Singularity core: soft glow -->
     <path
-        android:fillColor="#39FF9C"
-        android:pathData="
-            M50,26 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0
-            M26,82 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0
-            M74,82 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0
-            M36,60 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0
-            M64,60 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0" />
+        android:fillColor="#33FCEE0A"
+        android:pathData="M47,54 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0" />
+
+    <!-- Singularity core: solid node -->
+    <path
+        android:fillColor="#FCEE0A"
+        android:pathData="M50,54 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0" />
 </vector>

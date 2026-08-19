@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -38,7 +38,7 @@ import io.github.findanonymity.fa.data.model.ToggleMode
 import io.github.findanonymity.fa.data.model.ToggleRuleConfig
 import io.github.findanonymity.fa.data.model.ToggleTarget
 import io.github.findanonymity.fa.ui.components.DurationPicker
-import io.github.findanonymity.fa.ui.theme.TerminalRed
+import io.github.findanonymity.fa.ui.theme.CorpoRed
 
 private fun ruleFor(config: AppConfig, target: ToggleTarget): ToggleRuleConfig = when (target) {
     ToggleTarget.WIFI -> config.wifiRule
@@ -70,7 +70,7 @@ fun ToggleRuleEditorScreen(
                 title = { Text(stringResource(target.labelRes)) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Icon(Icons.Filled.ArrowBack, contentDescription = stringResource(R.string.common_back))
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.common_back))
                     }
                 },
             )
@@ -128,7 +128,7 @@ fun ToggleRuleEditorScreen(
                 if (!isValid) {
                     Text(
                         stringResource(R.string.rule_editor_validation_error),
-                        color = TerminalRed,
+                        color = CorpoRed,
                         style = MaterialTheme.typography.bodySmall,
                     )
                 }
@@ -168,7 +168,7 @@ fun RebootRuleEditorScreen(
                 title = { Text(stringResource(R.string.rule_editor_reboot_title)) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Icon(Icons.Filled.ArrowBack, contentDescription = stringResource(R.string.common_back))
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.common_back))
                     }
                 },
             )

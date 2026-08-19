@@ -1,8 +1,18 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
+}
+
+// Release signing is driven by a gitignored keystore.properties (never committed). When it is
+// absent (e.g. a fresh clone or CI without secrets) the release build stays unsigned rather than
+// failing the configuration.
+val keystorePropsFile = rootProject.file("keystore.properties")
+val keystoreProps = Properties().apply {
+    if (keystorePropsFile.exists()) FileInputStream(keystorePropsFile).use { load(it) }
 }
 
 android {
@@ -11,25 +21,35 @@ android {
 
     defaultConfig {
         applicationId = "io.github.findanonymity.fa"
-        minSdk = 26
+        minSdk = 24
         targetSdk = 36
         versionCode = 1
         versionName = "0.1.0"
     }
 
+    signingConfigs {
+        if (keystorePropsFile.exists()) {
+            create("release") {
+                storeFile = file(keystoreProps.getProperty("storeFile"))
+                storePassword = keystoreProps.getProperty("storePassword")
+                keyAlias = keystoreProps.getProperty("keyAlias")
+                keyPassword = keystoreProps.getProperty("keyPassword")
+            }
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
+            if (keystorePropsFile.exists()) {
+                signingConfig = signingConfigs.getByName("release")
+            }
         }
     }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    kotlinOptions {
-        jvmTarget = "17"
     }
 
     buildFeatures {
