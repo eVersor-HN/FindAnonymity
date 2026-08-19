@@ -164,5 +164,8 @@
     <string name="panic_status_armed">ARMED</string>
     <string name="panic_status_disarmed">not armed</string>
     <string name="panic_root_required">The panic feature requires root — Shizuku is not supported for this feature.</string>
+    <string name="panic_backend_required">The panic feature needs a privileged backend: root (recommended) or Shizuku (experimental). Neither is usable right now.</string>
+    <string name="panic_shizuku_experimental_title">⚠ Shizuku mode is experimental</string>
+    <string name="panic_shizuku_experimental_body">Without root the panic-lock runs over Shizuku, with weaker guarantees: (1) changing the lock-screen password from Shizuku is not guaranteed on every Android/OEM version — test it on a spare device before relying on it; (2) protection ENDS at reboot and does not re-arm automatically, because Shizuku is not running that early. For dependable protection, use root.</string>
     <string name="panic_no_power_device">Power key input device not found — this device may not be supported.</string>
 </resources>

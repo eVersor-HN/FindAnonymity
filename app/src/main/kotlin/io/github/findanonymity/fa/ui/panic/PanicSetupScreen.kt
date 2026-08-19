@@ -39,6 +39,7 @@ import io.github.findanonymity.fa.R
 import io.github.findanonymity.fa.core.exec.BackendState
 import io.github.findanonymity.fa.panic.PanicDaemonInstaller
 import io.github.findanonymity.fa.ui.components.TerminalCard
+import io.github.findanonymity.fa.ui.theme.CorpoAmber
 import io.github.findanonymity.fa.ui.theme.CorpoYellow
 import io.github.findanonymity.fa.ui.theme.CorpoRed
 
@@ -49,6 +50,8 @@ fun PanicSetupScreen(onBack: () -> Unit, viewModel: PanicViewModel = viewModel()
     val app = context.applicationContext as FaApp
     val backendState by app.executorManager.state.collectAsStateWithLifecycle()
     val rootAvailable = backendState == BackendState.RootAvailable
+    val shizukuOnly = backendState == BackendState.ShizukuAvailable && !rootAvailable
+    val canArm = rootAvailable || backendState == BackendState.ShizukuAvailable
 
     val config by viewModel.configFlow.collectAsStateWithLifecycle()
     val pendingPassword by viewModel.pendingPassword.collectAsStateWithLifecycle()
@@ -113,13 +116,28 @@ fun PanicSetupScreen(onBack: () -> Unit, viewModel: PanicViewModel = viewModel()
                     }
                 }
 
-                !rootAvailable -> {
+                !canArm -> {
                     TerminalCard(modifier = Modifier.fillMaxWidth()) {
-                        Text(stringResource(R.string.panic_root_required), style = MaterialTheme.typography.bodySmall)
+                        Text(stringResource(R.string.panic_backend_required), style = MaterialTheme.typography.bodySmall)
                     }
                 }
 
                 else -> {
+                    if (shizukuOnly) {
+                        TerminalCard(modifier = Modifier.fillMaxWidth()) {
+                            Text(
+                                stringResource(R.string.panic_shizuku_experimental_title),
+                                style = MaterialTheme.typography.titleSmall,
+                                color = CorpoAmber,
+                            )
+                            Text(
+                                stringResource(R.string.panic_shizuku_experimental_body),
+                                style = MaterialTheme.typography.bodySmall,
+                                modifier = Modifier.padding(top = 4.dp),
+                            )
+                        }
+                    }
+
                     TerminalCard(modifier = Modifier.fillMaxWidth()) {
                         OutlinedTextField(
                             value = currentCredential,

@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import io.github.findanonymity.fa.FaApp
+import io.github.findanonymity.fa.core.exec.BackendState
 import io.github.findanonymity.fa.data.model.AppConfig
 import io.github.findanonymity.fa.data.model.PanicLockConfig
 import io.github.findanonymity.fa.panic.PanicDaemonInstaller
@@ -20,7 +21,17 @@ class PanicViewModel(application: Application) : AndroidViewModel(application) {
 
     private val app get() = getApplication<FaApp>()
     private val credentialStore = SecureCredentialStore(app)
-    private val daemonInstaller = PanicDaemonInstaller(app.executorManager.rootOnlyExecutor())
+
+    /**
+     * Picks the panic backend: root (strong, reboot-persistent) when available, otherwise the
+     * experimental Shizuku path. Resolved per action so a backend that appears/disappears
+     * mid-session is honoured. Returns null when neither backend is usable.
+     */
+    private fun daemonInstaller(): PanicDaemonInstaller? = when (app.executorManager.state.value) {
+        BackendState.RootAvailable -> PanicDaemonInstaller(app.executorManager.rootOnlyExecutor())
+        BackendState.ShizukuAvailable -> PanicDaemonInstaller(app.executorManager.shizukuOnlyExecutor())
+        else -> null
+    }
 
     val configFlow: StateFlow<AppConfig?> = app.configRepository.configFlow.stateIn(
         viewModelScope, SharingStarted.WhileSubscribed(5_000), null,
@@ -54,9 +65,14 @@ class PanicViewModel(application: Application) : AndroidViewModel(application) {
             _armResult.value = PanicDaemonInstaller.ArmResult.CommandFailed("Missing credential or pending password")
             return
         }
+        val installer = daemonInstaller()
+        if (installer == null) {
+            _armResult.value = PanicDaemonInstaller.ArmResult.CommandFailed("No privileged backend available (root or Shizuku)")
+            return
+        }
         viewModelScope.launch {
             val config = configFlow.value?.panicLock ?: PanicLockConfig()
-            val result = daemonInstaller.arm(old, next, config.pressCount, config.windowMillis / 1000)
+            val result = installer.arm(old, next, config.pressCount, config.windowMillis / 1000)
             _armResult.value = result
             if (result is PanicDaemonInstaller.ArmResult.Armed) {
                 updatePanicConfig {
@@ -76,7 +92,7 @@ class PanicViewModel(application: Application) : AndroidViewModel(application) {
 
     fun disarm() {
         viewModelScope.launch {
-            daemonInstaller.disarm()
+            daemonInstaller()?.disarm()
             credentialStore.clear()
             _pendingPassword.value = null
             updatePanicConfig { PanicLockConfig() }

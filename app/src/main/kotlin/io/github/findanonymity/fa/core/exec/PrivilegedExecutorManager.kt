@@ -86,6 +86,14 @@ class PrivilegedExecutorManager(context: Context) {
         return BackendState.NoneAvailable
     }
 
-    /** Root-only executor, used exclusively by the panic-lock feature (see plan: root-only by design). */
+    /** Root executor — the strong, reboot-persistent backend for the panic-lock. */
     fun rootOnlyExecutor(): PrivilegedExecutor = rootExecutor
+
+    /**
+     * Shizuku executor — the experimental panic-lock backend. Weaker guarantee than root:
+     * the watcher orphans to a shell-uid (2000) process that survives until reboot, but there
+     * is no auto re-arm on boot (Shizuku is not running that early), and `locksettings
+     * set-password` from shell uid is not guaranteed across all OEM/Android versions.
+     */
+    fun shizukuOnlyExecutor(): PrivilegedExecutor = shizukuExecutor
 }
