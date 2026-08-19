@@ -8,9 +8,11 @@ import io.github.findanonymity.fa.core.exec.PrivilegedExecutor
  * Android app framework) and applies the password rotation directly from root context — so it
  * still works even if FA's own process/foreground service has been killed.
  *
- * Root only by design (see plan): reliably bypassing `locksettings set-password`'s old-credential
- * check is uncertain under Shizuku's shell-uid process, so this feature does not offer a Shizuku
- * path.
+ * Backends: root is the strong, recommended path — the watcher orphans to a detached root daemon
+ * and FA re-arms it on boot. Shizuku is an experimental path (shell uid 2000): `getevent` works
+ * there, and `locksettings set-password` usually works too but is not guaranteed across every
+ * OEM/Android version, and there is no boot re-arm (Shizuku is not running that early). The
+ * executor is injected, so this class is backend-agnostic; the caller decides which to use.
  *
  * Credentials at rest: the two secrets are written to a root-owned, mode-700 directory (mode-600
  * files) outside any world-writable path (deliberately NOT /data/local/tmp, which is world-writable

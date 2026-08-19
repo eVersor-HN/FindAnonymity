@@ -28,13 +28,15 @@ FA needs a privileged backend to issue system commands. It supports two:
 |---|:---:|:---:|
 | Wi‑Fi / mobile data / airplane toggles | ✅ | ✅ |
 | Timed reboots | ✅ | ✅ |
-| **Panic‑lock** | ✅ | ❌ (root only) |
+| **Panic‑lock** | ✅ | ⚠️ experimental |
 
-- **Root** (Magisk / KernelSU) enables everything.
+- **Root** (Magisk / KernelSU) enables everything, and is the recommended backend for the
+  panic‑lock: the watcher runs as a detached root daemon and FA re‑arms it after a reboot.
 - **Shizuku** (paired via Wireless Debugging, or root‑mode Sui) enables the connectivity and
-  reboot automation. The panic‑lock is **root only by design** — reliably driving
-  `locksettings set-password` from a shell‑uid process is not dependable, so FA does not offer
-  a Shizuku path for it.
+  reboot automation, and an **experimental** panic‑lock path. Under Shizuku the guarantees are
+  weaker: changing the lock‑screen password from a shell‑uid process is not dependable on every
+  OEM/Android version (test on a spare device first), and protection ends at reboot with no
+  auto re‑arm. Use root for a panic‑lock you can rely on.
 
 Minimum **Android 7.0 (API 24)**; target Android 16 (API 36).
 

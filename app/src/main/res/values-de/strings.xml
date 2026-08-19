@@ -164,5 +164,8 @@
     <string name="panic_status_armed">AKTIVIERT</string>
     <string name="panic_status_disarmed">nicht aktiviert</string>
     <string name="panic_root_required">Die Notfallfunktion erfordert Root — Shizuku wird für diese Funktion nicht unterstützt.</string>
+    <string name="panic_backend_required">Die Notfallfunktion braucht ein privilegiertes Backend: Root (empfohlen) oder Shizuku (experimentell). Derzeit ist keines nutzbar.</string>
+    <string name="panic_shizuku_experimental_title">⚠ Shizuku-Modus ist experimentell</string>
+    <string name="panic_shizuku_experimental_body">Ohne Root läuft der Panic-Lock über Shizuku, mit schwächeren Garantien: (1) Das Ändern des Sperrbildschirm-Passworts aus Shizuku funktioniert nicht auf jeder Android-/OEM-Version — teste es auf einem Ersatzgerät, bevor du dich darauf verlässt; (2) der Schutz ENDET beim Neustart und wird nicht automatisch wieder scharfgeschaltet, weil Shizuku zu diesem Zeitpunkt nicht läuft. Für zuverlässigen Schutz nutze Root.</string>
     <string name="panic_no_power_device">Eingabegerät für den Netzschalter nicht gefunden — dieses Gerät wird möglicherweise nicht unterstützt.</string>
 </resources>
