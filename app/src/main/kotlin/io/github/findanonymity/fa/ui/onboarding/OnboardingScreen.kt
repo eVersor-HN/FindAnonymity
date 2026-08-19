@@ -10,7 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
+import io.github.findanonymity.fa.ui.components.CorpoButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -81,9 +81,10 @@ fun OnboardingScreen(onDone: () -> Unit) {
                             Text(stringResource(R.string.onboarding_back))
                         }
                     }
-                    Button(onClick = { if (isLast) onDone() else stepIndex++ }) {
-                        Text(stringResource(if (isLast) R.string.onboarding_done else R.string.onboarding_next))
-                    }
+                    CorpoButton(
+                        text = stringResource(if (isLast) R.string.onboarding_done else R.string.onboarding_next),
+                        onClick = { if (isLast) onDone() else stepIndex++ },
+                    )
                 }
             }
         }

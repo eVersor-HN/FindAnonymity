@@ -12,15 +12,20 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 /**
- * Corpo HUD panel: cold raised surface, a hard steel outline, a chamfered top-end corner
- * (from the theme's medium shape) and a slim cyan header strip — the corporate-terminal look.
+ * Corpo HUD panel: cold raised surface, hard steel outline, a chamfered top-end corner (theme's
+ * medium shape). The header accent [strip] is state-coloured so it carries meaning (cyan = ok,
+ * amber = attention, red = armed) instead of every card shouting the same; pass strip = false for
+ * quiet, secondary panels so the emphasised ones stand out.
  */
 @Composable
 fun TerminalCard(
     modifier: Modifier = Modifier,
+    accent: Color = MaterialTheme.colorScheme.secondary,
+    strip: Boolean = true,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     Card(
@@ -30,14 +35,19 @@ fun TerminalCard(
         shape = MaterialTheme.shapes.medium,
     ) {
         Column {
-            // Header accent strip — the "active panel" HUD signifier.
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(2.dp)
-                    .background(MaterialTheme.colorScheme.secondary),
-            ) {}
+            if (strip) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(2.dp)
+                        .background(accent),
+                ) {}
+            }
             Column(modifier = Modifier.padding(16.dp), content = content)
         }
     }
 }
+
+/** Convenience: a strip colour that is dimmed for a "quiet" secondary panel. */
+@Composable
+fun quietAccent(): Color = MaterialTheme.colorScheme.outline

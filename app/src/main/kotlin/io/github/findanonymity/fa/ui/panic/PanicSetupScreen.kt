@@ -12,8 +12,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -41,6 +39,7 @@ import io.github.findanonymity.fa.R
 import io.github.findanonymity.fa.core.exec.BackendState
 import io.github.findanonymity.fa.panic.PanicDaemonInstaller
 import io.github.findanonymity.fa.ui.components.FormContainer
+import io.github.findanonymity.fa.ui.components.CorpoButton
 import io.github.findanonymity.fa.ui.components.TerminalCard
 import io.github.findanonymity.fa.ui.theme.CorpoAmber
 import io.github.findanonymity.fa.ui.theme.CorpoYellow
@@ -134,13 +133,12 @@ fun PanicSetupScreen(onBack: () -> Unit, viewModel: PanicViewModel = viewModel()
                             style = MaterialTheme.typography.titleMedium,
                             color = CorpoRed,
                         )
-                        Button(
+                        CorpoButton(
+                            text = stringResource(R.string.panic_disarm),
                             onClick = { viewModel.disarm() },
-                            colors = ButtonDefaults.buttonColors(containerColor = CorpoRed),
-                            modifier = Modifier.padding(top = 8.dp),
-                        ) {
-                            Text(stringResource(R.string.panic_disarm))
-                        }
+                            container = CorpoRed,
+                            modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                        )
                     }
                 }
 
@@ -214,7 +212,8 @@ fun PanicSetupScreen(onBack: () -> Unit, viewModel: PanicViewModel = viewModel()
                                 .fillMaxWidth()
                                 .padding(top = 8.dp),
                         )
-                        Button(
+                        CorpoButton(
+                            text = stringResource(R.string.panic_generate_preview),
                             onClick = {
                                 val length = passwordLength.toIntOrNull()?.coerceAtLeast(4) ?: 100
                                 val presses = pressCount.toIntOrNull()?.coerceAtLeast(2) ?: 5
@@ -222,10 +221,8 @@ fun PanicSetupScreen(onBack: () -> Unit, viewModel: PanicViewModel = viewModel()
                                 viewModel.updateTuning(presses, window)
                                 viewModel.generateNextPassword(length)
                             },
-                            modifier = Modifier.padding(top = 8.dp),
-                        ) {
-                            Text(stringResource(R.string.panic_generate_preview))
-                        }
+                            modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                        )
                     }
 
                     if (pendingPassword != null) {
@@ -258,14 +255,13 @@ fun PanicSetupScreen(onBack: () -> Unit, viewModel: PanicViewModel = viewModel()
                                     .fillMaxWidth()
                                     .padding(top = 8.dp),
                             )
-                            Button(
+                            CorpoButton(
+                                text = stringResource(R.string.panic_arm),
                                 onClick = { showArmDialog = true },
                                 enabled = confirmText == "CONFIRM" && currentCredential.isNotEmpty(),
-                                colors = ButtonDefaults.buttonColors(containerColor = CorpoRed),
-                                modifier = Modifier.padding(top = 8.dp),
-                            ) {
-                                Text(stringResource(R.string.panic_arm))
-                            }
+                                container = CorpoRed,
+                                modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                            )
                         }
                     }
 

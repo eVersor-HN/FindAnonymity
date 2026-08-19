@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -37,6 +36,7 @@ import io.github.findanonymity.fa.data.model.RebootRuleConfig
 import io.github.findanonymity.fa.data.model.ToggleMode
 import io.github.findanonymity.fa.data.model.ToggleRuleConfig
 import io.github.findanonymity.fa.data.model.ToggleTarget
+import io.github.findanonymity.fa.ui.components.CorpoButton
 import io.github.findanonymity.fa.ui.components.DurationPicker
 import io.github.findanonymity.fa.ui.components.FormContainer
 import io.github.findanonymity.fa.ui.theme.CorpoRed
@@ -120,16 +120,12 @@ fun ToggleRuleEditorScreen(
                 }
             }
 
-            Button(
-                onClick = {
-                    viewModel.saveToggleRule(target, currentRule)
-                    onBack()
-                },
+            CorpoButton(
+                text = stringResource(R.string.common_save),
+                onClick = { viewModel.saveToggleRule(target, currentRule); onBack() },
                 enabled = isValid,
                 modifier = Modifier.fillMaxWidth(),
-            ) {
-                Text(stringResource(R.string.common_save))
-            }
+            )
         }
     }
 }
@@ -173,20 +169,109 @@ fun RebootRuleEditorScreen(
                 value = currentRule.interval,
                 onValueChange = { rule = currentRule.copy(interval = it) },
             )
+            if (currentRule.enabled) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Column(modifier = Modifier.weight(1f).padding(end = 8.dp)) {
+                        Text(stringResource(R.string.rule_editor_force_title), style = MaterialTheme.typography.titleSmall)
+                        Text(
+                            stringResource(R.string.rule_editor_force_note),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                    Switch(checked = currentRule.forced, onCheckedChange = { rule = currentRule.copy(forced = it) })
+                }
+            }
             Text(
                 stringResource(R.string.rule_editor_reboot_note),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
-            Button(
-                onClick = {
-                    viewModel.saveRebootRule(currentRule)
-                    onBack()
-                },
+            CorpoButton(
+                text = stringResource(R.string.common_save),
+                onClick = { viewModel.saveRebootRule(currentRule); onBack() },
                 modifier = Modifier.fillMaxWidth(),
-            ) {
-                Text(stringResource(R.string.common_save))
+            )
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun BulkRuleEditorScreen(
+    onBack: () -> Unit,
+    viewModel: RuleEditorViewModel = viewModel(),
+) {
+    var rule by remember {
+        mutableStateOf(
+            ToggleRuleConfig(
+                enabled = true,
+                mode = ToggleMode.CYCLICAL,
+                cycleInterval = io.github.findanonymity.fa.data.model.Duration2(60, io.github.findanonymity.fa.data.model.CycleTimeUnit.MINUTES),
+                activeDuration = io.github.findanonymity.fa.data.model.Duration2(5, io.github.findanonymity.fa.data.model.CycleTimeUnit.MINUTES),
+            ),
+        )
+    }
+    val isValid = rule.mode != ToggleMode.CYCLICAL ||
+        (rule.activeDuration.toMillis() in 1 until rule.cycleInterval.toMillis().coerceAtLeast(1))
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(R.string.rule_editor_bulk_title)) },
+                navigationIcon = {
+                    IconButton(onClick = onBack) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.common_back))
+                    }
+                },
+            )
+        },
+    ) { padding ->
+        FormContainer(scaffoldPadding = padding) {
+            Text(
+                stringResource(R.string.rule_editor_bulk_note),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Text(stringResource(R.string.rule_editor_mode), style = MaterialTheme.typography.titleSmall)
+            Column(modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                ToggleMode.entries.forEach { mode ->
+                    ModeOptionRow(
+                        label = stringResource(mode.labelRes),
+                        selected = rule.mode == mode,
+                        onClick = { rule = rule.copy(mode = mode, enabled = mode != ToggleMode.UNMANAGED) },
+                    )
+                }
             }
+            if (rule.mode == ToggleMode.CYCLICAL) {
+                DurationPicker(
+                    label = stringResource(R.string.rule_editor_cycle),
+                    value = rule.cycleInterval,
+                    onValueChange = { rule = rule.copy(cycleInterval = it) },
+                )
+                DurationPicker(
+                    label = stringResource(R.string.rule_editor_active_duration),
+                    value = rule.activeDuration,
+                    onValueChange = { rule = rule.copy(activeDuration = it) },
+                )
+                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                    Text(stringResource(R.string.rule_editor_start_on), style = MaterialTheme.typography.bodyMedium)
+                    Switch(checked = rule.startOn, onCheckedChange = { rule = rule.copy(startOn = it) })
+                }
+                if (!isValid) {
+                    Text(stringResource(R.string.rule_editor_validation_error), color = CorpoRed, style = MaterialTheme.typography.bodySmall)
+                }
+            }
+            CorpoButton(
+                text = stringResource(R.string.rule_editor_bulk_apply),
+                onClick = { viewModel.saveAllToggleRules(rule); onBack() },
+                enabled = isValid,
+                modifier = Modifier.fillMaxWidth(),
+            )
         }
     }
 }

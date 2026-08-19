@@ -53,6 +53,10 @@
     <string name="notification_stop">Stop</string>
     <string name="home_rules_title">Rules</string>
     <string name="home_rules_hint">Tap a row to configure it</string>
+    <string name="home_next_label">NEXT</string>
+    <string name="home_next_paused">Automation paused</string>
+    <string name="home_next_none">No timed changes scheduled</string>
+    <string name="home_bulk">Set all rules at once</string>
     <string name="home_panic_title">Panic feature</string>
     <string name="home_panic_armed">ARMED</string>
     <string name="home_panic_disarmed">not armed</string>
@@ -86,6 +90,11 @@
     <string name="rule_editor_reboot_title">Reboot</string>
     <string name="rule_editor_reboot_interval">Interval</string>
     <string name="rule_editor_reboot_note">Interval = time since the last boot (any boot, not just app-triggered ones).</string>
+    <string name="rule_editor_bulk_title">All rules</string>
+    <string name="rule_editor_bulk_note">This applies one setting to Wi-Fi, mobile data and airplane mode at once.</string>
+    <string name="rule_editor_bulk_apply">Apply to all three</string>
+    <string name="rule_editor_force_title">Force reboot</string>
+    <string name="rule_editor_force_note">Runs as a detached daemon that still fires even if FA is stopped from the notification or killed — so a thief cannot cancel the protective reboot. Requires root or Shizuku; root also re-arms it after each boot.</string>
 
     <!-- Permissions / setup -->
     <string name="permissions_title">Setup</string>
@@ -125,17 +134,17 @@
     <string name="settings_support">Support development (Ko-fi)</string>
     <string name="faq_tutorial_title">Getting started</string>
     <string name="faq_step1_title">1 · Get a backend</string>
-    <string name="faq_step1_body">FA needs a privileged backend to change system settings. If your phone is rooted, that works. No root? Install the free \"Shizuku\" app from the Play Store or GitHub.</string>
+    <string name="faq_step1_body">Rooted phone works. No root? Install the free Shizuku app.</string>
     <string name="faq_step2_title">2 · Start Shizuku</string>
-    <string name="faq_step2_body">Open Shizuku and start it — on Android 11+ via Wireless Debugging, otherwise via a PC/ADB. It must show \"running\".</string>
+    <string name="faq_step2_body">Start Shizuku (Android 11+: Wireless Debugging, else ADB). It must say running.</string>
     <string name="faq_step3_title">3 · Connect FA</string>
-    <string name="faq_step3_body">Open FA. On the Backend card tap \"Connect Shizuku\" and allow the permission. The card should then read \"Shizuku connected\".</string>
+    <string name="faq_step3_body">In FA, tap Connect Shizuku on the Backend card and allow it.</string>
     <string name="faq_step4_title">4 · Create a rule</string>
-    <string name="faq_step4_body">Tap a rule such as Wi-Fi, choose \"Cycle\", set how long it stays on and the full cycle length (e.g. on 1 min, cycle 3 min = 2 min off), then Save.</string>
+    <string name="faq_step4_body">Tap a rule → Cycle → set on-time and cycle length → Save.</string>
     <string name="faq_step5_title">5 · Turn on Automation</string>
-    <string name="faq_step5_body">Flip the Automation switch on the home screen. A notification then shows a live countdown of what changes when — you can stop everything from there.</string>
+    <string name="faq_step5_body">Turn on the Automation switch. A notification shows the countdown.</string>
     <string name="faq_step6_title">6 · Optional: Panic-lock</string>
-    <string name="faq_step6_body">Root only. It rotates your lock-screen password on rapid power-button presses. Read every warning first and back up the new password outside the phone.</string>
+    <string name="faq_step6_body">Root only: rotates your lock-screen password on rapid power presses.</string>
 
     <!-- Onboarding -->
     <string name="onboarding_step1_title">What FA does</string>

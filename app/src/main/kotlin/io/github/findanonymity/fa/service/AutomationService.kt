@@ -84,7 +84,9 @@ class AutomationService : LifecycleService() {
     }
 
     private suspend fun runRebootLoop(rebootConfig: RebootRuleConfig) {
-        if (!rebootConfig.enabled) return
+        // Forced reboots are handled by a detached daemon (survives the app being stopped), so the
+        // in-service loop must not also reboot.
+        if (!rebootConfig.enabled || rebootConfig.forced) return
         val effectiveLast = rebootConfig.lastRebootEpochMillis ?: System.currentTimeMillis()
         val stableConfig = rebootConfig.copy(lastRebootEpochMillis = effectiveLast)
         while (true) {

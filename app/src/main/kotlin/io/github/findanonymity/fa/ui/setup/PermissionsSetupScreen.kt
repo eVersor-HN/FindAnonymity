@@ -13,7 +13,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -33,6 +32,8 @@ import io.github.findanonymity.fa.FaApp
 import io.github.findanonymity.fa.R
 import io.github.findanonymity.fa.core.exec.BackendState
 import io.github.findanonymity.fa.ui.components.FormContainer
+import io.github.findanonymity.fa.ui.components.CorpoButton
+import io.github.findanonymity.fa.ui.components.CorpoOutlinedButton
 import io.github.findanonymity.fa.ui.components.TerminalCard
 import io.github.findanonymity.fa.ui.theme.CorpoYellow
 import io.github.findanonymity.fa.ui.theme.CorpoAmber
@@ -72,12 +73,11 @@ fun PermissionsSetupScreen(onBack: () -> Unit) {
                     color = if (backendState == BackendState.RootAvailable) CorpoYellow else CorpoAmber,
                     style = MaterialTheme.typography.bodyMedium,
                 )
-                Button(
+                CorpoOutlinedButton(
+                    text = stringResource(R.string.permissions_root_check),
                     onClick = { scope.launch { app.executorManager.checkRoot() } },
-                    modifier = Modifier.padding(top = 8.dp),
-                ) {
-                    Text(stringResource(R.string.permissions_root_check))
-                }
+                    modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                )
             }
 
             TerminalCard(modifier = Modifier.fillMaxWidth()) {
@@ -98,12 +98,11 @@ fun PermissionsSetupScreen(onBack: () -> Unit) {
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.padding(top = 4.dp),
                 )
-                Button(
+                CorpoButton(
+                    text = stringResource(R.string.permissions_shizuku_grant),
                     onClick = { scope.launch { app.executorManager.requestShizukuPermission() } },
-                    modifier = Modifier.padding(top = 8.dp),
-                ) {
-                    Text(stringResource(R.string.permissions_shizuku_grant))
-                }
+                    modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                )
             }
 
             TerminalCard(modifier = Modifier.fillMaxWidth()) {
@@ -113,21 +112,21 @@ fun PermissionsSetupScreen(onBack: () -> Unit) {
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.padding(top = 4.dp),
                 )
-                Button(
+                CorpoOutlinedButton(
+                    text = stringResource(R.string.permissions_battery_button),
                     onClick = {
                         val pm = context.getSystemService(PowerManager::class.java)
                         if (pm?.isIgnoringBatteryOptimizations(context.packageName) != true) {
-                            val intent = Intent(
-                                Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
-                                Uri.parse("package:${context.packageName}"),
+                            context.startActivity(
+                                Intent(
+                                    Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
+                                    Uri.parse("package:${context.packageName}"),
+                                ),
                             )
-                            context.startActivity(intent)
                         }
                     },
-                    modifier = Modifier.padding(top = 8.dp),
-                ) {
-                    Text(stringResource(R.string.permissions_battery_button))
-                }
+                    modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                )
             }
 
             TerminalCard(modifier = Modifier.fillMaxWidth()) {

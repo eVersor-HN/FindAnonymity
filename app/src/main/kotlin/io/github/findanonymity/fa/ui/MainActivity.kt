@@ -19,6 +19,7 @@ import io.github.findanonymity.fa.ui.home.HomeScreen
 import io.github.findanonymity.fa.ui.onboarding.FaqScreen
 import io.github.findanonymity.fa.ui.onboarding.OnboardingScreen
 import io.github.findanonymity.fa.ui.panic.PanicSetupScreen
+import io.github.findanonymity.fa.ui.ruleeditor.BulkRuleEditorScreen
 import io.github.findanonymity.fa.ui.ruleeditor.RebootRuleEditorScreen
 import io.github.findanonymity.fa.ui.ruleeditor.ToggleRuleEditorScreen
 import io.github.findanonymity.fa.ui.setup.PermissionsSetupScreen
@@ -42,6 +43,7 @@ private object Routes {
     const val HOME = "home"
     const val RULE = "rule/{target}"
     const val REBOOT_RULE = "reboot_rule"
+    const val BULK_RULE = "bulk_rule"
     const val PERMISSIONS = "permissions"
     const val SETTINGS = "settings"
     const val FAQ = "faq"
@@ -76,6 +78,7 @@ class MainActivity : AppCompatActivity() {
                         HomeScreen(
                             onEditToggleRule = { target -> navController.navigate(Routes.rule(target)) },
                             onEditRebootRule = { navController.navigate(Routes.REBOOT_RULE) },
+                            onOpenBulk = { navController.navigate(Routes.BULK_RULE) },
                             onOpenPermissions = { navController.navigate(Routes.PERMISSIONS) },
                             onOpenSettings = { navController.navigate(Routes.SETTINGS) },
                             onOpenPanic = { navController.navigate(Routes.PANIC) },
@@ -91,6 +94,9 @@ class MainActivity : AppCompatActivity() {
                     }
                     composable(Routes.REBOOT_RULE) {
                         RebootRuleEditorScreen(onBack = { navController.popBackStack() })
+                    }
+                    composable(Routes.BULK_RULE) {
+                        BulkRuleEditorScreen(onBack = { navController.popBackStack() })
                     }
                     composable(Routes.PERMISSIONS) {
                         PermissionsSetupScreen(onBack = { navController.popBackStack() })

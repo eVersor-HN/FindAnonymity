@@ -53,6 +53,10 @@
     <string name="notification_stop">Stopp</string>
     <string name="home_rules_title">Regeln</string>
     <string name="home_rules_hint">Zum Einstellen auf eine Zeile tippen</string>
+    <string name="home_next_label">NÄCHSTES</string>
+    <string name="home_next_paused">Automatisierung pausiert</string>
+    <string name="home_next_none">Keine zeitgesteuerten Änderungen</string>
+    <string name="home_bulk">Alle Regeln auf einmal setzen</string>
     <string name="home_panic_title">Notfallfunktion</string>
     <string name="home_panic_armed">AKTIVIERT</string>
     <string name="home_panic_disarmed">nicht aktiviert</string>
@@ -86,6 +90,11 @@
     <string name="rule_editor_reboot_title">Neustart</string>
     <string name="rule_editor_reboot_interval">Intervall</string>
     <string name="rule_editor_reboot_note">Intervall = Zeit seit dem letzten Start (jeder Start, nicht nur von der App ausgelöste).</string>
+    <string name="rule_editor_bulk_title">Alle Regeln</string>
+    <string name="rule_editor_bulk_note">Wendet eine Einstellung gleichzeitig auf WLAN, mobile Daten und Flugmodus an.</string>
+    <string name="rule_editor_bulk_apply">Auf alle drei anwenden</string>
+    <string name="rule_editor_force_title">Neustart erzwingen</string>
+    <string name="rule_editor_force_note">Läuft als eigenständiger Daemon, der auch dann auslöst, wenn FA über die Benachrichtigung beendet oder gekillt wird — ein Dieb kann den Schutz-Neustart so nicht abbrechen. Benötigt Root oder Shizuku; Root schaltet ihn nach jedem Start erneut scharf.</string>
 
     <!-- Berechtigungen / Einrichtung -->
     <string name="permissions_title">Einrichtung</string>
@@ -125,17 +134,17 @@
     <string name="settings_support">Entwicklung unterstützen (Ko-fi)</string>
     <string name="faq_tutorial_title">Erste Schritte</string>
     <string name="faq_step1_title">1 · Backend besorgen</string>
-    <string name="faq_step1_body">FA braucht ein privilegiertes Backend, um Systemeinstellungen zu ändern. Ist dein Handy gerootet, passt das. Kein Root? Installiere die kostenlose App \"Shizuku\" aus dem Play Store oder von GitHub.</string>
+    <string name="faq_step1_body">Gerootet reicht. Kein Root? Installiere die kostenlose Shizuku-App.</string>
     <string name="faq_step2_title">2 · Shizuku starten</string>
-    <string name="faq_step2_body">Öffne Shizuku und starte es — ab Android 11 über Wireless Debugging, sonst per PC/ADB. Es muss \"läuft\" anzeigen.</string>
+    <string name="faq_step2_body">Shizuku starten (Android 11+: Wireless Debugging, sonst ADB). Muss „läuft“ zeigen.</string>
     <string name="faq_step3_title">3 · FA verbinden</string>
-    <string name="faq_step3_body">Öffne FA. Tippe auf der Backend-Karte auf \"Mit Shizuku verbinden\" und erlaube die Berechtigung. Danach sollte dort \"Shizuku verbunden\" stehen.</string>
+    <string name="faq_step3_body">In FA auf der Backend-Karte „Mit Shizuku verbinden“ tippen und erlauben.</string>
     <string name="faq_step4_title">4 · Regel anlegen</string>
-    <string name="faq_step4_body">Tippe z. B. auf Wi-Fi, wähle \"Cycle\", stelle ein, wie lange es an bleibt und die volle Zykluslänge (z. B. 1 min an, Zyklus 3 min = 2 min aus), dann Speichern.</string>
+    <string name="faq_step4_body">Regel tippen → Cycle → An-Dauer + Zykluslänge → Speichern.</string>
     <string name="faq_step5_title">5 · Automatisierung einschalten</string>
-    <string name="faq_step5_body">Lege den Automatisierungs-Schalter auf dem Startbildschirm um. Eine Benachrichtigung zeigt dann live, was wann umschaltet — von dort kannst du alles stoppen.</string>
+    <string name="faq_step5_body">Automatisierungs-Schalter an. Eine Benachrichtigung zeigt den Countdown.</string>
     <string name="faq_step6_title">6 · Optional: Panic-Lock</string>
-    <string name="faq_step6_body">Nur mit Root. Er ändert bei schnellem Drücken der Ein-/Aus-Taste dein Sperrbildschirm-Passwort. Lies zuerst alle Warnungen und sichere das neue Passwort außerhalb des Handys.</string>
+    <string name="faq_step6_body">Nur Root: ändert bei schnellem Tastendruck dein Sperr-Passwort.</string>
 
     <!-- Einführung -->
     <string name="onboarding_step1_title">Was FA macht</string>

@@ -13,7 +13,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
@@ -36,6 +35,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.os.LocaleListCompat
@@ -44,6 +44,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import io.github.findanonymity.fa.FaApp
 import io.github.findanonymity.fa.R
 import io.github.findanonymity.fa.data.model.BackendPreference
+import io.github.findanonymity.fa.ui.components.CorpoButton
+import io.github.findanonymity.fa.ui.components.CorpoOutlinedButton
 import io.github.findanonymity.fa.ui.components.FormContainer
 import io.github.findanonymity.fa.ui.components.TerminalCard
 import io.github.findanonymity.fa.ui.theme.CorpoYellow
@@ -147,15 +149,22 @@ fun SettingsAboutScreen(
             }
 
             TerminalCard(modifier = Modifier.fillMaxWidth()) {
-                Button(onClick = onOpenFaq, modifier = Modifier.fillMaxWidth()) {
-                    Text(stringResource(R.string.settings_help_faq))
-                }
-                Button(onClick = onOpenPermissions, modifier = Modifier.fillMaxWidth().padding(top = 8.dp)) {
-                    Text(stringResource(R.string.settings_permissions))
-                }
-                Button(onClick = onReplayOnboarding, modifier = Modifier.fillMaxWidth().padding(top = 8.dp)) {
-                    Text(stringResource(R.string.settings_onboarding_replay))
-                }
+                CorpoButton(
+                    text = stringResource(R.string.settings_help_faq),
+                    onClick = onOpenFaq,
+                    icon = painterResource(R.drawable.ic_shield),
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                CorpoOutlinedButton(
+                    text = stringResource(R.string.settings_permissions),
+                    onClick = onOpenPermissions,
+                    modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                )
+                CorpoOutlinedButton(
+                    text = stringResource(R.string.settings_onboarding_replay),
+                    onClick = onReplayOnboarding,
+                    modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                )
             }
 
             TerminalCard(modifier = Modifier.fillMaxWidth()) {
@@ -170,12 +179,12 @@ fun SettingsAboutScreen(
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.padding(top = 4.dp),
                 )
-                Button(
+                CorpoButton(
+                    text = stringResource(R.string.settings_check_updates),
                     onClick = { openUrl(context, RELEASES_URL) },
+                    icon = painterResource(R.drawable.ic_reboot),
                     modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
-                ) {
-                    Text(stringResource(R.string.settings_check_updates))
-                }
+                )
             }
 
             TerminalCard(modifier = Modifier.fillMaxWidth()) {
@@ -196,18 +205,18 @@ fun SettingsAboutScreen(
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.padding(top = 8.dp),
                 )
-                Button(
+                CorpoOutlinedButton(
+                    text = stringResource(R.string.settings_github),
                     onClick = { openUrl(context, GITHUB_URL) },
+                    icon = painterResource(R.drawable.ic_link),
                     modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
-                ) {
-                    Text(stringResource(R.string.settings_github))
-                }
-                Button(
+                )
+                CorpoButton(
+                    text = stringResource(R.string.settings_support),
                     onClick = { openUrl(context, KOFI_URL) },
+                    icon = painterResource(R.drawable.ic_bolt),
                     modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
-                ) {
-                    Text(stringResource(R.string.settings_support))
-                }
+                )
             }
         }
     }

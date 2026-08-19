@@ -35,6 +35,12 @@ class BootReceiver : BroadcastReceiver() {
                     if (config.panicLock.armed) {
                         rearmPanic(app, config.panicLock)
                     }
+                    // Re-arm the forced-reboot daemon so the protective reboot keeps recurring
+                    // across boots (root; under Shizuku it will not be running this early).
+                    if (config.rebootRule.enabled && config.rebootRule.forced) {
+                        RebootDaemonInstaller(app.executorManager::exec)
+                            .arm(config.rebootRule.interval.toMillis() / 1000)
+                    }
                 }
 
                 if (BootFlagMirror.read(context)) {

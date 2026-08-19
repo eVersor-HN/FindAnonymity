@@ -49,6 +49,26 @@ FA needs a privileged backend to issue system commands. It supports two:
 
 Minimum **Android 12 (API 31)**; target Android 16 (API 36).
 
+## Why scheduled reboots?
+
+A reboot isn't just cleanup — it returns the phone to the **Before-First-Unlock (BFU)** state. Until
+you enter your PIN/password again, the file-based encryption keys aren't in memory, so the data is
+encrypted at rest and far harder to extract with forensic tools (most only work in the After-First-
+Unlock state). Yes, you have to unlock again afterwards — that's the point: the phone sits locked and
+protected.
+
+Concrete scenario: someone grabs your phone and wraps it in foil (a Faraday bag) to stop a remote
+wipe or "find my device". They don't know FA is installed — so the **scheduled reboot still fires
+locally**, and the device drops to BFU on its own. Combine it with a short interval and, optionally,
+the **panic-lock**, and a stolen-but-unlocked phone becomes a stolen-and-locked one without you
+touching it.
+
+**Forced reboot** (a per-rule option): normally the reboot is driven by FA's foreground service, so
+tapping **Stop** on the notification cancels it — convenient for you, but a thief could do the same.
+Turn on *Force reboot* and the reboot instead runs from a **detached privileged daemon** that
+survives FA being stopped or killed, so the protective reboot fires regardless. (Root re-arms it on
+every boot; under Shizuku it fires once, since Shizuku isn't running that early.)
+
 ## Install
 
 Download the signed APK from the [latest release](../../releases/latest) and install it.
