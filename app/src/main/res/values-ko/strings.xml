@@ -50,7 +50,7 @@
     <string name="home_status_disabled">사용 안 함</string>
     <string name="home_status_always_on">항상 켜짐</string>
     <string name="home_status_always_off">항상 꺼짐</string>
-    <string name="home_status_next_change">%1$s — %2$s 후 변경</string>
+    <string name="home_status_next_change">%1$s · %2$s</string>
     <string name="home_reboot_label">재부팅</string>
     <string name="home_reboot_disabled">사용 안 함</string>
     <string name="home_reboot_next">%1$s 후 재부팅</string>

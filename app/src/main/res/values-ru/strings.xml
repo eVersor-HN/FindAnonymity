@@ -50,7 +50,7 @@
     <string name="home_status_disabled">отключено</string>
     <string name="home_status_always_on">всегда включено</string>
     <string name="home_status_always_off">всегда выключено</string>
-    <string name="home_status_next_change">%1$s — следующее изменение через %2$s</string>
+    <string name="home_status_next_change">%1$s · %2$s</string>
     <string name="home_reboot_label">Перезагрузка</string>
     <string name="home_reboot_disabled">отключена</string>
     <string name="home_reboot_next">следующая перезагрузка через %1$s</string>

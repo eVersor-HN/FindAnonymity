@@ -104,7 +104,7 @@ No app can guarantee zero emissions: this is enforced in software, not by a hard
     <string name="home_status_disabled">disabled</string>
     <string name="home_status_always_on">always on</string>
     <string name="home_status_always_off">always off</string>
-    <string name="home_status_next_change">%1$s — next change in %2$s</string>
+    <string name="home_status_next_change">%1$s · %2$s</string>
     <string name="home_reboot_label">Reboot</string>
     <string name="home_reboot_disabled">disabled</string>
     <string name="home_reboot_next">next reboot in %1$s</string>

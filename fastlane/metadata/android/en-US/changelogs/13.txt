@@ -1,0 +1,1 @@
+The app now draws edge to edge, using the full screen behind the system bars. Rule rows show a compact status ("ON · 00:01:26") so the countdown is never cut off on narrower screens.

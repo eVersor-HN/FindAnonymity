@@ -50,7 +50,7 @@
     <string name="home_status_disabled">uitgeschakeld</string>
     <string name="home_status_always_on">altijd aan</string>
     <string name="home_status_always_off">altijd uit</string>
-    <string name="home_status_next_change">%1$s — volgende wijziging over %2$s</string>
+    <string name="home_status_next_change">%1$s · %2$s</string>
     <string name="home_reboot_label">Herstart</string>
     <string name="home_reboot_disabled">uitgeschakeld</string>
     <string name="home_reboot_next">volgende herstart over %1$s</string>

@@ -104,7 +104,7 @@ Keine App kann null Aussendungen garantieren: das wird per Software durchgesetzt
     <string name="home_status_disabled">deaktiviert</string>
     <string name="home_status_always_on">immer an</string>
     <string name="home_status_always_off">immer aus</string>
-    <string name="home_status_next_change">%1$s — nächste Änderung in %2$s</string>
+    <string name="home_status_next_change">%1$s · %2$s</string>
     <string name="home_reboot_label">Neustart</string>
     <string name="home_reboot_disabled">deaktiviert</string>
     <string name="home_reboot_next">nächster Neustart in %1$s</string>

@@ -50,7 +50,7 @@
     <string name="home_status_disabled">معطّلة</string>
     <string name="home_status_always_on">تشغيل دائم</string>
     <string name="home_status_always_off">إيقاف دائم</string>
-    <string name="home_status_next_change">%1$s — التغيير التالي خلال %2$s</string>
+    <string name="home_status_next_change">%1$s · %2$s</string>
     <string name="home_reboot_label">إعادة التشغيل</string>
     <string name="home_reboot_disabled">معطّلة</string>
     <string name="home_reboot_next">إعادة التشغيل التالية خلال %1$s</string>

@@ -50,7 +50,7 @@
     <string name="home_status_disabled">अक्षम</string>
     <string name="home_status_always_on">हमेशा चालू</string>
     <string name="home_status_always_off">हमेशा बंद</string>
-    <string name="home_status_next_change">%1$s — अगला बदलाव %2$s में</string>
+    <string name="home_status_next_change">%1$s · %2$s</string>
     <string name="home_reboot_label">रीबूट</string>
     <string name="home_reboot_disabled">अक्षम</string>
     <string name="home_reboot_next">अगला रीबूट %1$s में</string>

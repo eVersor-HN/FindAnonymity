@@ -50,7 +50,7 @@
     <string name="home_status_disabled">disattivato</string>
     <string name="home_status_always_on">sempre attivo</string>
     <string name="home_status_always_off">sempre disattivo</string>
-    <string name="home_status_next_change">%1$s — prossimo cambio tra %2$s</string>
+    <string name="home_status_next_change">%1$s · %2$s</string>
     <string name="home_reboot_label">Riavvio</string>
     <string name="home_reboot_disabled">disattivato</string>
     <string name="home_reboot_next">prossimo riavvio tra %1$s</string>

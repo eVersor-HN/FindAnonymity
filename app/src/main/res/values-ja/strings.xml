@@ -50,7 +50,7 @@
     <string name="home_status_disabled">無効</string>
     <string name="home_status_always_on">常にON</string>
     <string name="home_status_always_off">常にOFF</string>
-    <string name="home_status_next_change">%1$s — 次の変更まで %2$s</string>
+    <string name="home_status_next_change">%1$s · %2$s</string>
     <string name="home_reboot_label">再起動</string>
     <string name="home_reboot_disabled">無効</string>
     <string name="home_reboot_next">次の再起動まで %1$s</string>

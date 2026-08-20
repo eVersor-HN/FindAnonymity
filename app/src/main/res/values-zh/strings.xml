@@ -50,7 +50,7 @@
     <string name="home_status_disabled">已禁用</string>
     <string name="home_status_always_on">始终开启</string>
     <string name="home_status_always_off">始终关闭</string>
-    <string name="home_status_next_change">%1$s — %2$s 后变化</string>
+    <string name="home_status_next_change">%1$s · %2$s</string>
     <string name="home_reboot_label">重启</string>
     <string name="home_reboot_disabled">已禁用</string>
     <string name="home_reboot_next">%1$s 后重启</string>

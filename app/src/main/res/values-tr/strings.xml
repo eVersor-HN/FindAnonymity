@@ -50,7 +50,7 @@
     <string name="home_status_disabled">devre dışı</string>
     <string name="home_status_always_on">her zaman açık</string>
     <string name="home_status_always_off">her zaman kapalı</string>
-    <string name="home_status_next_change">%1$s — sonraki değişiklik %2$s sonra</string>
+    <string name="home_status_next_change">%1$s · %2$s</string>
     <string name="home_reboot_label">Yeniden başlatma</string>
     <string name="home_reboot_disabled">devre dışı</string>
     <string name="home_reboot_next">sonraki yeniden başlatma %1$s sonra</string>

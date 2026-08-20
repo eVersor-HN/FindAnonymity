@@ -1,0 +1,1 @@
+Die App zeichnet jetzt randlos über den ganzen Bildschirm, hinter den Systemleisten. Die Regel-Zeilen zeigen einen kompakten Status ("ON · 00:01:26"), damit der Countdown auf schmaleren Bildschirmen nie abgeschnitten wird.
