@@ -28,6 +28,11 @@ that you can stop from there.
   string you have backed up externally. Under coercion, you press the button and lock yourself
   out — the device can no longer be unlocked on demand. Keeps working even if FA's own process
   is killed.
+- **Transmission monitor** — a live view of what the device is actually sending: byte rates with a
+  60‑second history, the real state of every radio, and (with root/Shizuku) the list of established
+  outbound connections. It flags two things people usually miss: traffic leaving while Wi‑Fi and
+  mobile data are both off, and **airplane mode being bypassed** because Wi‑Fi or data were switched
+  back on top of it.
 - **15 languages**, full RTL support, a cold **cyberpunk‑corpo** terminal UI.
 
 ## Requirements
@@ -49,6 +54,24 @@ FA needs a privileged backend to issue system commands. It supports two:
   auto re‑arm. Use root for a panic‑lock you can rely on.
 
 Minimum **Android 12 (API 31)**; target Android 16 (API 36).
+
+## How far does "off" actually go?
+
+Be clear-eyed about what this can and cannot do:
+
+- **Mobile data off ≠ modem off.** The modem stays registered with your carrier, so the network still
+  knows your approximate location and can page the device. Only **airplane mode** (or pulling the
+  SIM) powers it down — use airplane mode as the main switch when you want the device dark, and the
+  individual toggles to cut traffic and save battery.
+- **Airplane mode can be bypassed.** Android lets you re-enable Wi‑Fi (and on some ROMs mobile data)
+  on top of airplane mode, and traffic keeps flowing. FA's transmission monitor warns you when that
+  is the case.
+- **Periodic blocking creates gaps, not silence.** When a window re-opens, queued traffic flushes at
+  once. The point is to break the continuous trail, not to reach zero emissions.
+- **This is software, not a hardware kill switch.** No app can guarantee nothing is transmitted. For
+  high‑risk situations use a Faraday bag or remove the SIM.
+- FA controls radios, not individual apps. Pair it with a firewall (NetGuard, RethinkDNS) if you want
+  per‑app blocking while staying online.
 
 ## Why scheduled reboots?
 

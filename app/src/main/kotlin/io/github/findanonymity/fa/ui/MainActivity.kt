@@ -18,6 +18,7 @@ import io.github.findanonymity.fa.data.model.ToggleTarget
 import io.github.findanonymity.fa.ui.home.HomeScreen
 import io.github.findanonymity.fa.ui.onboarding.FaqScreen
 import io.github.findanonymity.fa.ui.onboarding.OnboardingScreen
+import io.github.findanonymity.fa.ui.monitor.TransmissionMonitorScreen
 import io.github.findanonymity.fa.ui.panic.PanicSetupScreen
 import io.github.findanonymity.fa.ui.ruleeditor.BulkRuleEditorScreen
 import io.github.findanonymity.fa.ui.ruleeditor.RebootRuleEditorScreen
@@ -48,6 +49,7 @@ private object Routes {
     const val SETTINGS = "settings"
     const val FAQ = "faq"
     const val PANIC = "panic"
+    const val MONITOR = "monitor"
 
     fun rule(target: ToggleTarget) = "rule/${target.name}"
 }
@@ -82,6 +84,7 @@ class MainActivity : AppCompatActivity() {
                             onOpenPermissions = { navController.navigate(Routes.PERMISSIONS) },
                             onOpenSettings = { navController.navigate(Routes.SETTINGS) },
                             onOpenPanic = { navController.navigate(Routes.PANIC) },
+                            onOpenMonitor = { navController.navigate(Routes.MONITOR) },
                         )
                     }
                     composable(
@@ -114,6 +117,9 @@ class MainActivity : AppCompatActivity() {
                     }
                     composable(Routes.PANIC) {
                         PanicSetupScreen(onBack = { navController.popBackStack() })
+                    }
+                    composable(Routes.MONITOR) {
+                        TransmissionMonitorScreen(onBack = { navController.popBackStack() })
                     }
                 }
             }

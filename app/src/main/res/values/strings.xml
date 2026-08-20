@@ -69,6 +69,30 @@
     <string name="notification_stop">Stop</string>
     <string name="home_rules_title">Rules</string>
     <string name="home_rules_hint">Tap a row to configure it</string>
+    <!-- Transmission monitor -->
+    <string name="monitor_title">Transmission monitor</string>
+    <string name="monitor_open">Transmission monitor</string>
+    <string name="monitor_radios">Radios</string>
+    <string name="monitor_state_on">ON</string>
+    <string name="monitor_state_off">OFF</string>
+    <string name="monitor_traffic">Live traffic</string>
+    <string name="monitor_sent">Sent</string>
+    <string name="monitor_received">Received</string>
+    <string name="monitor_total_session">since this screen opened</string>
+    <string name="monitor_connections">Outbound connections</string>
+    <string name="monitor_connections_count">%1$d established</string>
+    <string name="monitor_connections_none">No established connections right now.</string>
+    <string name="monitor_connections_need_backend">Needs root or Shizuku to list live connections.</string>
+    <string name="monitor_connections_failed">Could not read connections: %1$s</string>
+    <string name="monitor_quiet">Quiet — nothing is going out right now.</string>
+    <string name="monitor_leak_title">⚠ Traffic while radios should be silent</string>
+    <string name="monitor_leak_body">Data is still leaving this device even though Wi-Fi and mobile data are both off. This can be a VPN/tethering interface, a captive system service, or a radio that did not actually power down.</string>
+    <string name="monitor_bypass_title">⚠ Airplane mode is being bypassed</string>
+    <string name="monitor_bypass_body">Airplane mode is on, but Wi-Fi and/or mobile data were switched back on top of it — Android allows this, so the device keeps transmitting. Turn those off too if you want it to go dark.</string>
+    <string name="monitor_hint_title">Mobile data OFF is not radio OFF</string>
+    <string name="monitor_hint_body">Turning mobile data off stops app traffic, but the modem stays registered with your carrier — your approximate location is still known to the network and the device can still be paged. Only airplane mode (or removing the SIM) actually powers the modem down. Use airplane mode as the main switch when you want the device to go dark; use the individual toggles to reduce traffic and save battery.
+
+No app can guarantee zero emissions: this is enforced in software, not by a hardware kill switch. For high-risk situations, use a Faraday bag or remove the SIM.</string>
     <string name="home_next_label">NEXT</string>
     <string name="home_next_paused">Automation paused</string>
     <string name="home_next_none">No timed changes scheduled</string>

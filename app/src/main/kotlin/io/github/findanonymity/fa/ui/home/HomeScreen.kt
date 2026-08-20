@@ -84,6 +84,7 @@ fun HomeScreen(
     onOpenPermissions: () -> Unit,
     onOpenSettings: () -> Unit,
     onOpenPanic: () -> Unit,
+    onOpenMonitor: () -> Unit,
     viewModel: HomeViewModel = viewModel(),
 ) {
     val config by viewModel.configFlow.collectAsStateWithLifecycle()
@@ -105,6 +106,13 @@ fun HomeScreen(
                     }
                 },
                 actions = {
+                    IconButton(onClick = onOpenMonitor) {
+                        Icon(
+                            painterResource(R.drawable.ic_pulse),
+                            contentDescription = stringResource(R.string.monitor_open),
+                            tint = CorpoCyan,
+                        )
+                    }
                     IconButton(onClick = onOpenSettings) {
                         Icon(Icons.Filled.Settings, contentDescription = stringResource(R.string.settings_title))
                     }

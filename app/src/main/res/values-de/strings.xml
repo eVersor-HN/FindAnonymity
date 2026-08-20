@@ -69,6 +69,30 @@
     <string name="notification_stop">Stopp</string>
     <string name="home_rules_title">Regeln</string>
     <string name="home_rules_hint">Zum Einstellen auf eine Zeile tippen</string>
+    <!-- Sendemonitor -->
+    <string name="monitor_title">Sende-Monitor</string>
+    <string name="monitor_open">Sende-Monitor</string>
+    <string name="monitor_radios">Funkmodule</string>
+    <string name="monitor_state_on">AN</string>
+    <string name="monitor_state_off">AUS</string>
+    <string name="monitor_traffic">Live-Datenverkehr</string>
+    <string name="monitor_sent">Gesendet</string>
+    <string name="monitor_received">Empfangen</string>
+    <string name="monitor_total_session">seit Öffnen dieser Seite</string>
+    <string name="monitor_connections">Ausgehende Verbindungen</string>
+    <string name="monitor_connections_count">%1$d aktiv</string>
+    <string name="monitor_connections_none">Aktuell keine aufgebauten Verbindungen.</string>
+    <string name="monitor_connections_need_backend">Benötigt Root oder Shizuku, um Verbindungen aufzulisten.</string>
+    <string name="monitor_connections_failed">Verbindungen nicht lesbar: %1$s</string>
+    <string name="monitor_quiet">Ruhe — es geht gerade nichts raus.</string>
+    <string name="monitor_leak_title">⚠ Datenverkehr, obwohl Funk still sein sollte</string>
+    <string name="monitor_leak_body">Es verlassen weiterhin Daten dieses Gerät, obwohl WLAN und mobile Daten beide aus sind. Das kann ein VPN-/Tethering-Interface sein, ein Systemdienst oder ein Funkmodul, das nicht wirklich abgeschaltet hat.</string>
+    <string name="monitor_bypass_title">⚠ Flugmodus wird umgangen</string>
+    <string name="monitor_bypass_body">Der Flugmodus ist an, aber WLAN und/oder mobile Daten wurden darüber wieder eingeschaltet — Android erlaubt das, also sendet das Gerät weiter. Schalte diese ebenfalls aus, wenn es dunkel werden soll.</string>
+    <string name="monitor_hint_title">Mobile Daten AUS ist nicht Funk AUS</string>
+    <string name="monitor_hint_body">Mobile Daten auszuschalten stoppt den App-Verkehr, aber das Modem bleibt beim Netz registriert — dein ungefährer Standort ist dem Netz weiter bekannt und das Gerät kann angefunkt werden. Erst der Flugmodus (oder die SIM zu entfernen) legt das Modem wirklich still. Nutze den Flugmodus als Hauptschalter, wenn das Gerät dunkel werden soll; die einzelnen Schalter reduzieren Verkehr und sparen Akku.
+
+Keine App kann null Aussendungen garantieren: das wird per Software durchgesetzt, nicht durch einen Hardware-Schalter. Für Hochrisiko-Situationen: Faraday-Beutel oder SIM entfernen.</string>
     <string name="home_next_label">NÄCHSTES</string>
     <string name="home_next_paused">Automatisierung pausiert</string>
     <string name="home_next_none">Keine zeitgesteuerten Änderungen</string>
