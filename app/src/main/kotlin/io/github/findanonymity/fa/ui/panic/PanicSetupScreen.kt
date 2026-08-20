@@ -23,6 +23,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -66,37 +67,116 @@ fun PanicSetupScreen(onBack: () -> Unit, viewModel: PanicViewModel = viewModel()
     var pressCount by remember { mutableStateOf(panic.pressCount.toString()) }
     var windowSeconds by remember { mutableStateOf((panic.windowMillis / 1000).toString()) }
     var confirmText by remember { mutableStateOf("") }
-    var showArmDialog by remember { mutableStateOf(false) }
+    // Two staged confirmations before arming: type a fixed three-word phrase, then a freshly
+    // generated six-digit code. Typing exact text cannot happen by accident in a pocket.
+    var armStep by remember { mutableIntStateOf(0) }
+    var phraseInput by remember { mutableStateOf("") }
+    var codeInput by remember { mutableStateOf("") }
+    var verifyCode by remember { mutableStateOf("") }
 
-    if (showArmDialog) {
-        AlertDialog(
-            onDismissRequest = { showArmDialog = false },
-            title = { Text(stringResource(R.string.panic_arm_dialog_title), color = CorpoRed) },
-            text = {
-                Text(
-                    stringResource(
-                        R.string.panic_arm_dialog_body,
-                        passwordLength.toIntOrNull() ?: panic.passwordLength,
-                        pressCount.toIntOrNull() ?: panic.pressCount,
-                        windowSeconds.toIntOrNull() ?: (panic.windowMillis / 1000).toInt(),
-                    ),
-                    style = MaterialTheme.typography.bodySmall,
-                )
-            },
-            confirmButton = {
-                TextButton(onClick = {
-                    showArmDialog = false
-                    viewModel.confirmBackupAndArm()
-                }) {
-                    Text(stringResource(R.string.panic_arm), color = CorpoRed)
-                }
-            },
-            dismissButton = {
-                TextButton(onClick = { showArmDialog = false }) {
-                    Text(stringResource(R.string.panic_dialog_cancel))
-                }
-            },
-        )
+    if (armStep > 0) {
+        val phrase = stringResource(R.string.panic_confirm_phrase)
+        val phraseOk = phraseInput.trim().replace(Regex("""\s+"""), " ").equals(phrase, ignoreCase = true)
+
+        if (armStep == 1) {
+            AlertDialog(
+                onDismissRequest = { armStep = 0 },
+                title = { Text(stringResource(R.string.panic_arm_dialog_title), color = CorpoRed) },
+                text = {
+                    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                        Text(
+                            stringResource(
+                                R.string.panic_arm_dialog_body,
+                                passwordLength.toIntOrNull() ?: panic.passwordLength,
+                                pressCount.toIntOrNull() ?: panic.pressCount,
+                                windowSeconds.toIntOrNull() ?: (panic.windowMillis / 1000).toInt(),
+                            ),
+                            style = MaterialTheme.typography.bodySmall,
+                        )
+                        Text(
+                            stringResource(R.string.panic_confirm_phrase_instruction),
+                            style = MaterialTheme.typography.bodySmall,
+                            modifier = Modifier.padding(top = 12.dp),
+                        )
+                        Text(
+                            phrase,
+                            style = MaterialTheme.typography.titleMedium,
+                            color = CorpoYellow,
+                            modifier = Modifier.padding(top = 6.dp),
+                        )
+                        OutlinedTextField(
+                            value = phraseInput,
+                            onValueChange = { phraseInput = it },
+                            singleLine = true,
+                            isError = phraseInput.isNotEmpty() && !phraseOk,
+                            modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                        )
+                    }
+                },
+                confirmButton = {
+                    TextButton(
+                        enabled = phraseOk,
+                        onClick = {
+                            codeInput = ""
+                            verifyCode = (1..6).map { "0123456789".random() }.joinToString("")
+                            armStep = 2
+                        },
+                    ) {
+                        Text(stringResource(R.string.panic_confirm_continue), color = if (phraseOk) CorpoRed else MaterialTheme.colorScheme.onSurfaceVariant)
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = { armStep = 0; phraseInput = "" }) {
+                        Text(stringResource(R.string.panic_dialog_cancel))
+                    }
+                },
+            )
+        }
+
+        if (armStep == 2) {
+            val codeOk = codeInput.trim() == verifyCode
+            AlertDialog(
+                onDismissRequest = { armStep = 0 },
+                title = { Text(stringResource(R.string.panic_confirm_code_title), color = CorpoRed) },
+                text = {
+                    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                        Text(stringResource(R.string.panic_confirm_code_body), style = MaterialTheme.typography.bodySmall)
+                        Text(
+                            verifyCode,
+                            style = MaterialTheme.typography.titleLarge,
+                            color = CorpoYellow,
+                            modifier = Modifier.padding(top = 10.dp),
+                        )
+                        OutlinedTextField(
+                            value = codeInput,
+                            onValueChange = { codeInput = it.filter { c -> c.isDigit() }.take(6) },
+                            singleLine = true,
+                            isError = codeInput.isNotEmpty() && !codeOk,
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                            modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                        )
+                    }
+                },
+                confirmButton = {
+                    TextButton(
+                        enabled = codeOk,
+                        onClick = {
+                            armStep = 0
+                            phraseInput = ""
+                            codeInput = ""
+                            viewModel.confirmBackupAndArm()
+                        },
+                    ) {
+                        Text(stringResource(R.string.panic_arm), color = if (codeOk) CorpoRed else MaterialTheme.colorScheme.onSurfaceVariant)
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = { armStep = 0; phraseInput = ""; codeInput = "" }) {
+                        Text(stringResource(R.string.panic_dialog_cancel))
+                    }
+                },
+            )
+        }
     }
 
     Scaffold(
@@ -257,7 +337,7 @@ fun PanicSetupScreen(onBack: () -> Unit, viewModel: PanicViewModel = viewModel()
                             )
                             CorpoButton(
                                 text = stringResource(R.string.panic_arm),
-                                onClick = { showArmDialog = true },
+                                onClick = { phraseInput = ""; armStep = 1 },
                                 enabled = confirmText == "CONFIRM" && currentCredential.isNotEmpty(),
                                 container = CorpoRed,
                                 modifier = Modifier.fillMaxWidth().padding(top = 8.dp),

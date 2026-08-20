@@ -251,4 +251,9 @@ Keine App kann null Aussendungen garantieren: das wird per Software durchgesetzt
     <string name="panic_arm_dialog_title">⚠ Panic-Lock scharfschalten?</string>
     <string name="panic_arm_dialog_body">Lies das, bevor du scharfschaltest:\n\n• Bei Auslösung wird ein %1$d Zeichen langes, vollständig zufälliges Passwort dein Sperrbildschirm-Passwort.\n• Auslöser = %2$d× die Ein-/Aus-Taste innerhalb von %3$d Sekunden drücken.\n• Du MUSST dieses Passwort außerhalb dieses Handys gesichert haben. Verlierst du es, kannst du dauerhaft ausgesperrt werden — evtl. mit Datenverlust.\n• Nach dem Auslösen lässt sich der Bildschirm nur mit dem neuen Passwort entsperren.\n• Backend: Root ist zuverlässig; Shizuku ist experimentell und funktioniert evtl. nicht auf jedem Gerät.\n\nNur scharfschalten, wenn du dieses Risiko verstehst und akzeptierst.</string>
     <string name="panic_dialog_cancel">Abbrechen</string>
+    <string name="panic_confirm_phrase">PANIC LOCK SCHARF</string>
+    <string name="panic_confirm_phrase_instruction">Zum Nachweis, dass das beabsichtigt ist, tippe die folgenden Wörter exakt ein:</string>
+    <string name="panic_confirm_continue">Weiter</string>
+    <string name="panic_confirm_code_title">⚠ Letzte Bestätigung</string>
+    <string name="panic_confirm_code_body">Letzter Schritt. Danach ist der Panic-Lock scharf und schnelles Drücken der Ein-/Aus-Taste ändert dein Sperrbildschirm-Passwort. Tippe die unten angezeigten sechs Ziffern ein, um zu bestätigen.</string>
 </resources>

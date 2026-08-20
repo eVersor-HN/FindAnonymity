@@ -251,4 +251,9 @@ No app can guarantee zero emissions: this is enforced in software, not by a hard
     <string name="panic_arm_dialog_title">⚠ Arm panic-lock?</string>
     <string name="panic_arm_dialog_body">Read this before you arm:\n\n• When triggered, a %1$d-character fully random password becomes your lock-screen password.\n• Trigger = pressing the power button %2$d times within %3$d seconds.\n• You MUST have saved that password somewhere outside this phone. If you lose it, you can be permanently locked out — possibly with data loss.\n• After a trigger, the screen unlocks only with the new password.\n• Backend: root is reliable; Shizuku is experimental and may not work on every device.\n\nOnly arm if you understand and accept this risk.</string>
     <string name="panic_dialog_cancel">Cancel</string>
+    <string name="panic_confirm_phrase">ARM PANIC LOCK</string>
+    <string name="panic_confirm_phrase_instruction">To prove this is deliberate, type the following words exactly:</string>
+    <string name="panic_confirm_continue">Continue</string>
+    <string name="panic_confirm_code_title">⚠ Final confirmation</string>
+    <string name="panic_confirm_code_body">Last step. After this the panic-lock is armed and rapid power-button presses will change your lock-screen password. Type the six digits shown below to confirm.</string>
 </resources>
