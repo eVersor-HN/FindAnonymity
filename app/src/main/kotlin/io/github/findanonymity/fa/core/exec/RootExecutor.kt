@@ -18,6 +18,10 @@ class RootExecutor : PrivilegedExecutor {
     override suspend fun hasPermission(): Boolean = isAvailable()
 
     override suspend fun requestPermission(): Boolean = withContext(Dispatchers.IO) {
+        // If a non-root shell was cached from an earlier attempt (e.g. before the user granted
+        // root in KernelSU, which — unlike Magisk — has no automatic prompt), drop it so a fresh
+        // shell can pick up the new grant without needing an app restart.
+        runCatching { Shell.getCachedShell()?.takeIf { !it.isRoot }?.close() }
         Shell.getShell().isRoot
     }
 

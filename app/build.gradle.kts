@@ -23,8 +23,8 @@ android {
         applicationId = "io.github.findanonymity.fa"
         minSdk = 31
         targetSdk = 36
-        versionCode = 6
-        versionName = "0.2.1"
+        versionCode = 7
+        versionName = "0.2.2"
     }
 
     signingConfigs {

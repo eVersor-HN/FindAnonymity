@@ -6,7 +6,7 @@
 **Support development:** [Ko-fi](https://ko-fi.com/eversorhn) · [PayPal](https://paypal.me/FAMarco) · Bitcoin `bc1qv92c3eyeqvhgfnez7spfd7v2aytkhpshsl65yv`
 
 FA is a scheduler for your phone's radios. On intervals you define, it switches **Wi-Fi**, **mobile
-data**, and **airplane mode** off and back on again, so your device stops emitting a gap-free,
+data**, **airplane mode**, **Bluetooth** and **location** off and back on again, so your device stops emitting a gap-free,
 always-on record of your whereabouts. It is deliberately **selective and punctual** — you choose
 when and how often the gaps happen — and dropping the radios also **saves energy**. It can reboot
 your device on a timer too, and includes an optional root duress panic-lock.
@@ -17,10 +17,10 @@ that you can stop from there.
 
 ## Features
 
-- **Connectivity scheduler** — control **Wi‑Fi**, **mobile data**, and **airplane mode** by a
+- **Connectivity scheduler** — control **Wi‑Fi**, **mobile data**, **airplane mode**, **Bluetooth** and **location** by a
   repeating **cycle** (e.g. on 1 min every 3 min) or a **clock schedule** (on/off between two
   times on the weekdays you pick), plus always‑on / always‑off / unmanaged. Shrink your device's
-  connectivity window to reduce trackability. Edit one rule, or all three at once.
+  connectivity window to reduce trackability. Edit one radio, or all of them at once.
 - **Timed reboots** — reboot on an interval to clear volatile state and return the device to a
   fresh, before‑first‑unlock security posture.
 - **Panic‑lock (duress defense)** — a detached root daemon watches for rapid power‑button
@@ -36,7 +36,7 @@ FA needs a privileged backend to issue system commands. It supports two:
 
 | Capability | Root | Shizuku |
 |---|:---:|:---:|
-| Wi‑Fi / mobile data / airplane toggles | ✅ | ✅ |
+| Wi‑Fi / data / airplane / Bluetooth / location | ✅ | ✅ |
 | Timed reboots | ✅ | ✅ |
 | **Panic‑lock** | ✅ | ⚠️ experimental |
 
