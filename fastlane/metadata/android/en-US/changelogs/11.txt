@@ -1,0 +1,1 @@
+The dashboard title bar now reads just "FA".

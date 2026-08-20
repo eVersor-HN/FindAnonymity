@@ -1,0 +1,1 @@
+Neu: Sende-Monitor. Eine eigene Seite mit Live-Datenraten (gesendet/empfangen) samt 60-Sekunden-Verlauf, dem echten Zustand jedes Funkmoduls und den aufgebauten ausgehenden Verbindungen (mit Root oder Shizuku). Warnt, wenn Daten fließen obwohl WLAN und mobile Daten aus sind, und wenn der Flugmodus umgangen wird.

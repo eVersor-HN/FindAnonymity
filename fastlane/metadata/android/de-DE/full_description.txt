@@ -1,0 +1,27 @@
+FA ist ein Zeitplaner für die Funkmodule deines Handys. In Intervallen, die du festlegst, schaltet es WLAN, mobile Daten, Flugmodus, Bluetooth und Standort aus und wieder ein — damit dein Gerät keine lückenlose, durchgehende Aufzeichnung deines Aufenthaltsorts mehr aussendet.
+
+Das ist bewusst punktuell: du entscheidest, wann und wie oft die Lücken entstehen. Die Funkmodule abzuschalten spart außerdem spürbar Akku.
+
+Alles läuft lokal. FA hat überhaupt keine Internet-Berechtigung — kein Konto, keine Telemetrie, kein Netzwerkzugriff.
+
+<b>Funktionen</b>
+
+* WLAN, mobile Daten, Flugmodus, Bluetooth und Standort per wiederholtem Zyklus steuern (z. B. 1 Minute an alle 3 Minuten) oder per Uhrzeit-Zeitplan (an/aus zwischen zwei Uhrzeiten, an den Wochentagen deiner Wahl). Einzeln oder alle auf einmal.
+* Zeitgesteuerte Neustarts, die das Gerät in den gesperrten Before-First-Unlock-Zustand zurückversetzen, in dem die Daten verschlüsselt ruhen. Ein optionaler „erzwungener“ Modus läuft als eigenständiger Daemon und löst auch aus, wenn die App beendet wurde.
+* Sende-Monitor: Live-Datenraten mit 60-Sekunden-Verlauf, der echte Zustand jedes Funkmoduls und die Liste der aufgebauten ausgehenden Verbindungen. Warnt, wenn Daten fließen, obwohl WLAN und mobile Daten aus sind — und wenn der Flugmodus umgangen wird, weil WLAN oder Daten darüber wieder eingeschaltet wurden.
+* Optionaler Panic-Lock (nur mit Root): schnelles Drücken der Ein-/Aus-Taste ändert das Sperrbildschirm-Passwort auf eine lange Zufallszeichenkette, die du extern gesichert hast.
+* Ein Vordergrunddienst zeigt einen Live-Countdown, was wann umschaltet, und lässt sich aus der Benachrichtigung beenden.
+* 15 Sprachen, vollständige RTL-Unterstützung, OLED-schwarze Oberfläche.
+
+<b>Voraussetzungen</b>
+
+FA benötigt ein privilegiertes Backend, um Systemeinstellungen zu ändern — normale Apps dürfen diese Schalter unter Android nicht bedienen:
+
+* Root (Magisk / KernelSU) ermöglicht alles und ist für den Panic-Lock erforderlich.
+* Shizuku (ohne Root, einmalig über Wireless Debugging gekoppelt) ermöglicht die Verbindungs- und Neustart-Automatik.
+
+Mindestens Android 12.
+
+<b>Was das nicht leisten kann</b>
+
+Mobile Daten auszuschalten legt das Modem nicht still — es bleibt beim Netz registriert, dein ungefährer Standort ist dem Netz also weiter bekannt. Erst der Flugmodus oder das Entfernen der SIM schaltet das Modem wirklich ab. Periodisches Blockieren erzeugt Lücken in der Spur, nicht null Aussendungen, und wird per Software durchgesetzt — nicht durch einen Hardware-Schalter. Für Hochrisiko-Situationen: Faraday-Beutel oder SIM entfernen.

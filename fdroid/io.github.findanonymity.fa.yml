@@ -1,0 +1,29 @@
+Categories:
+  - Connectivity
+  - Security
+  - System
+License: GPL-3.0-only
+AuthorName: Marco Aurelio Fattizzo
+AuthorWebSite: https://github.com/eVersor-HN
+WebSite: https://github.com/eVersor-HN/FindAnonymity
+SourceCode: https://github.com/eVersor-HN/FindAnonymity
+IssueTracker: https://github.com/eVersor-HN/FindAnonymity/issues
+Changelog: https://github.com/eVersor-HN/FindAnonymity/releases
+Donate: https://ko-fi.com/eversorhn
+Bitcoin: bc1qv92c3eyeqvhgfnez7spfd7v2aytkhpshsl65yv
+
+RepoType: git
+Repo: https://github.com/eVersor-HN/FindAnonymity.git
+
+Builds:
+  - versionName: 0.3.2
+    versionCode: 11
+    commit: v0.3.2
+    subdir: app
+    gradle:
+      - yes
+
+AutoUpdateMode: Version
+UpdateCheckMode: Tags
+CurrentVersion: 0.3.2
+CurrentVersionCode: 11

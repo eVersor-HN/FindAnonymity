@@ -1,0 +1,1 @@
+Das Dashboard passt jetzt ohne Scrollen auf einen Hochformat-Bildschirm: einzeilige Regel-Zeilen, Panic als eine tippbare Zeile, und ein Kompakt-Modus greift auf kürzeren Bildschirmen automatisch. Geprüft bei 720-914dp Bildschirmhöhe und 130% Systemschrift.

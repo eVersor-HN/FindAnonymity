@@ -1,0 +1,27 @@
+FA is a scheduler for your phone's radios. On intervals you define, it switches Wi-Fi, mobile data, airplane mode, Bluetooth and location off and back on again, so your device stops emitting a gap-free, always-on record of where you are.
+
+It is deliberately selective and punctual: you choose when and how often the gaps happen. Dropping the radios also saves a noticeable amount of battery.
+
+Everything runs locally. FA has no internet permission at all — no account, no telemetry, no network access of any kind.
+
+<b>Features</b>
+
+* Control Wi-Fi, mobile data, airplane mode, Bluetooth and location by a repeating cycle (for example on 1 minute every 3 minutes) or by a clock schedule (on/off between two times, on the weekdays you pick). Edit one radio, or all of them at once.
+* Timed reboots, to return the device to the locked before-first-unlock state where its data is encrypted at rest. An optional "forced" mode runs the reboot from a detached daemon that still fires if the app is stopped.
+* Transmission monitor: live byte rates with a 60-second history, the real state of every radio, and the list of established outbound connections. It warns you when traffic leaves while Wi-Fi and mobile data are both off, and when airplane mode is being bypassed because Wi-Fi or data were switched back on top of it.
+* Optional root-only panic-lock: rapid power-button presses rotate the lock-screen password to a long random string you have backed up externally.
+* A foreground service shows a live countdown of what changes when, and can be stopped from the notification.
+* 15 languages, full RTL support, an OLED-black interface.
+
+<b>Requirements</b>
+
+FA needs a privileged backend to change system settings, because Android does not let ordinary apps toggle these:
+
+* Root (Magisk / KernelSU) enables everything, and is required for the panic-lock.
+* Shizuku (no root needed, paired once via Wireless Debugging) enables the connectivity and reboot automation.
+
+Minimum Android 12.
+
+<b>What this cannot do</b>
+
+Turning mobile data off does not power the modem down — it stays registered with your carrier, so the network still knows your approximate location. Only airplane mode, or removing the SIM, actually silences the modem. Periodic blocking creates gaps in the trail rather than zero emissions, and this is enforced in software, not by a hardware kill switch. For high-risk situations, use a Faraday bag or remove the SIM.
