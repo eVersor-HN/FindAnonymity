@@ -26,6 +26,7 @@ fun TerminalCard(
     modifier: Modifier = Modifier,
     accent: Color = MaterialTheme.colorScheme.secondary,
     strip: Boolean = true,
+    contentPadding: androidx.compose.ui.unit.Dp = 16.dp,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     Card(
@@ -43,7 +44,7 @@ fun TerminalCard(
                         .background(accent),
                 ) {}
             }
-            Column(modifier = Modifier.padding(16.dp), content = content)
+            Column(modifier = Modifier.padding(contentPadding), content = content)
         }
     }
 }

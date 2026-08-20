@@ -10,6 +10,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -120,33 +121,43 @@ fun HomeScreen(
             )
         },
     ) { padding ->
-        LazyVerticalGrid(
-            columns = GridCells.Adaptive(minSize = 340.dp),
-            contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
+        BoxWithConstraints(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding),
         ) {
+            // Tighten spacing on shorter screens so the dashboard still fits without scrolling.
+            val compact = maxHeight < 760.dp
+            val gap = if (compact) 6.dp else 10.dp
+            val cardPad = if (compact) 10.dp else 14.dp
+            val rowPad = if (compact) 6.dp else 10.dp
+
+        LazyVerticalGrid(
+            columns = GridCells.Adaptive(minSize = 340.dp),
+            contentPadding = PaddingValues(horizontal = 16.dp, vertical = if (compact) 10.dp else 14.dp),
+            verticalArrangement = Arrangement.spacedBy(gap),
+            horizontalArrangement = Arrangement.spacedBy(gap),
+            modifier = Modifier.fillMaxSize(),
+        ) {
             item(span = { GridItemSpan(maxLineSpan) }) {
-                MasterSwitchCard(config.masterAutomationEnabled, viewModel::setMasterEnabled)
+                MasterSwitchCard(config.masterAutomationEnabled, viewModel::setMasterEnabled, cardPad)
             }
 
             item(span = { GridItemSpan(maxLineSpan) }) {
-                BackendStatusCard(backendState, viewModel::connectShizuku, onOpenPermissions)
+                BackendStatusCard(backendState, viewModel::connectShizuku, onOpenPermissions, cardPad)
             }
 
             item {
-                TerminalCard(modifier = Modifier.fillMaxWidth(), accent = CorpoYellow) {
-                    Text(stringResource(R.string.home_rules_title), style = MaterialTheme.typography.titleSmall, color = CorpoYellow)
-                    Text(
-                        stringResource(R.string.home_rules_hint),
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.padding(top = 2.dp, bottom = 8.dp),
-                    )
-                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                TerminalCard(modifier = Modifier.fillMaxWidth(), accent = CorpoYellow, contentPadding = cardPad) {
+                    // On short screens the section title is dropped — the rows are self-explanatory
+                    // and the space is what keeps the dashboard scroll-free.
+                    if (!compact) {
+                        Text(stringResource(R.string.home_rules_title), style = MaterialTheme.typography.titleSmall, color = CorpoYellow)
+                    }
+                    Column(
+                        modifier = Modifier.padding(top = if (compact) 0.dp else 8.dp),
+                        verticalArrangement = Arrangement.spacedBy(if (compact) 5.dp else 6.dp),
+                    ) {
                         listOf(
                             ToggleTarget.WIFI to config.wifiRule,
                             ToggleTarget.MOBILE_DATA to config.dataRule,
@@ -154,41 +165,37 @@ fun HomeScreen(
                             ToggleTarget.BLUETOOTH to config.bluetoothRule,
                             ToggleTarget.LOCATION to config.locationRule,
                         ).forEach { (target, rule) ->
-                            ToggleRuleRow(target, rule, now) { onEditToggleRule(target) }
+                            ToggleRuleRow(target, rule, now, rowPad) { onEditToggleRule(target) }
                         }
-                        RebootRuleRow(config.rebootRule, now, onEditRebootRule)
+                        RebootRuleRow(config.rebootRule, now, rowPad, onEditRebootRule)
                     }
                     CorpoOutlinedButton(
                         text = stringResource(R.string.home_bulk),
                         onClick = onOpenBulk,
                         icon = painterResource(R.drawable.ic_tune),
                         accent = CorpoCyan,
-                        modifier = Modifier.fillMaxWidth().padding(top = 10.dp),
+                        modifier = Modifier.fillMaxWidth().padding(top = if (compact) 6.dp else 8.dp),
                     )
                 }
             }
 
             item {
-                TerminalCard(modifier = Modifier.fillMaxWidth(), accent = if (config.panicLock.armed) CorpoRed else CorpoAmber) {
-                    Text(stringResource(R.string.home_panic_title), style = MaterialTheme.typography.titleSmall, color = CorpoRed)
-                    StatusRow(
-                        label = stringResource(R.string.settings_title),
-                        statusText = stringResource(if (config.panicLock.armed) R.string.home_panic_armed else R.string.home_panic_disarmed),
-                        accentColor = if (config.panicLock.armed) CorpoRed else CorpoAmber,
-                    )
-                    CorpoButton(
-                        text = stringResource(R.string.home_panic_configure),
-                        onClick = onOpenPanic,
-                        container = if (config.panicLock.armed) CorpoRed else CorpoYellow,
+                val panicAccent = if (config.panicLock.armed) CorpoRed else CorpoAmber
+                // Title lives in the row label itself — one line keeps the dashboard scroll-free.
+                TerminalCard(modifier = Modifier.fillMaxWidth(), accent = panicAccent, contentPadding = cardPad) {
+                    RuleRowSurface(
                         icon = painterResource(R.drawable.ic_shield),
-                        modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                        label = stringResource(R.string.home_panic_title),
+                        statusText = stringResource(
+                            if (config.panicLock.armed) R.string.home_panic_armed else R.string.home_panic_disarmed,
+                        ),
+                        accent = panicAccent,
+                        verticalPadding = rowPad,
+                        onClick = onOpenPanic,
                     )
                 }
             }
-
-            item(span = { GridItemSpan(maxLineSpan) }) {
-                FooterLine(backendState)
-            }
+        }
         }
     }
 }
@@ -221,8 +228,8 @@ private fun LaunchedEffectTicker(onTick: () -> Unit) {
 }
 
 @Composable
-private fun MasterSwitchCard(enabled: Boolean, onToggle: (Boolean) -> Unit) {
-    TerminalCard(modifier = Modifier.fillMaxWidth(), accent = if (enabled) CorpoYellow else MaterialTheme.colorScheme.outline) {
+private fun MasterSwitchCard(enabled: Boolean, onToggle: (Boolean) -> Unit, contentPadding: androidx.compose.ui.unit.Dp) {
+    TerminalCard(modifier = Modifier.fillMaxWidth(), accent = if (enabled) CorpoYellow else MaterialTheme.colorScheme.outline, contentPadding = contentPadding) {
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -242,7 +249,7 @@ private fun MasterSwitchCard(enabled: Boolean, onToggle: (Boolean) -> Unit) {
 }
 
 @Composable
-private fun BackendStatusCard(state: BackendState, onConnectShizuku: () -> Unit, onOpenSetup: () -> Unit) {
+private fun BackendStatusCard(state: BackendState, onConnectShizuku: () -> Unit, onOpenSetup: () -> Unit, contentPadding: androidx.compose.ui.unit.Dp) {
     val connected = state is BackendState.RootAvailable || state is BackendState.ShizukuAvailable
     val statusText: String
     val accent: Color
@@ -254,7 +261,7 @@ private fun BackendStatusCard(state: BackendState, onConnectShizuku: () -> Unit,
         is BackendState.NoneAvailable -> { statusText = stringResource(R.string.home_backend_none); accent = CorpoAmber; showConnect = true }
     }
     // Connected → a quiet, single-line status. Needs action → an emphasised card with buttons.
-    TerminalCard(modifier = Modifier.fillMaxWidth(), accent = accent, strip = !connected) {
+    TerminalCard(modifier = Modifier.fillMaxWidth(), accent = accent, strip = !connected, contentPadding = contentPadding) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(painterResource(R.drawable.ic_link), contentDescription = null, tint = accent, modifier = Modifier.size(18.dp))
             Text(
@@ -311,7 +318,7 @@ private fun FooterLine(state: BackendState) {
 }
 
 @Composable
-private fun ToggleRuleRow(target: ToggleTarget, rule: ToggleRuleConfig, now: Long, onClick: () -> Unit) {
+private fun ToggleRuleRow(target: ToggleTarget, rule: ToggleRuleConfig, now: Long, verticalPadding: androidx.compose.ui.unit.Dp, onClick: () -> Unit) {
     val phase = RuleScheduler.computeTogglePhase(rule, now)
     val statusText = when {
         !rule.enabled -> stringResource(R.string.home_status_disabled)
@@ -329,11 +336,11 @@ private fun ToggleRuleRow(target: ToggleTarget, rule: ToggleRuleConfig, now: Lon
         phase?.shouldBeOn == true -> CorpoYellow
         else -> CorpoAmber
     }
-    RuleRowSurface(painterResource(iconRes(target)), stringResource(target.labelRes), statusText, color, onClick)
+    RuleRowSurface(painterResource(iconRes(target)), stringResource(target.labelRes), statusText, color, verticalPadding, onClick)
 }
 
 @Composable
-private fun RebootRuleRow(rule: RebootRuleConfig, now: Long, onClick: () -> Unit) {
+private fun RebootRuleRow(rule: RebootRuleConfig, now: Long, verticalPadding: androidx.compose.ui.unit.Dp, onClick: () -> Unit) {
     val statusText = if (!rule.enabled) {
         stringResource(R.string.home_reboot_disabled)
     } else {
@@ -344,12 +351,22 @@ private fun RebootRuleRow(rule: RebootRuleConfig, now: Long, onClick: () -> Unit
         stringResource(R.string.home_reboot_label),
         statusText,
         if (rule.enabled) CorpoYellow else MaterialTheme.colorScheme.onSurfaceVariant,
+        verticalPadding,
         onClick,
     )
 }
 
 @Composable
-private fun RuleRowSurface(icon: Painter, label: String, statusText: String, accent: Color, onClick: () -> Unit) {
+private fun RuleRowSurface(
+    icon: Painter,
+    label: String,
+    statusText: String,
+    accent: Color,
+    verticalPadding: androidx.compose.ui.unit.Dp,
+    onClick: () -> Unit,
+) {
+    // Single line on purpose: six of these plus the other cards have to fit one portrait screen
+    // without scrolling. The outline + chevron keep it obviously tappable.
     androidx.compose.material3.Surface(
         onClick = onClick,
         shape = MaterialTheme.shapes.small,
@@ -358,15 +375,33 @@ private fun RuleRowSurface(icon: Painter, label: String, statusText: String, acc
         modifier = Modifier.fillMaxWidth(),
     ) {
         Row(
-            modifier = Modifier.padding(horizontal = 12.dp, vertical = 12.dp),
+            modifier = Modifier.padding(start = 10.dp, end = 6.dp, top = verticalPadding, bottom = verticalPadding),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Icon(icon, contentDescription = null, tint = accent, modifier = Modifier.size(22.dp))
-            Column(modifier = Modifier.weight(1f).padding(start = 12.dp)) {
-                Text(label, style = MaterialTheme.typography.titleSmall, color = accent)
-                Text(statusText, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurface, modifier = Modifier.padding(top = 1.dp))
-            }
-            Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = null, tint = accent)
+            Icon(icon, contentDescription = null, tint = accent, modifier = Modifier.size(20.dp))
+            Text(
+                label,
+                style = MaterialTheme.typography.titleSmall,
+                color = accent,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.padding(start = 10.dp),
+            )
+            Text(
+                statusText,
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                textAlign = androidx.compose.ui.text.style.TextAlign.End,
+                modifier = Modifier.weight(1f).padding(start = 8.dp),
+            )
+            Icon(
+                Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                contentDescription = null,
+                tint = accent,
+                modifier = Modifier.size(20.dp),
+            )
         }
     }
 }
