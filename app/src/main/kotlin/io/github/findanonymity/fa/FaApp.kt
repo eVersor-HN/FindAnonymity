@@ -47,7 +47,10 @@ class FaApp : Application() {
             configRepository.configFlow
                 .map { it.preferredBackend }
                 .distinctUntilChanged()
-                .collect { executorManager.preference = it }
+                .collect {
+                    executorManager.preference = it
+                    executorManager.refreshState() // effective backend depends on the preference
+                }
         }
     }
 }

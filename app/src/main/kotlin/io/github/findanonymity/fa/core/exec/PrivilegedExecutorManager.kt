@@ -13,6 +13,9 @@ sealed interface BackendState {
     data object ShizukuAvailable : BackendState
 }
 
+/** Independent Shizuku availability, so the setup screen can show it regardless of preference. */
+enum class ShizukuAvailability { UNREACHABLE, NEEDS_PERMISSION, AVAILABLE }
+
 /**
  * Detects and selects between the Root and Shizuku backends. Deliberately re-probes on every
  * exec() failure rather than caching "unavailable" forever — lets the app self-heal once Shizuku
@@ -24,13 +27,47 @@ class PrivilegedExecutorManager(context: Context) {
     private val rootExecutor = RootExecutor()
     private val shizukuExecutor = ShizukuExecutor(appContext)
 
+    // Effective backend given the current preference (drives the home card, panic, exec routing).
     private val _state = MutableStateFlow<BackendState>(BackendState.NoneAvailable)
     val state: StateFlow<BackendState> = _state.asStateFlow()
+
+    // Raw, preference-independent availabilities (drive the setup screen's two cards).
+    private val _rootAvailable = MutableStateFlow(false)
+    val rootAvailable: StateFlow<Boolean> = _rootAvailable.asStateFlow()
+    private val _shizukuAvailability = MutableStateFlow(ShizukuAvailability.UNREACHABLE)
+    val shizukuAvailability: StateFlow<ShizukuAvailability> = _shizukuAvailability.asStateFlow()
 
     var preference: BackendPreference = BackendPreference.AUTO
 
     suspend fun refreshState() {
-        _state.value = detectState()
+        val root = rootExecutor.hasPermission()
+        val shizuku = probeShizuku()
+        _rootAvailable.value = root
+        _shizukuAvailability.value = shizuku
+        _state.value = effectiveState(preference, root, shizuku)
+    }
+
+    private suspend fun probeShizuku(): ShizukuAvailability {
+        if (!shizukuExecutor.isAvailable()) return ShizukuAvailability.UNREACHABLE
+        return if (shizukuExecutor.hasPermission()) {
+            ShizukuAvailability.AVAILABLE
+        } else {
+            ShizukuAvailability.NEEDS_PERMISSION
+        }
+    }
+
+    /** The backend the app will actually use — honours [preference] rather than always root-first. */
+    private fun effectiveState(pref: BackendPreference, root: Boolean, shizuku: ShizukuAvailability): BackendState {
+        fun shizukuState(): BackendState = when (shizuku) {
+            ShizukuAvailability.AVAILABLE -> BackendState.ShizukuAvailable
+            ShizukuAvailability.NEEDS_PERMISSION -> BackendState.ShizukuNeedsPermission
+            ShizukuAvailability.UNREACHABLE -> BackendState.NoneAvailable
+        }
+        return when (pref) {
+            BackendPreference.ROOT -> if (root) BackendState.RootAvailable else BackendState.NoneAvailable
+            BackendPreference.SHIZUKU -> shizukuState()
+            BackendPreference.AUTO -> if (root) BackendState.RootAvailable else shizukuState()
+        }
     }
 
     suspend fun requestShizukuPermission(): Boolean {
@@ -72,18 +109,6 @@ class PrivilegedExecutorManager(context: Context) {
                 else -> null
             }
         }
-    }
-
-    private suspend fun detectState(): BackendState {
-        if (rootExecutor.hasPermission()) return BackendState.RootAvailable
-        if (shizukuExecutor.isAvailable()) {
-            return if (shizukuExecutor.hasPermission()) {
-                BackendState.ShizukuAvailable
-            } else {
-                BackendState.ShizukuNeedsPermission
-            }
-        }
-        return BackendState.NoneAvailable
     }
 
     /** Root executor — the strong, reboot-persistent backend for the panic-lock. */

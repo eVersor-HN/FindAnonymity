@@ -107,8 +107,8 @@
     <string name="rule_editor_reboot_interval">Intervall</string>
     <string name="rule_editor_reboot_note">Intervall = Zeit seit dem letzten Start (jeder Start, nicht nur von der App ausgelöste).</string>
     <string name="rule_editor_bulk_title">Alle Regeln</string>
-    <string name="rule_editor_bulk_note">Wendet eine Einstellung gleichzeitig auf WLAN, mobile Daten und Flugmodus an.</string>
-    <string name="rule_editor_bulk_apply">Auf alle drei anwenden</string>
+    <string name="rule_editor_bulk_note">Wendet eine Einstellung gleichzeitig auf alle Funkmodule an — WLAN, mobile Daten, Flugmodus, Bluetooth und Standort.</string>
+    <string name="rule_editor_bulk_apply">Auf alle anwenden</string>
     <string name="rule_editor_force_title">Neustart erzwingen</string>
     <string name="rule_editor_force_note">Läuft als eigenständiger Daemon, der auch dann auslöst, wenn FA über die Benachrichtigung beendet oder gekillt wird — ein Dieb kann den Schutz-Neustart so nicht abbrechen. Benötigt Root oder Shizuku; Root schaltet ihn nach jedem Start erneut scharf.</string>
 

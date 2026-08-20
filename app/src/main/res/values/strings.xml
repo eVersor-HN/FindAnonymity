@@ -107,8 +107,8 @@
     <string name="rule_editor_reboot_interval">Interval</string>
     <string name="rule_editor_reboot_note">Interval = time since the last boot (any boot, not just app-triggered ones).</string>
     <string name="rule_editor_bulk_title">All rules</string>
-    <string name="rule_editor_bulk_note">This applies one setting to Wi-Fi, mobile data and airplane mode at once.</string>
-    <string name="rule_editor_bulk_apply">Apply to all three</string>
+    <string name="rule_editor_bulk_note">This applies one setting to all radios — Wi-Fi, mobile data, airplane mode, Bluetooth and location — at once.</string>
+    <string name="rule_editor_bulk_apply">Apply to all radios</string>
     <string name="rule_editor_force_title">Force reboot</string>
     <string name="rule_editor_force_note">Runs as a detached daemon that still fires even if FA is stopped from the notification or killed — so a thief cannot cancel the protective reboot. Requires root or Shizuku; root also re-arms it after each boot.</string>
 

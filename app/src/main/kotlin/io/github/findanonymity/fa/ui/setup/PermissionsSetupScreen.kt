@@ -33,7 +33,7 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import io.github.findanonymity.fa.FaApp
 import io.github.findanonymity.fa.R
-import io.github.findanonymity.fa.core.exec.BackendState
+import io.github.findanonymity.fa.core.exec.ShizukuAvailability
 import io.github.findanonymity.fa.ui.components.CorpoButton
 import io.github.findanonymity.fa.ui.components.CorpoOutlinedButton
 import io.github.findanonymity.fa.ui.components.FormContainer
@@ -51,7 +51,8 @@ private fun isBatteryExempt(context: Context): Boolean =
 fun PermissionsSetupScreen(onBack: () -> Unit) {
     val context = LocalContext.current
     val app = context.applicationContext as FaApp
-    val backendState by app.executorManager.state.collectAsStateWithLifecycle()
+    val rootAvailable by app.executorManager.rootAvailable.collectAsStateWithLifecycle()
+    val shizukuAvail by app.executorManager.shizukuAvailability.collectAsStateWithLifecycle()
     val scope = rememberCoroutineScope()
 
     // Battery-optimisation state can change while we're in the system settings screen, so re-read
@@ -66,8 +67,8 @@ fun PermissionsSetupScreen(onBack: () -> Unit) {
         onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
     }
 
-    val rootReady = backendState == BackendState.RootAvailable
-    val shizukuReady = backendState == BackendState.ShizukuAvailable
+    val rootReady = rootAvailable
+    val shizukuReady = shizukuAvail == ShizukuAvailability.AVAILABLE
 
     Scaffold(
         topBar = {
@@ -104,10 +105,10 @@ fun PermissionsSetupScreen(onBack: () -> Unit) {
                 Text(stringResource(R.string.permissions_shizuku_title), style = MaterialTheme.typography.titleSmall)
                 Text(
                     text = stringResource(
-                        when (backendState) {
-                            BackendState.ShizukuAvailable -> R.string.permissions_shizuku_available
-                            BackendState.ShizukuNeedsPermission -> R.string.permissions_shizuku_needs_permission
-                            else -> R.string.permissions_shizuku_unreachable
+                        when (shizukuAvail) {
+                            ShizukuAvailability.AVAILABLE -> R.string.permissions_shizuku_available
+                            ShizukuAvailability.NEEDS_PERMISSION -> R.string.permissions_shizuku_needs_permission
+                            ShizukuAvailability.UNREACHABLE -> R.string.permissions_shizuku_unreachable
                         },
                     ),
                     color = if (shizukuReady) CorpoCyan else CorpoAmber,
