@@ -35,7 +35,7 @@
     <string name="backend_shizuku_only">केवल Shizuku</string>
 
     <!-- होम स्क्रीन -->
-    <string name="home_title">FA — daemon.status</string>
+    <string name="home_title">FA</string>
     <string name="home_automation_title">ऑटोमेशन</string>
     <string name="home_automation_running">चल रहा है</string>
     <string name="home_automation_stopped">रुका हुआ है</string>

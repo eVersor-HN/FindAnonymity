@@ -51,7 +51,7 @@
     <string name="backend_shizuku_only">Nur Shizuku</string>
 
     <!-- Startbildschirm -->
-    <string name="home_title">FA — daemon.status</string>
+    <string name="home_title">FA</string>
     <string name="home_automation_title">Automatisierung</string>
     <string name="home_automation_running">läuft</string>
     <string name="home_automation_stopped">gestoppt</string>

@@ -35,7 +35,7 @@
     <string name="backend_shizuku_only">Shizuku فقط</string>
 
     <!-- الشاشة الرئيسية -->
-    <string name="home_title">FA — daemon.status</string>
+    <string name="home_title">FA</string>
     <string name="home_automation_title">الأتمتة</string>
     <string name="home_automation_running">قيد التشغيل</string>
     <string name="home_automation_stopped">متوقفة</string>

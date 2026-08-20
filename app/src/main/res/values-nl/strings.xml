@@ -35,7 +35,7 @@
     <string name="backend_shizuku_only">Alleen Shizuku</string>
 
     <!-- Home screen -->
-    <string name="home_title">FA — daemon.status</string>
+    <string name="home_title">FA</string>
     <string name="home_automation_title">Automatisering</string>
     <string name="home_automation_running">actief</string>
     <string name="home_automation_stopped">gestopt</string>
