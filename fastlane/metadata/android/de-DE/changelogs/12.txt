@@ -1,0 +1,1 @@
+Das Scharfschalten des Panic-Locks erfordert jetzt zwei getippte Bestätigungen, damit es nicht versehentlich ausgelöst werden kann: erst eine feste Drei-Wort-Phrase, dann einen frisch generierten sechsstelligen Code. Die Titelzeile im Dashboard zeigt nur noch "FA".

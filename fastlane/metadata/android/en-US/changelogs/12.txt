@@ -1,0 +1,1 @@
+Arming the panic-lock now requires two typed confirmations, so it cannot be triggered by accident: type a fixed three-word phrase, then a freshly generated six-digit code. The dashboard title is now just "FA".
