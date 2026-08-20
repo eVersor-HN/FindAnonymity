@@ -46,6 +46,8 @@ private fun ruleFor(config: AppConfig, target: ToggleTarget): ToggleRuleConfig =
     ToggleTarget.WIFI -> config.wifiRule
     ToggleTarget.MOBILE_DATA -> config.dataRule
     ToggleTarget.AIRPLANE_MODE -> config.airplaneModeRule
+    ToggleTarget.BLUETOOTH -> config.bluetoothRule
+    ToggleTarget.LOCATION -> config.locationRule
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

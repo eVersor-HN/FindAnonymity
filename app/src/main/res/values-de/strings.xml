@@ -12,6 +12,8 @@
     <string name="target_wifi">Wi-Fi</string>
     <string name="target_mobile_data">Mobile Daten</string>
     <string name="target_airplane_mode">Flugmodus</string>
+    <string name="target_bluetooth">Bluetooth</string>
+    <string name="target_location">Standort</string>
 
     <!-- Modi -->
     <string name="mode_cyclical">Zyklus</string>
@@ -116,6 +118,7 @@
     <string name="permissions_root_available">verfügbar</string>
     <string name="permissions_root_unavailable">nicht verfügbar</string>
     <string name="permissions_root_check">Nach Root suchen</string>
+    <string name="permissions_granted">✓ Erteilt</string>
     <string name="permissions_shizuku_title">Shizuku</string>
     <string name="permissions_shizuku_available">verfügbar, Berechtigung erteilt</string>
     <string name="permissions_shizuku_needs_permission">läuft, Berechtigung fehlt</string>

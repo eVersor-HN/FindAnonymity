@@ -67,6 +67,8 @@ class AutomationService : LifecycleService() {
         launch { runToggleLoop(ToggleTarget.WIFI, config.wifiRule) }
         launch { runToggleLoop(ToggleTarget.MOBILE_DATA, config.dataRule) }
         launch { runToggleLoop(ToggleTarget.AIRPLANE_MODE, config.airplaneModeRule) }
+        launch { runToggleLoop(ToggleTarget.BLUETOOTH, config.bluetoothRule) }
+        launch { runToggleLoop(ToggleTarget.LOCATION, config.locationRule) }
         launch { runRebootLoop(config.rebootRule) }
         launch { runStatusNotificationLoop(config) }
     }
@@ -114,6 +116,8 @@ class AutomationService : LifecycleService() {
                 ToggleTarget.WIFI to config.wifiRule,
                 ToggleTarget.MOBILE_DATA to config.dataRule,
                 ToggleTarget.AIRPLANE_MODE to config.airplaneModeRule,
+                ToggleTarget.BLUETOOTH to config.bluetoothRule,
+                ToggleTarget.LOCATION to config.locationRule,
             ).forEach { (target, rule) ->
                 val phase = RuleScheduler.computeTogglePhase(rule, now)
                 val targetName = getString(target.labelRes)

@@ -34,6 +34,8 @@ class RuleEditorViewModel(application: Application) : AndroidViewModel(applicati
                     ToggleTarget.WIFI -> config.copy(wifiRule = toPersist)
                     ToggleTarget.MOBILE_DATA -> config.copy(dataRule = toPersist)
                     ToggleTarget.AIRPLANE_MODE -> config.copy(airplaneModeRule = toPersist)
+                    ToggleTarget.BLUETOOTH -> config.copy(bluetoothRule = toPersist)
+                    ToggleTarget.LOCATION -> config.copy(locationRule = toPersist)
                 }
             }
         }
@@ -48,7 +50,13 @@ class RuleEditorViewModel(application: Application) : AndroidViewModel(applicati
         }
         viewModelScope.launch {
             app.configRepository.update { config ->
-                config.copy(wifiRule = toPersist, dataRule = toPersist, airplaneModeRule = toPersist)
+                config.copy(
+                    wifiRule = toPersist,
+                    dataRule = toPersist,
+                    airplaneModeRule = toPersist,
+                    bluetoothRule = toPersist,
+                    locationRule = toPersist,
+                )
             }
         }
     }

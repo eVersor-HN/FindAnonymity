@@ -71,6 +71,8 @@ private fun iconRes(target: ToggleTarget): Int = when (target) {
     ToggleTarget.WIFI -> R.drawable.ic_wifi
     ToggleTarget.MOBILE_DATA -> R.drawable.ic_data
     ToggleTarget.AIRPLANE_MODE -> R.drawable.ic_airplane
+    ToggleTarget.BLUETOOTH -> R.drawable.ic_bluetooth
+    ToggleTarget.LOCATION -> R.drawable.ic_location
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -120,10 +122,6 @@ fun HomeScreen(
                 .padding(padding),
         ) {
             item(span = { GridItemSpan(maxLineSpan) }) {
-                NextEventHero(config = config, now = now)
-            }
-
-            item(span = { GridItemSpan(maxLineSpan) }) {
                 MasterSwitchCard(config.masterAutomationEnabled, viewModel::setMasterEnabled)
             }
 
@@ -145,6 +143,8 @@ fun HomeScreen(
                             ToggleTarget.WIFI to config.wifiRule,
                             ToggleTarget.MOBILE_DATA to config.dataRule,
                             ToggleTarget.AIRPLANE_MODE to config.airplaneModeRule,
+                            ToggleTarget.BLUETOOTH to config.bluetoothRule,
+                            ToggleTarget.LOCATION to config.locationRule,
                         ).forEach { (target, rule) ->
                             ToggleRuleRow(target, rule, now) { onEditToggleRule(target) }
                         }
@@ -183,77 +183,6 @@ fun HomeScreen(
             }
         }
     }
-}
-
-@Composable
-private fun NextEventHero(config: AppConfig, now: Long) {
-    val event = nextEvent(config, now)
-    val running = config.masterAutomationEnabled
-    val accent = if (running && event != null) CorpoCyan else CorpoAmber
-    TerminalCard(modifier = Modifier.fillMaxWidth(), accent = accent) {
-        Text(
-            stringResource(R.string.home_next_label),
-            style = MaterialTheme.typography.labelMedium,
-            color = accent,
-        )
-        if (!running) {
-            Text(stringResource(R.string.home_next_paused), style = MaterialTheme.typography.titleMedium)
-        } else if (event == null) {
-            Text(stringResource(R.string.home_next_none), style = MaterialTheme.typography.titleMedium)
-        } else {
-            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(top = 2.dp)) {
-                Icon(painterResource(event.iconRes), contentDescription = null, tint = accent, modifier = Modifier.size(22.dp))
-                Text(
-                    "  ${event.targetLabel}",
-                    style = MaterialTheme.typography.titleMedium,
-                    modifier = Modifier.weight(1f),
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                )
-                if (event.stateLabel != null) {
-                    Text(
-                        "→ ${event.stateLabel}",
-                        style = MaterialTheme.typography.titleSmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        maxLines = 1,
-                        modifier = Modifier.padding(start = 8.dp),
-                    )
-                }
-                Text(
-                    formatCountdown(event.millis),
-                    style = MaterialTheme.typography.titleLarge,
-                    color = accent,
-                    maxLines = 1,
-                    modifier = Modifier.padding(start = 10.dp),
-                )
-            }
-        }
-    }
-}
-
-private class NextEvent(val iconRes: Int, val targetLabel: String, val stateLabel: String?, val millis: Long)
-
-@Composable
-private fun nextEvent(config: AppConfig, now: Long): NextEvent? {
-    var best: NextEvent? = null
-    fun consider(event: NextEvent) {
-        if (event.millis == Long.MAX_VALUE) return
-        if (best == null || event.millis < best!!.millis) best = event
-    }
-    listOf(
-        ToggleTarget.WIFI to config.wifiRule,
-        ToggleTarget.MOBILE_DATA to config.dataRule,
-        ToggleTarget.AIRPLANE_MODE to config.airplaneModeRule,
-    ).forEach { (target, rule) ->
-        val phase = RuleScheduler.computeTogglePhase(rule, now) ?: return@forEach
-        val nextOn = !phase.shouldBeOn
-        val stateWord = stringResource(if (nextOn) R.string.home_state_on else R.string.home_state_off)
-        consider(NextEvent(iconRes(target), stringResource(target.labelRes), stateWord, phase.millisUntilNextTransition))
-    }
-    if (config.rebootRule.enabled) {
-        consider(NextEvent(R.drawable.ic_reboot, stringResource(R.string.home_reboot_label), null, RuleScheduler.millisUntilReboot(config.rebootRule, now)))
-    }
-    return best
 }
 
 @Composable

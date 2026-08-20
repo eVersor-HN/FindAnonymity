@@ -29,6 +29,14 @@ enum class ToggleTarget(@StringRes val labelRes: Int, val command: TargetCommand
             off = "settings put global airplane_mode_on 0 && am broadcast -a android.intent.action.AIRPLANE_MODE --ez state false",
         ),
     ),
+    BLUETOOTH(R.string.target_bluetooth, TargetCommands("svc bluetooth enable", "svc bluetooth disable")),
+    LOCATION(
+        R.string.target_location,
+        TargetCommands(
+            on = "cmd location set-location-enabled true",
+            off = "cmd location set-location-enabled false",
+        ),
+    ),
 }
 
 data class TargetCommands(val on: String, val off: String)

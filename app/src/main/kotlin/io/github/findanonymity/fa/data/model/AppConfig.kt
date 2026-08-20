@@ -17,6 +17,8 @@ data class AppConfig(
     val wifiRule: ToggleRuleConfig = ToggleRuleConfig(),
     val dataRule: ToggleRuleConfig = ToggleRuleConfig(),
     val airplaneModeRule: ToggleRuleConfig = ToggleRuleConfig(),
+    val bluetoothRule: ToggleRuleConfig = ToggleRuleConfig(),
+    val locationRule: ToggleRuleConfig = ToggleRuleConfig(),
     val rebootRule: RebootRuleConfig = RebootRuleConfig(),
     val panicLock: PanicLockConfig = PanicLockConfig(),
     val preferredBackend: BackendPreference = BackendPreference.AUTO,
